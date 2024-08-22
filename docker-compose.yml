@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: uchi.7425poke@gmail.com
+      POSTGRES_PASSWORD: kyousou@7425
+      POSTGRES_DB: pokedb
+    ports:
+      - '5432:5432'

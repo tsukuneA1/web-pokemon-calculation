@@ -1,0 +1,52 @@
+.checkboxContainer {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.customCheckmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border: 2px solid #ccc; /* 枠の太さと色を設定 */
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.checkbox:checked + .customCheckmark {
+  background-color: #2196f3;
+  border-color: #2196f3; /* チェック時の枠色 */
+}
+
+.customCheckmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.checkbox:checked + .customCheckmark:after {
+  display: block;
+}
+
+.customCheckmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
