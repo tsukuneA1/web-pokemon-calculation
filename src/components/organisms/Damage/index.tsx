@@ -12,8 +12,8 @@ import {
 } from '@/function/function';
 import { useWindowSize } from '@/function/GetWindowSize';
 import { Poke, typeInterface } from '@/interfaces';
-import { addStats } from '@/pages/app/damageSlice';
-import { RootState, setAbility, setCritical, Skill } from '@/pages/app/store';
+import { addStats } from '@/app/damageSlice';
+import { RootState, setAbility, setCritical, Skill } from '@/app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Damage: React.FC = () => {
@@ -55,7 +55,7 @@ const Damage: React.FC = () => {
   const threeQuaters = useSelector((state: RootState) => state.stats.threeQuaters);
   const preeminence = useSelector((state: RootState) => state.stats.stellaPreeminence);
 
-  let atActual = (burn && befSkill.classification === '物理') ? Math.floor(befAtActual/2) : befAtActual;
+  let atActual = burn && befSkill.classification === '物理' ? Math.floor(befAtActual / 2) : befAtActual;
 
   let skill = befSkill;
   if (doublePowerFlag) {
@@ -65,15 +65,14 @@ const Damage: React.FC = () => {
       type: befSkill.type,
       classification: befSkill.classification,
     };
-  } else if(threeQuaters){
+  } else if (threeQuaters) {
     skill = {
       name: befSkill.name,
       power: Math.floor((befSkill.power * 3) / 2),
       type: befSkill.type,
       classification: befSkill.classification,
     };
-  }
-  else {
+  } else {
     skill = befSkill;
   }
 
@@ -106,7 +105,9 @@ const Damage: React.FC = () => {
     dfActual = dActual;
   }
 
-  const typeMag = (preeminence) ? (2) : (typeMagnification(skill, dfType1, atSpCh) * typeMagnification(skill, dfType2, atSpCh));
+  const typeMag = preeminence
+    ? 2
+    : typeMagnification(skill, dfType1, atSpCh) * typeMagnification(skill, dfType2, atSpCh);
   const finalDamageMag = finalDamageMagnification(
     atPoke,
     dfPoke,
@@ -147,10 +148,10 @@ const Damage: React.FC = () => {
 
   for (let item of savedDamages) {
     let plusActual = bActual;
-    (!item.referAt) && (plusActual = dActual);
+    !item.referAt && (plusActual = dActual);
 
     let actual = item.atActual;
-    (item.burn && item.selectedSkill.classification==='物理') && (actual = Math.floor(item.atActual/2));
+    item.burn && item.selectedSkill.classification === '物理' && (actual = Math.floor(item.atActual / 2));
 
     let plusDfType1 = dfPoke.types[0].name;
     let plusDfType2 = dfPoke.types[1].name;
@@ -162,9 +163,10 @@ const Damage: React.FC = () => {
       plusDfType2 = dfPoke.types[1].name;
     }
 
-    const plusTypeMag = (item.preeminence) ? (2):
-      (typeMagnification(item.selectedSkill, plusDfType1, item.currentAbility) *
-      typeMagnification(item.selectedSkill, plusDfType2, item.currentAbility));
+    const plusTypeMag = item.preeminence
+      ? 2
+      : typeMagnification(item.selectedSkill, plusDfType1, item.currentAbility) *
+        typeMagnification(item.selectedSkill, plusDfType2, item.currentAbility);
     const plusFinalDamageMag = finalDamageMagnification(
       item.atPoke,
       dfPoke,
@@ -286,11 +288,7 @@ const Damage: React.FC = () => {
         <BigButton
           width="100px"
           height="35px"
-          text={
-            windowSize.width > 1024
-            ? 'ダメージ加算'
-            : '加算'
-          }
+          text={windowSize.width > 1024 ? 'ダメージ加算' : '加算'}
           color="#6652b5"
           backgroundColor="#ece9fb"
           borderRadius="20px"
@@ -316,13 +314,13 @@ export function damageCalculate(
   var maxDamage = Math.floor(Math.floor((22 * finalSkillPower * atActual) / dfActual) / 50 + 2);
   maxDamage *= weatherMagnification(skill, weather);
   if (critical) {
-    maxDamage = Math.floor(maxDamage * 6144 / 4096);
+    maxDamage = Math.floor((maxDamage * 6144) / 4096);
   }
   var damageList: number[] = [];
   for (let i: number = 85; i <= 100; i++) {
-    let damage = Math.floor(maxDamage * i / 100);
-    let item = Math.floor(specialRound(damage*atMag)*typeMag)
-    item = Math.round(item*finalDamageMag);
+    let damage = Math.floor((maxDamage * i) / 100);
+    let item = Math.floor(specialRound(damage * atMag) * typeMag);
+    item = Math.round(item * finalDamageMag);
     damageList.push(item);
   }
 

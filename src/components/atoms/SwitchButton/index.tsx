@@ -1,6 +1,4 @@
-import { RootState, setAbility, setAbilityChecked } from '@/pages/app/store';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 interface SwitchButtonProps {
   isOn: boolean;

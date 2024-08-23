@@ -66,22 +66,21 @@ const defenderSlice = createSlice({
           state.bNatureMultiplier,
       );
       state.dActual = Math.floor(
-        (Math.floor(((state.poke.specialDefence * 2 + state.dIndividual + (state.dEffort / 4)) * 1) / 2) +
-          5) *
+        (Math.floor(((state.poke.specialDefence * 2 + state.dIndividual + state.dEffort / 4) * 1) / 2) + 5) *
           state.dNatureMultiplier,
       );
 
-      if(state.poke.abilities){
-        for(let i = 0; i < state.poke.abilities.length; i++){
-          if(defenceAbilities.includes(state.poke.abilities[i])){
+      if (state.poke.abilities) {
+        for (let i = 0; i < state.poke.abilities.length; i++) {
+          if (defenceAbilities.includes(state.poke.abilities[i])) {
             state.currentAbility = state.poke.abilities[i];
             break;
-          }else{
-            state.currentAbility = "なし"
+          } else {
+            state.currentAbility = 'なし';
           }
         }
-      }else{
-        state.currentAbility = "なし"
+      } else {
+        state.currentAbility = 'なし';
       }
     },
     setHActual(state, action: PayloadAction<number>) {
@@ -114,12 +113,17 @@ const defenderSlice = createSlice({
     },
     setHEffort(state, action: PayloadAction<number>) {
       state.hEffort = action.payload;
-      state.hActual = Math.floor(Math.floor(((state.poke.hp * 2 + state.hIndividual + state.hEffort / 4) * 50) / 100) + 50 + 10);
+      state.hActual = Math.floor(
+        Math.floor(((state.poke.hp * 2 + state.hIndividual + state.hEffort / 4) * 50) / 100) + 50 + 10,
+      );
     },
     setBEffort(state, action: PayloadAction<number>) {
       state.bEffort = action.payload;
       state.bActual = Math.floor(
-        (Math.floor(Math.floor(((state.poke.defence * 2 + state.bIndividual + Math.floor(state.bEffort / 4)) * 1) / 2)) + 5) *
+        (Math.floor(
+          Math.floor(((state.poke.defence * 2 + state.bIndividual + Math.floor(state.bEffort / 4)) * 1) / 2),
+        ) +
+          5) *
           state.bNatureMultiplier,
       );
     },

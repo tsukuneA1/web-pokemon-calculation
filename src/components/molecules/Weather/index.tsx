@@ -1,7 +1,7 @@
 import Dropdown from '@/components/atoms/DropdownButton';
 import Effect from '@/components/atoms/Effect';
-import { setField, setWeather } from '@/pages/app/envSlice';
-import { RootState } from '@/pages/app/store';
+import { setField, setWeather } from '@/app/envSlice';
+import { RootState } from '@/app/store';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

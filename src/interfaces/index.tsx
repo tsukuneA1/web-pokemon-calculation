@@ -79,8 +79,7 @@ export const attackAbilities: string[] = [
   'わざわいのおふだ',
   'わざわいのたま',
   'わざわいのつるぎ',
-
-]
+];
 
 export const defenceAbilities: string[] = [
   //df
@@ -118,7 +117,7 @@ export const defenceAbilities: string[] = [
   'わざわいのおふだ',
   'わざわいのたま',
   'わざわいのつるぎ',
-]
+];
 
 export const typeInterface: Type[] = [
   { name: '非選択', typeTagSrc: '/images/types/not_selected.png', typeIconSrc: '/images/types/bef_teras.png', num: 0 },
@@ -206,7 +205,6 @@ export const pokes: Poke[] = [
     skill3: 'スケイルショット',
     skill4: 'アクセルブレイク',
     skill5: 'ドレインパンチ',
-
   },
   {
     id: 1008,

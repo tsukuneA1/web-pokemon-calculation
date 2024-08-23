@@ -8,7 +8,7 @@ interface ImageButtonProps {
   ariaLabel: string;
 }
 
-const ImageButton: React.FC<ImageButtonProps> = ({ src, onClick}) => {
+const ImageButton: React.FC<ImageButtonProps> = ({ src, onClick }) => {
   return (
     <button onClick={onClick} style={{ borderRadius: '50%', backgroundColor: '#fff', border: 'none' }}>
       <div

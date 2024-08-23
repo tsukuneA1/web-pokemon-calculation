@@ -87,7 +87,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if(
+    if (
       suggestionBoxRef.current &&
       !suggestionBoxRef.current.contains(event.target as Node) &&
       inputRef.current &&
@@ -95,7 +95,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
     ) {
       setShowSuggestions(false);
     }
-  }
+  };
 
   const clearText = () => {
     setQuery('');
@@ -153,15 +153,14 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
             &times;
           </button>
         )}
-        {/* <IconButton icon={<SearchIcon />} onClick={() => {}} ariaLabel="Search icon button" /> */}
       </div>
       {showSuggestions && filteredSuggestions.length > 0 && (
         <ul
           ref={suggestionBoxRef}
           style={{
             position: 'absolute',
-            width: (windowSize.width < 640) ? '240px' : '400px',
-            
+            width: windowSize.width < 640 ? '240px' : '400px',
+
             maxHeight: '500px',
             overflowY: 'auto',
             backgroundColor: '#fff',

@@ -43,9 +43,9 @@ const statSlice = createSlice({
     subStats(state, action: PayloadAction<number>) {
       state.stats.splice(action.payload, 1);
     },
-    deleteAll(state){
+    deleteAll(state) {
       state.stats = [];
-    }
+    },
   },
 });
 

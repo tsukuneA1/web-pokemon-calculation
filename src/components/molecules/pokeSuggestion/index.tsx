@@ -13,20 +13,13 @@ const PokeSuggestion: React.FC<suggestionProps> = ({ poke }) => {
   return (
     <div className="flex items-center justify-between w-full border-b-gray-400">
       <div className="flex items-center">
-        {windowSize.width < 640
-          ? <MiniCatchingPokemon/>
-          : <CatchingPokemon/>
-        }
+        {windowSize.width < 640 ? <MiniCatchingPokemon /> : <CatchingPokemon />}
         <div className="text-sm sm:text-base first-letter:block items-start justify-items-start text-start ml-2">
           {poke.name}
-          <div className='text-xs sm:text-base'>{tribe}</div>
+          <div className="text-xs sm:text-base">{tribe}</div>
         </div>
       </div>
-      {windowSize.width < 640
-        ? <MiniArrowUpLeftBold/>
-        : <ArrowUpLeftBold />
-      }
-      
+      {windowSize.width < 640 ? <MiniArrowUpLeftBold /> : <ArrowUpLeftBold />}
     </div>
   );
 };

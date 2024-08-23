@@ -15,10 +15,7 @@ const CheckBox: React.FC<InputProps> = ({ checked, handleChange, content }: Inpu
         style={{ width: '20px', height: '20px', border: '2px solid #000' }}
         onChange={(e) => handleChange(e)}
       />
-      <div className='ml-3'>
-      {content}
-      </div>
-      
+      <div className="ml-3">{content}</div>
     </div>
   );
 };

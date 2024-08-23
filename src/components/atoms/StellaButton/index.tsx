@@ -1,4 +1,4 @@
-import { RootState, setAtTera} from '@/pages/app/store';
+import { RootState, setAtTera } from '@/app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 import { typeInterface } from '@/interfaces';
@@ -20,9 +20,7 @@ const StellaButton: React.FC<StellaButtonProps> = () => {
   }
 
   let src = '/images/types/stella.png';
-  (atTera === typeInterface[19])
-    ? src = typeInterface[19].typeIconSrc
-    : src = '/images/types/stella.png';
+  atTera === typeInterface[19] ? (src = typeInterface[19].typeIconSrc) : (src = '/images/types/stella.png');
 
   return (
     <div

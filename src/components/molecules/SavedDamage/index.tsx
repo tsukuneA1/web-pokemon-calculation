@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { SavedDamage } from '@/pages/app/damageSlice';
-import PokeInfo from '@/components/molecules/PokeInfo';
-import DamageBar from '@/components/molecules/DamageBar';
+import { SavedDamage } from '@/app/damageSlice';
 import { atMagnification, damageCalculate, typeMagnification } from '@/components/organisms/Damage';
 import {
   damageStrCalc,
@@ -12,11 +10,18 @@ import {
   strCalc,
 } from '@/function/function';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/pages/app/store';
+import { RootState } from '@/app/store';
 import { typeInterface } from '@/interfaces';
 import DamageDialog from '../DamageDialog';
 import Header from '../Header';
-import { BookmarkAddSharp, DeleteForeverRounded, Detail, MiniBookmarkAddSharp, MiniDeleteForeverRounded, MiniDetail } from '@/components/icons/Icons';
+import {
+  BookmarkAddSharp,
+  DeleteForeverRounded,
+  Detail,
+  MiniBookmarkAddSharp,
+  MiniDeleteForeverRounded,
+  MiniDetail,
+} from '@/components/icons/Icons';
 import SavedPokeInfo from '../SavedPokeInfo';
 import SavedDamageBar from '../SavedDamageBar';
 import { Tooltip } from '@nextui-org/tooltip';
@@ -28,10 +33,7 @@ interface savedDamageProps {
   del: () => void;
 }
 
-const SavedDamageComponent: React.FC<savedDamageProps> = ({
-   stat,
-   del
-}) => {
+const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
   const dfPoke = useSelector((state: RootState) => state.defender.poke);
   const hActual = useSelector((state: RootState) => state.defender.hActual);
   const bActual = useSelector((state: RootState) => state.defender.bActual);
@@ -51,7 +53,7 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({
   const skill = stat.selectedSkill;
 
   let atActual = stat.atActual;
-  (stat.burn && stat.selectedSkill.classification==='物理') && (atActual = Math.floor(atActual/2));
+  stat.burn && stat.selectedSkill.classification === '物理' && (atActual = Math.floor(atActual / 2));
 
   let dfType1 = dfPoke.types[0].name;
   let dfType2 = dfPoke.types[1].name;
@@ -69,9 +71,11 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({
     dfActual = dActual;
   }
 
-  let dfSpCh = stat.dfAbility
+  let dfSpCh = stat.dfAbility;
 
-  const typeMag = (stat.preeminence) ? (2) : (typeMagnification(skill, dfType1, atSpCh) * typeMagnification(skill, dfType2, atSpCh));
+  const typeMag = stat.preeminence
+    ? 2
+    : typeMagnification(skill, dfType1, atSpCh) * typeMagnification(skill, dfType2, atSpCh);
   const finalDamageMag = finalDamageMagnification(
     atPoke,
     dfPoke,
@@ -117,28 +121,24 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({
     pos2 = 0;
   }
 
-  const skillText = `${stat.selectedSkill.name} ${stat.selectedSkill.type.name} ${stat.selectedSkill.power} ${stat.selectedSkill.classification}`
+  const skillText = `${stat.selectedSkill.name} ${stat.selectedSkill.type.name} ${stat.selectedSkill.power} ${stat.selectedSkill.classification}`;
 
   const windowSize = useWindowSize();
   return (
-    <div className='w-full mt-10'>
+    <div className="w-full mt-10">
       <Header
-        title='追加ダメージ'
-        icon={
-          windowSize.width < 640
-          ? <MiniBookmarkAddSharp/>
-          : <BookmarkAddSharp/>
-        }
-        fold = {fold}
+        title="追加ダメージ"
+        icon={windowSize.width < 640 ? <MiniBookmarkAddSharp /> : <BookmarkAddSharp />}
+        fold={fold}
         onIconClick={() => setFold(!fold)}
         width={windowSize.width}
       />
-      {fold
-        ? <></>
-        :
+      {fold ? (
+        <></>
+      ) : (
         <div>
-          <div className='flex bg-gray-10 rounded-b-2xl p-1 sm:p-2 md:p-5 w-full justify-between'>
-            <div className='w-5/6 pointer-events-none'>
+          <div className="flex bg-gray-10 rounded-b-2xl p-1 sm:p-2 md:p-5 w-full justify-between">
+            <div className="w-5/6 pointer-events-none">
               <SavedPokeInfo
                 pokeSrc={stat.atPoke.src}
                 searchText={stat.atPoke.name}
@@ -147,46 +147,38 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({
                 typeSrc2={stat.atPoke.types[1].typeTagSrc}
                 terastalSrc={stat.atTera.typeTagSrc}
               />
-              <div className='text-sm sm:text-base md:text-lg text-start mt-5 mb-0 pb-0'>
-                {skillText}
-              </div>
+              <div className="text-sm sm:text-base md:text-lg text-start mt-5 mb-0 pb-0">{skillText}</div>
               <SavedDamageBar pos1={pos1} pos2={pos2} damageText={damageText} />
             </div>
-            <div className='flex items-start justify-items-end'>
-              <Tooltip showArrow={true} content="詳細" color='warning' className='capitalize bg-gray-10 p-3 rounded-lg'>
-                <Button onClick={openDialog}>
-                  {windowSize.width < 640
-                    ? <MiniDetail/>
-                    : <Detail/>
-                  }
-                </Button>
+            <div className="flex items-start justify-items-end">
+              <Tooltip showArrow={true} content="詳細" color="warning" className="capitalize bg-gray-10 p-3 rounded-lg">
+                <Button onClick={openDialog}>{windowSize.width < 640 ? <MiniDetail /> : <Detail />}</Button>
               </Tooltip>
-              <div className='ml-1 sm:ml-2 md:ml-3'>
-                <Tooltip showArrow={true} content="消去" color='warning' className='capitalize bg-gray-10 p-3 rounded-lg ml-3'>
+              <div className="ml-1 sm:ml-2 md:ml-3">
+                <Tooltip
+                  showArrow={true}
+                  content="消去"
+                  color="warning"
+                  className="capitalize bg-gray-10 p-3 rounded-lg ml-3"
+                >
                   <Button onClick={del}>
-                    {windowSize.width < 640
-                      ? <MiniDeleteForeverRounded/>
-                      : <DeleteForeverRounded />
-                    }
-                    
+                    {windowSize.width < 640 ? <MiniDeleteForeverRounded /> : <DeleteForeverRounded />}
                   </Button>
                 </Tooltip>
               </div>
             </div>
+          </div>
+          <DamageDialog
+            isOpen={isDialogOpen}
+            onClose={closeDialog}
+            stat={stat}
+            pos1={pos1}
+            pos2={pos2}
+            damageText={damageText}
+          />
         </div>
-        <DamageDialog
-          isOpen={isDialogOpen}
-          onClose={closeDialog}
-          stat={stat}
-          pos1={pos1}
-          pos2={pos2}
-          damageText={damageText}
-        />
-        </div>
-      }
-      
+      )}
     </div>
-    
   );
 };
 

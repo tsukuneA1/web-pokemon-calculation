@@ -1,5 +1,5 @@
 import CheckBox from '@/components/atoms/CheckBox';
-import { RootState, setBurn } from '@/pages/app/store';
+import { RootState, setBurn } from '@/app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Burn: React.FC = () => {

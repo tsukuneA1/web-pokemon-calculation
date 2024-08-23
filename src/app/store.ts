@@ -10,7 +10,6 @@ interface SetSkillPayload {
   dfPoke: Poke;
 }
 
-
 export interface Skill {
   name: string;
   power: number;
@@ -88,8 +87,8 @@ const statSlice = createSlice({
       state.natureMultiplier = 1;
       state.atTera = typeInterface[0];
       state.teraIconSrc = typeInterface[0].typeIconSrc;
-      if(state.atPoke.name.includes('オーガポン(')){
-        state.effect = 'タイプ強化系'
+      if (state.atPoke.name.includes('オーガポン(')) {
+        state.effect = 'タイプ強化系';
       }
     },
     setReferAt: (state, action: PayloadAction<boolean>) => {
@@ -155,12 +154,12 @@ const statSlice = createSlice({
     },
     setEffect: (state, action: PayloadAction<string>) => {
       state.effect = action.payload;
-      if(state.atPoke.name.includes('オーガポン(')){
-        state.effect = 'タイプ強化系'
+      if (state.atPoke.name.includes('オーガポン(')) {
+        state.effect = 'タイプ強化系';
       }
     },
     setSkill: (state, action: PayloadAction<SetSkillPayload>) => {
-      const {skill, dfPoke} = action.payload;
+      const { skill, dfPoke } = action.payload;
       state.selectedSkill = skill;
 
       if (state.selectedSkill.name == 'テラバースト') {
@@ -172,27 +171,32 @@ const statSlice = createSlice({
           classification = '物理';
         }
         if (state.atTera !== typeInterface[0]) {
-          (state.atTera === typeInterface[19])
-           ? (state.selectedSkill = {name: 'テラバースト', power: 100, type: typeInterface[19], classification: classification})
-           : (state.selectedSkill = {
-            name: 'テラバースト',
-            power: 80,
-            type: state.atTera,
-            classification: classification,
-          })
+          state.atTera === typeInterface[19]
+            ? (state.selectedSkill = {
+                name: 'テラバースト',
+                power: 100,
+                type: typeInterface[19],
+                classification: classification,
+              })
+            : (state.selectedSkill = {
+                name: 'テラバースト',
+                power: 80,
+                type: state.atTera,
+                classification: classification,
+              });
         }
       } else {
         state.selectClassFlag = false;
       }
 
-      if(state.selectedSkill.name === "テラクラスター" && state.atTera === typeInterface[19]){
+      if (state.selectedSkill.name === 'テラクラスター' && state.atTera === typeInterface[19]) {
         state.selectedSkill = {
           name: state.selectedSkill.name,
           power: state.selectedSkill.power,
           type: typeInterface[19],
-          classification: '特殊'
-        }
-      }else {
+          classification: '特殊',
+        };
+      } else {
         state.selectedSkill = skill;
       }
 
@@ -210,100 +214,109 @@ const statSlice = createSlice({
         state.critical = false;
       }
 
-      if(state.selectedSkill.name === 'ツタこんぼう'){
-        if(state.atPoke.name === 'オーガポン(竈)'){
+      if (state.selectedSkill.name === 'ツタこんぼう') {
+        if (state.atPoke.name === 'オーガポン(竈)') {
           state.selectedSkill = {
             name: state.selectedSkill.name,
             power: state.selectedSkill.power,
             type: typeInterface[3],
-            classification: state.selectedSkill.classification
-          }
-        }else if(state.atPoke.name === 'オーガポン(井戸)'){
-            state.selectedSkill = {
+            classification: state.selectedSkill.classification,
+          };
+        } else if (state.atPoke.name === 'オーガポン(井戸)') {
+          state.selectedSkill = {
             name: state.selectedSkill.name,
             power: state.selectedSkill.power,
             type: typeInterface[2],
-            classification: state.selectedSkill.classification
-            }
-        }else if(state.atPoke.name === 'オーガポン(礎)'){
+            classification: state.selectedSkill.classification,
+          };
+        } else if (state.atPoke.name === 'オーガポン(礎)') {
           state.selectedSkill = {
             name: state.selectedSkill.name,
             power: state.selectedSkill.power,
             type: typeInterface[6],
-            classification: state.selectedSkill.classification
-          }
-        }else{
+            classification: state.selectedSkill.classification,
+          };
+        } else {
           state.selectedSkill = {
             name: state.selectedSkill.name,
             power: state.selectedSkill.power,
             type: typeInterface[9],
-            classification: state.selectedSkill.classification
-          }
+            classification: state.selectedSkill.classification,
+          };
         }
       }
 
-      if(state.selectedSkill.name === 'ボディプレス'){
+      if (state.selectedSkill.name === 'ボディプレス') {
         state.baseStat = state.atPoke.defence;
       }
 
-      if(state.selectedSkill.name === 'くさむすび' || state.selectedSkill.name === 'けたぐり'){
+      if (state.selectedSkill.name === 'くさむすび' || state.selectedSkill.name === 'けたぐり') {
         let power = 20;
-        if(dfPoke.weight >= 200){power = 120;}
-        else if(dfPoke.weight >= 100 && dfPoke.weight < 200){power = 100;}
-        else if(dfPoke.weight >= 50 && dfPoke.weight < 100){power = 80;}
-        else if(dfPoke.weight >= 25 && dfPoke.weight < 50){power = 60;}
-        else if(dfPoke.weight >= 10 && dfPoke.weight < 25){power = 40;}
-        else{power = 20};
+        if (dfPoke.weight >= 200) {
+          power = 120;
+        } else if (dfPoke.weight >= 100 && dfPoke.weight < 200) {
+          power = 100;
+        } else if (dfPoke.weight >= 50 && dfPoke.weight < 100) {
+          power = 80;
+        } else if (dfPoke.weight >= 25 && dfPoke.weight < 50) {
+          power = 60;
+        } else if (dfPoke.weight >= 10 && dfPoke.weight < 25) {
+          power = 40;
+        } else {
+          power = 20;
+        }
         state.selectedSkill = {
           name: state.selectedSkill.name,
           power: power,
           type: state.selectedSkill.type,
           classification: state.selectedSkill.classification,
-        }
+        };
       }
-      if(state.selectedSkill.name === 'ヘビーボンバー' || state.selectedSkill.name === 'ヒートスタンプ'){
-        let power = 0
-        if(state.atPoke.weight >= dfPoke.weight*5){power = 120;}
-        else if(state.atPoke.weight >= dfPoke.weight*4){power = 100;}
-        else if(state.atPoke.weight >= dfPoke.weight*3){power = 80;}
-        else if(state.atPoke.weight >= dfPoke.weight*2){power = 60;}
-        else{power = 40;}
+      if (state.selectedSkill.name === 'ヘビーボンバー' || state.selectedSkill.name === 'ヒートスタンプ') {
+        let power = 0;
+        if (state.atPoke.weight >= dfPoke.weight * 5) {
+          power = 120;
+        } else if (state.atPoke.weight >= dfPoke.weight * 4) {
+          power = 100;
+        } else if (state.atPoke.weight >= dfPoke.weight * 3) {
+          power = 80;
+        } else if (state.atPoke.weight >= dfPoke.weight * 2) {
+          power = 60;
+        } else {
+          power = 40;
+        }
         state.selectedSkill = {
           name: state.selectedSkill.name,
           power: power,
           type: state.selectedSkill.type,
           classification: state.selectedSkill.classification,
-        }
+        };
       }
 
-      if(state.selectedSkill.name === 'テラクラスター'){
-        (state.atTera === typeInterface[19]) 
-        ? (state.selectedSkill = {
-          name: state.selectedSkill.name,
-          type: typeInterface[19],
-          power: state.selectedSkill.power,
-          classification: state.selectedSkill.classification
-        })
-        : (
-          state.selectedSkill = {
-            name: state.selectedSkill.name,
-            type: typeInterface[1],
-            power: state.selectedSkill.power,
-            classification: state.selectedSkill.classification
-          }
-        )
-      }else{
-        (state.selectedSkill = skill)
+      if (state.selectedSkill.name === 'テラクラスター') {
+        state.atTera === typeInterface[19]
+          ? (state.selectedSkill = {
+              name: state.selectedSkill.name,
+              type: typeInterface[19],
+              power: state.selectedSkill.power,
+              classification: state.selectedSkill.classification,
+            })
+          : (state.selectedSkill = {
+              name: state.selectedSkill.name,
+              type: typeInterface[1],
+              power: state.selectedSkill.power,
+              classification: state.selectedSkill.classification,
+            });
+      } else {
+        state.selectedSkill = skill;
       }
-      
     },
     setAtTera: (state, action: PayloadAction<Type>) => {
       state.atTera = action.payload;
-      
-      (action.payload === typeInterface[19])
-        ? state.stellaIconSrc = typeInterface[19].typeIconSrc
-        : state.teraIconSrc = action.payload.typeIconSrc
-      
+
+      action.payload === typeInterface[19]
+        ? (state.stellaIconSrc = typeInterface[19].typeIconSrc)
+        : (state.teraIconSrc = action.payload.typeIconSrc);
 
       if (state.selectedSkill.name === 'テラバースト') {
         let classification = '物理';
@@ -313,19 +326,24 @@ const statSlice = createSlice({
           classification = '物理';
         }
         if (action.payload !== typeInterface[0]) {
-          if(action.payload === typeInterface[19]){
+          if (action.payload === typeInterface[19]) {
             state.stellaPreeminence = true;
-          }else{
+          } else {
             state.stellaPreeminence = false;
           }
-          (action.payload === typeInterface[19])
-           ? (state.selectedSkill = {name: 'テラバースト', power: 100, type: typeInterface[19], classification: classification})
-           : (state.selectedSkill = {
-            name: 'テラバースト',
-            power: 80,
-            type: state.atTera,
-            classification: classification,
-          })
+          action.payload === typeInterface[19]
+            ? (state.selectedSkill = {
+                name: 'テラバースト',
+                power: 100,
+                type: typeInterface[19],
+                classification: classification,
+              })
+            : (state.selectedSkill = {
+                name: 'テラバースト',
+                power: 80,
+                type: state.atTera,
+                classification: classification,
+              });
         } else {
           state.baseStat = state.atPoke.specialAttack;
           state.referAt = false;
@@ -338,33 +356,30 @@ const statSlice = createSlice({
         }
       }
 
-      if(state.selectedSkill.name === 'テラクラスター'){
-        (state.atTera === typeInterface[19]) 
-        ? (state.selectedSkill = {
-          name: state.selectedSkill.name,
-          type: typeInterface[19],
-          power: state.selectedSkill.power,
-          classification: state.selectedSkill.classification
-        })
-        : (
-          state.selectedSkill = {
-            name: state.selectedSkill.name,
-            type: typeInterface[1],
-            power: state.selectedSkill.power,
-            classification: state.selectedSkill.classification
-          }
-        )
+      if (state.selectedSkill.name === 'テラクラスター') {
+        state.atTera === typeInterface[19]
+          ? (state.selectedSkill = {
+              name: state.selectedSkill.name,
+              type: typeInterface[19],
+              power: state.selectedSkill.power,
+              classification: state.selectedSkill.classification,
+            })
+          : (state.selectedSkill = {
+              name: state.selectedSkill.name,
+              type: typeInterface[1],
+              power: state.selectedSkill.power,
+              classification: state.selectedSkill.classification,
+            });
       }
-
     },
     setAtStella: (state, action: PayloadAction<boolean>) => {
       state.atStella = action.payload;
-      (action.payload)
-        ? state.atTera = typeInterface[19]
-        : state.atTera = typeInterface[0]
+      action.payload ? (state.atTera = typeInterface[19]) : (state.atTera = typeInterface[0]);
     },
     setTeraIcon: (state, action: PayloadAction<string>) => {
-      (state.atTera === typeInterface[19]) ? (state.teraIconSrc = typeInterface[0].typeIconSrc) : (state.teraIconSrc = action.payload)
+      state.atTera === typeInterface[19]
+        ? (state.teraIconSrc = typeInterface[0].typeIconSrc)
+        : (state.teraIconSrc = action.payload);
     },
     setStellaIcon: (state, action: PayloadAction<string>) => {
       state.stellaIconSrc = action.payload;
@@ -395,7 +410,7 @@ const statSlice = createSlice({
     },
     setPreeminence: (state, action: PayloadAction<boolean>) => {
       state.stellaPreeminence = action.payload;
-    }
+    },
   },
 });
 

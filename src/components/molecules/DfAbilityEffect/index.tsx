@@ -1,10 +1,9 @@
-import Dropdown from '@/components/atoms/DropdownButton';
 import DropdownSearchBox from '@/components/atoms/DropdownSearchBox';
 import Effect from '@/components/atoms/Effect';
 import SwitchButton from '@/components/atoms/SwitchButton';
 import { defenceAbilities } from '@/interfaces';
-import { setDfEffect, setOnAbility } from '@/pages/app/defenderSlice';
-import { RootState } from '@/pages/app/store';
+import { setDfEffect, setOnAbility } from '@/app/defenderSlice';
+import { RootState } from '@/app/store';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,11 +15,11 @@ const DfAbilityEffect: React.FC<DfAbilityEffectProps> = ({ onAbilitySelect }) =>
   const dispatch = useDispatch();
   const effect = useSelector((state: RootState) => state.defender.effect);
   const dfPoke = useSelector((state: RootState) => state.defender.poke);
-  let pokeAbilities = []
-  for(let i = 0; i < dfPoke.abilities.length; i++){
-    if(dfPoke.abilities[i] !== '') {
-      pokeAbilities.push(dfPoke.abilities[i])
-    }else{
+  let pokeAbilities = [];
+  for (let i = 0; i < dfPoke.abilities.length; i++) {
+    if (dfPoke.abilities[i] !== '') {
+      pokeAbilities.push(dfPoke.abilities[i]);
+    } else {
       break;
     }
   }
@@ -44,12 +43,12 @@ const DfAbilityEffect: React.FC<DfAbilityEffectProps> = ({ onAbilitySelect }) =>
       const duplicate = seen.has(ability);
       seen.add(ability);
       return !duplicate;
-    })
+    });
   }
 
   return (
     <div style={{ display: 'flex', marginTop: '10px' }}>
-      <div className='w-3/5'>
+      <div className="w-3/5">
         <h4 style={{ margin: '0', textAlign: 'left' }}>特性</h4>
         <div
           style={{
@@ -58,13 +57,17 @@ const DfAbilityEffect: React.FC<DfAbilityEffectProps> = ({ onAbilitySelect }) =>
             justifyContent: 'center',
           }}
         >
-          <DropdownSearchBox suggestions={removeDuplicates([...pokeAbilities, ...defenceAbilities])} value={ability} onClick={onAbilitySelect} />
+          <DropdownSearchBox
+            suggestions={removeDuplicates([...pokeAbilities, ...defenceAbilities])}
+            value={ability}
+            onClick={onAbilitySelect}
+          />
           <div className="mx-1.5 sm:mx-2.5">
             <SwitchButton isOn={abilityOn} handleChange={toggleSwitch} />
           </div>
         </div>
       </div>
-      <div className='w-full flex justify-start'>
+      <div className="w-full flex justify-start">
         <Effect
           title="持ち物"
           initialPos={0}

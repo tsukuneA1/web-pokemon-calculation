@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import IconButton from '@/components/atoms/IconButton';
 import { ChevronCollapse, ChevronExpand, MiniChevronCollapse, MiniChevronExpand } from '@/components/icons/Icons';
-import { useWindowSize } from '@/function/GetWindowSize';
 
 const headerBackground = '#f5f5f5';
 const headerBorder = '#ddd';
@@ -11,7 +9,7 @@ interface HeaderProps {
   icon: React.ReactNode;
   onIconClick: () => void;
   fold: boolean;
-  width: number
+  width: number;
 }
 
 const Header: React.FC<HeaderProps> = ({ title, icon, onIconClick, fold, width }) => {
@@ -20,17 +18,14 @@ const Header: React.FC<HeaderProps> = ({ title, icon, onIconClick, fold, width }
       <header style={{ ...styles.foldHeader }} className="w-full p-2 md:p-4">
         <div style={styles.leftContainer}>
           {icon}
-          <h1 className='text-base font-bold ml-4 sm:text-2xl'>{title}</h1>
+          <h1 className="text-base font-bold ml-4 sm:text-2xl">{title}</h1>
         </div>
         <div style={styles.iconButton}>
-          <IconButton 
-          icon={
-            width < 640
-            ? <MiniChevronExpand/>
-            : <ChevronExpand />
-          } 
-          onClick={onIconClick} 
-          ariaLabel="icon button" />
+          <IconButton
+            icon={width < 640 ? <MiniChevronExpand /> : <ChevronExpand />}
+            onClick={onIconClick}
+            ariaLabel="icon button"
+          />
         </div>
       </header>
     );
@@ -39,13 +34,14 @@ const Header: React.FC<HeaderProps> = ({ title, icon, onIconClick, fold, width }
     <header style={{ ...styles.header }} className="w-full p-2 md:p-4">
       <div style={styles.leftContainer}>
         {icon}
-        <h1 className='text-base font-bold ml-4 sm:text-2xl'>{title}</h1>
+        <h1 className="text-base font-bold ml-4 sm:text-2xl">{title}</h1>
       </div>
       <div style={styles.iconButton}>
-        {width <= 640
-          ? <IconButton icon={<MiniChevronCollapse />} onClick={onIconClick} ariaLabel="icon button" />
-          : <IconButton icon={<ChevronCollapse />} onClick={onIconClick} ariaLabel="icon button" />
-        }     
+        {width <= 640 ? (
+          <IconButton icon={<MiniChevronCollapse />} onClick={onIconClick} ariaLabel="icon button" />
+        ) : (
+          <IconButton icon={<ChevronCollapse />} onClick={onIconClick} ariaLabel="icon button" />
+        )}
       </div>
     </header>
   );

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import NumericalTop from '../NumericalTop';
 import { Poke } from '@/interfaces';
-import { RootState } from '@/pages/app/store';
-import { setHEffort, setHIndividual } from '@/pages/app/defenderSlice';
+import { RootState } from '@/app/store';
+import { setHEffort, setHIndividual } from '@/app/defenderSlice';
 import BNumerical from '../BNumerical';
 import DNumerical from '../DNumerical';
 
@@ -19,8 +19,8 @@ const DfNumerical: React.FC<DfNumericalProps> = ({ poke }) => {
   const hIndividual = useSelector((state: RootState) => state.defender.hIndividual);
 
   useEffect(() => {
-    (hEffort === 0) ? (setHSeekBarPos(0)) : (setHSeekBarPos((hEffort+4)/8))
-  }, [hEffort])
+    hEffort === 0 ? setHSeekBarPos(0) : setHSeekBarPos((hEffort + 4) / 8);
+  }, [hEffort]);
 
   function effortCalc(val: number): number {
     if (val === 0) {

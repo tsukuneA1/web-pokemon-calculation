@@ -1,5 +1,5 @@
 import CheckBox from '@/components/atoms/CheckBox';
-import { RootState, setThreeQuaters } from '@/pages/app/store';
+import { RootState, setThreeQuaters } from '@/app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ThreeQuaters: React.FC = () => {

@@ -1,7 +1,6 @@
-import DropdownButtons from '@/components/atoms/DropdownAndButtons';
 import ExtraDamageDropdown from '@/components/atoms/ExtraDamageDropdown';
-import { setEighth, setFourth, setHalf, setSixteenth, setSixth, setTenth } from '@/pages/app/envSlice';
-import { RootState } from '@/pages/app/store';
+import { setEighth, setFourth, setHalf, setSixteenth, setSixth, setTenth } from '@/app/envSlice';
+import { RootState } from '@/app/store';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

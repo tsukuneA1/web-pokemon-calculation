@@ -4,13 +4,13 @@ import Env from '@/components/organisms/Env';
 import Damage from '@/components/organisms/Damage';
 import ExtraDamageComponent from '@/components/organisms/ExtraDamage';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, setAtPoke, setBaseStat, setReferAt, setSkill, Skill } from './app/store';
-import { setDfPoke } from './app/defenderSlice';
+import { RootState, setAtPoke, setBaseStat, setReferAt, setSkill, Skill } from '@/app/store';
+import { setDfPoke } from '@/app/defenderSlice';
 import { customSkill } from '@/components/atoms/SkillSearch';
 import { useEffect, useState } from 'react';
 import { Type, typeInterface } from '@/interfaces';
 import { SwitchHorizontal, SwitchVertical } from '@/components/icons/Icons';
-import { deleteAll } from './app/damageSlice';
+import { deleteAll } from '@/app/damageSlice';
 import { Tooltip, Button } from '@nextui-org/react';
 import { useWindowSize } from '@/function/GetWindowSize';
 
@@ -62,7 +62,7 @@ export default function Home() {
   function reversal() {
     const skill = skillSearch(dfPoke.skill1);
     dispatch(setAtPoke(dfPoke));
-    dispatch(setSkill({skill: skill, dfPoke: dfPoke}));
+    dispatch(setSkill({ skill: skill, dfPoke: dfPoke }));
     dispatch(setDfPoke(atPoke));
     if (skill.classification === '物理') {
       dispatch(setReferAt(true));
@@ -78,55 +78,63 @@ export default function Home() {
 
   return (
     <div>
-    {windowSize.width > 1024
-      ? <div className='pb-40 bg-gray-100'>
-        <div style={{ textAlign: 'center', paddingTop: '50px' }} className="lg:flex justify-items-center">
-          <div className='flex items-center lg:w-1/2 flex-col'>
-            <Attacker />
-            <ExtraDamageComponent/>
-          </div>
-          <div  className="mt-7">
-            <Tooltip showArrow={true} content="攻守反転" color='warning' className='capitalize bg-gray-10 p-3 rounded-lg'>
-              <Button onClick={reversal}>
-                <SwitchHorizontal />
-              </Button>
-            </Tooltip>
-          </div>
-          <div className="flex items-center lg:w-1/2 flex-col">
-            <Defender />
-            <div className="mt-10 w-full items-center justify-center">
-              <Env />
+      {windowSize.width > 1024 ? (
+        <div className="pb-40 bg-gray-100">
+          <div style={{ textAlign: 'center', paddingTop: '50px' }} className="lg:flex justify-items-center">
+            <div className="flex items-center lg:w-1/2 flex-col">
+              <Attacker />
+              <ExtraDamageComponent />
+            </div>
+            <div className="mt-7">
+              <Tooltip
+                showArrow={true}
+                content="攻守反転"
+                color="warning"
+                className="capitalize bg-gray-10 p-3 rounded-lg"
+              >
+                <Button onClick={reversal}>
+                  <SwitchHorizontal />
+                </Button>
+              </Tooltip>
+            </div>
+            <div className="flex items-center lg:w-1/2 flex-col">
+              <Defender />
+              <div className="mt-10 w-full items-center justify-center">
+                <Env />
+              </div>
             </div>
           </div>
+          <Damage />
         </div>
-        <Damage />
-      </div>
-      :<div className='pt-10 pb-32  bg-gray-100'>
-        <div style={{ textAlign: 'center'}} className="lg:flex justify-items-center">
-          <div className='flex items-center lg:w-1/2 flex-col'>
-            <Attacker />
-            
-          </div>
-          <div  className="my-5">
-            <Tooltip showArrow={true} content="攻守反転" color='warning' className='capitalize bg-gray-10 p-3 rounded-lg'>
-              <Button onClick={reversal}>
-                <SwitchVertical />
-              </Button>
-            </Tooltip>
-          </div>
-          <div className="flex items-center lg:w-1/2 flex-col">
-            <Defender />
-            <div className="mt-10 w-full items-center justify-center">
-              <Env />
+      ) : (
+        <div className="pt-10 pb-32  bg-gray-100">
+          <div style={{ textAlign: 'center' }} className="lg:flex justify-items-center">
+            <div className="flex items-center lg:w-1/2 flex-col">
+              <Attacker />
             </div>
-            <ExtraDamageComponent/>
+            <div className="my-5">
+              <Tooltip
+                showArrow={true}
+                content="攻守反転"
+                color="warning"
+                className="capitalize bg-gray-10 p-3 rounded-lg"
+              >
+                <Button onClick={reversal}>
+                  <SwitchVertical />
+                </Button>
+              </Tooltip>
+            </div>
+            <div className="flex items-center lg:w-1/2 flex-col">
+              <Defender />
+              <div className="mt-10 w-full items-center justify-center">
+                <Env />
+              </div>
+              <ExtraDamageComponent />
+            </div>
           </div>
+          <Damage />
         </div>
-        <Damage />
-      </div>
-    }
+      )}
     </div>
-
-    
   );
 }

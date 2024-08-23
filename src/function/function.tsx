@@ -1,8 +1,13 @@
 import { Poke } from '@/interfaces';
-import { Skill } from '@/pages/app/store';
+import { Skill } from '@/app/store';
 
-export function actualCalc(baseStat: number, individualVal: number, effortVal: number, natureMultiplier: number): number{
-  return Math.floor((Math.floor((baseStat*2+individualVal)*0.5)+5)*1.1);
+export function actualCalc(
+  baseStat: number,
+  individualVal: number,
+  effortVal: number,
+  natureMultiplier: number,
+): number {
+  return Math.floor((Math.floor((baseStat * 2 + individualVal) * 0.5) + 5) * 1.1);
 }
 
 const panchSkill: string[] = [
@@ -117,7 +122,7 @@ const catastoropheAbilities: string[] = ['わざわいのつるぎ', 'わざわ�
 export function strCalc(damage: number, hp: number): number {
   var count = 1;
   if (damage !== 0) {
-    while ((damage * count) < hp) {
+    while (damage * count < hp) {
       count++;
     }
   } else {

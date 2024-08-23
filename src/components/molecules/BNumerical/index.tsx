@@ -1,5 +1,5 @@
-import { setBEffort, setBIndividual, setBNatureMultiplier, setBRank } from '@/pages/app/defenderSlice';
-import { RootState, setEffortValue } from '@/pages/app/store';
+import { setBEffort, setBIndividual, setBNatureMultiplier, setBRank } from '@/app/defenderSlice';
+import { RootState} from '@/app/store';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import NumericalTop from '../NumericalTop';
@@ -26,11 +26,13 @@ const BNumerical: React.FC<BNumericalProps> = ({ tribeVal }) => {
 
   const [charaValue, setCharaValue] = useState(charas[1]);
 
-  const actualValue = Math.floor(Math.floor(((tribeVal * 2 + bIndividual + bEffort / 4) * 50) / 100 + 5) * bNatureMultiplier);
+  const actualValue = Math.floor(
+    Math.floor(((tribeVal * 2 + bIndividual + bEffort / 4) * 50) / 100 + 5) * bNatureMultiplier,
+  );
 
   useEffect(() => {
-    (bEffort === 0) ? (setSeekBarValue(0)) : (setSeekBarValue((bEffort+4)/8))
-  }, [bEffort])
+    bEffort === 0 ? setSeekBarValue(0) : setSeekBarValue((bEffort + 4) / 8);
+  }, [bEffort]);
 
   function effortCalc(val: number): number {
     if (val === 0) {

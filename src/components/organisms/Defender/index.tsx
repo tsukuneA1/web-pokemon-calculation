@@ -3,14 +3,14 @@ import Header from '@/components/molecules/Header';
 import { MiniShieldPlus, ShieldPlus } from '@/components/icons/Icons';
 import PokeInfo from '@/components/molecules/PokeInfo';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, setSkill } from '@/pages/app/store';
-import { setDfPoke, setDfTera } from '@/pages/app/defenderSlice';
+import { RootState, setSkill } from '@/app/store';
+import { setDfPoke, setDfTera } from '@/app/defenderSlice';
 import { Pokemon } from '@/components/atoms/SearchBox';
 import { Type, typeInterface } from '@/interfaces';
 import DfNumerical from '@/components/molecules/DfNumerical';
 import DfAbilityEffect from '@/components/molecules/DfAbilityEffect';
-import { setCurrentAbility } from '@/pages/app/defenderSlice';
-import { deleteAll } from '@/pages/app/damageSlice';
+import { setCurrentAbility } from '@/app/defenderSlice';
+import { deleteAll } from '@/app/damageSlice';
 import { useWindowSize } from '@/function/GetWindowSize';
 
 interface DefenderProps {}
@@ -24,7 +24,6 @@ const Defender: React.FC<DefenderProps> = () => {
   const handlerIconClick = () => {
     setFold(!fold);
   };
-
 
   const searchClicked = (selectPoke: Pokemon) => {
     const types: Type[] = [selectPoke.type1, selectPoke.type2]
@@ -60,14 +59,12 @@ const Defender: React.FC<DefenderProps> = () => {
       skill3: selectPoke.skill3,
       skill4: selectPoke.skill4,
       skill5: selectPoke.skill5,
-    }
+    };
 
-    dispatch(
-      setDfPoke(dfPoke),
-    );
+    dispatch(setDfPoke(dfPoke));
 
     dispatch(deleteAll());
-    dispatch(setSkill({skill: skill, dfPoke: dfPoke}))
+    dispatch(setSkill({ skill: skill, dfPoke: dfPoke }));
   };
 
   var tribes = `${poke.hp}-${poke.attack}-${poke.defence}-${poke.specialAttack}-${poke.specialDefence}-${poke.speed}`;
@@ -75,48 +72,44 @@ const Defender: React.FC<DefenderProps> = () => {
   const windowSize = useWindowSize();
   return (
     <div style={{ width: '95%' }}>
-      <Header 
-      title="Defender" 
-      icon={windowSize.width < 640
-        ? <MiniShieldPlus/>
-        : <ShieldPlus />
-      } 
-      onIconClick={handlerIconClick} 
-      fold={fold} 
-      width={windowSize.width}
+      <Header
+        title="Defender"
+        icon={windowSize.width < 640 ? <MiniShieldPlus /> : <ShieldPlus />}
+        onIconClick={handlerIconClick}
+        fold={fold}
+        width={windowSize.width}
       />
-      {fold
-        ? <></>
-        :<div className="w-full p-1 sm:p-2 md:p-3 bg-gray-10 pb-10 rounded-b-2xl">
-        <PokeInfo
-          imageWidth={200}
-          imageHeight={200}
-          imageRadius="20px"
-          typeHeight={22}
-          pokeSrc={poke.src}
-          searchText={poke.name}
-          searchTextHeight={30}
-          searchTextFontSize="24px"
-          tribeText={tribes}
-          height={25}
-          fontSize="20px"
-          typeSrc1={poke.types[0].typeTagSrc}
-          typeSrc2={poke.types[1].typeTagSrc}
-          terastalSrc={dfTera.typeTagSrc}
-          onSearchClicked={(poke: Pokemon) => searchClicked(poke)}
-          onTerastalClicked={(type: Type) => {
-            dispatch(setDfTera(type));
-          }}
-        />
-        <div className="my-3">
-          <DfNumerical poke={poke} />
+      {fold ? (
+        <></>
+      ) : (
+        <div className="w-full p-1 sm:p-2 md:p-3 bg-gray-10 pb-10 rounded-b-2xl">
+          <PokeInfo
+            imageWidth={200}
+            imageHeight={200}
+            imageRadius="20px"
+            typeHeight={22}
+            pokeSrc={poke.src}
+            searchText={poke.name}
+            searchTextHeight={30}
+            searchTextFontSize="24px"
+            tribeText={tribes}
+            height={25}
+            fontSize="20px"
+            typeSrc1={poke.types[0].typeTagSrc}
+            typeSrc2={poke.types[1].typeTagSrc}
+            terastalSrc={dfTera.typeTagSrc}
+            onSearchClicked={(poke: Pokemon) => searchClicked(poke)}
+            onTerastalClicked={(type: Type) => {
+              dispatch(setDfTera(type));
+            }}
+          />
+          <div className="my-3">
+            <DfNumerical poke={poke} />
+          </div>
+          <DfAbilityEffect onAbilitySelect={(select: string) => dispatch(setCurrentAbility(select))} />
         </div>
-        <DfAbilityEffect onAbilitySelect={(select: string) => dispatch(setCurrentAbility(select))} />
-      </div>
-    
-      }
+      )}
     </div>
-
   );
 };
 

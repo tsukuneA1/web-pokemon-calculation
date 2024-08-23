@@ -1,6 +1,6 @@
 import SkillSuggestion from '@/components/molecules/skillSuggestion';
 import { Type, typeInterface } from '@/interfaces';
-import { RootState, setSkill, Skill } from '@/pages/app/store';
+import { RootState, setSkill, Skill } from '@/app/store';
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -103,7 +103,7 @@ const SkillSearchBox: React.FC = () => {
 
   const handleSkillClick = (skill: Skill) => {
     setQuery(skill.name);
-    dispatch(setSkill({skill:skill, dfPoke: dfPoke}));
+    dispatch(setSkill({ skill: skill, dfPoke: dfPoke }));
     setShowSuggestions(false);
   };
 
@@ -165,7 +165,7 @@ const SkillSearchBox: React.FC = () => {
             borderLeft: 'none',
             outline: 'none',
           }}
-          className='h-10 text-sm sm:h-12 sm:text-base p-1 sm:p-2'
+          className="h-10 text-sm sm:h-12 sm:text-base p-1 sm:p-2"
         />
         {query && (
           <button

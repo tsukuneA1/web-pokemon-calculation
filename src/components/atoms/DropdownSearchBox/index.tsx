@@ -13,7 +13,7 @@ const DropdownSearchBox: React.FC<DropdownSearchBoxProps> = ({ suggestions, valu
   const suggestionBoxRef = useRef<HTMLUListElement>(null);
   useEffect(() => {
     setQuery(value);
-  }, [value])
+  }, [value]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -41,7 +41,7 @@ const DropdownSearchBox: React.FC<DropdownSearchBoxProps> = ({ suggestions, valu
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if(
+    if (
       suggestionBoxRef.current &&
       !suggestionBoxRef.current.contains(event.target as Node) &&
       inputRef.current &&
@@ -49,7 +49,7 @@ const DropdownSearchBox: React.FC<DropdownSearchBoxProps> = ({ suggestions, valu
     ) {
       setShowSuggestions(false);
     }
-  }
+  };
 
   const clearText = () => {
     setQuery('');
@@ -62,11 +62,11 @@ const DropdownSearchBox: React.FC<DropdownSearchBoxProps> = ({ suggestions, valu
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-    }
+    };
   }, []);
 
   return (
-    <div style={{ position: 'relative', width: '200px' }} >
+    <div style={{ position: 'relative', width: '200px' }}>
       <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <input
           ref={inputRef}
@@ -132,7 +132,7 @@ const DropdownSearchBox: React.FC<DropdownSearchBoxProps> = ({ suggestions, valu
                 cursor: 'pointer',
                 backgroundColor: index % 2 ? '#f9f9f9' : '#fff',
               }}
-              className='text-sm sm:text-base'
+              className="text-sm sm:text-base"
             >
               {suggestion}
             </li>

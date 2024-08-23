@@ -29,25 +29,19 @@ const Effect: React.FC<DropdownProps> = ({ title, initialPos = 0, options, onSel
       <h4 style={{ ...styles.title, textAlign: 'left' }}>{title}</h4>
       <button
         onClick={toggleDropDown}
-        style={{ ...styles.button}}
+        style={{ ...styles.button }}
         className="w-32 sm:w-40 md:w-44 py-1 sm:py-0 md:py-1"
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p 
-            className='text-sm sm:text-base m-0' 
+          <p
+            className="text-sm sm:text-base m-0"
             style={{
-              fontSize: ( windowSize.width < 640) ? (selected.length >= 8 ) ? '12px' : '14px' : '16px'
+              fontSize: windowSize.width < 640 ? (selected.length >= 8 ? '12px' : '14px') : '16px',
             }}
           >
             {selected}
           </p>
-          <p className="text-center">
-            {windowSize.width < 640
-              ? <MiniDropDownIcon/>
-              : <DropDownIcon />
-            }
-            
-          </p>
+          <p className="text-center">{windowSize.width < 640 ? <MiniDropDownIcon /> : <DropDownIcon />}</p>
         </div>
       </button>
       {isOpen && (
@@ -59,7 +53,7 @@ const Effect: React.FC<DropdownProps> = ({ title, initialPos = 0, options, onSel
               onClick={() => {
                 handleSelect(option);
               }}
-              className='text-sm sm:text-base'
+              className="text-sm sm:text-base"
             >
               {option}
             </li>

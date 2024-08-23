@@ -1,6 +1,6 @@
 import Dropdown from '@/components/atoms/DropdownButton';
 import { typeInterface } from '@/interfaces';
-import { RootState, setAtActual, setBaseStat, setReferAt } from '@/pages/app/store';
+import { RootState, setBaseStat, setReferAt } from '@/app/store';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -30,7 +30,7 @@ const SelectedClassification: React.FC = () => {
 
   if (flag && atTera !== typeInterface[0]) {
     return (
-      <div className='flex justify-start items-start my-3'>
+      <div className="flex justify-start items-start my-3">
         <Dropdown
           title="物理/特殊選択"
           initialPos={initialPos}
@@ -39,7 +39,6 @@ const SelectedClassification: React.FC = () => {
           selected={['物理', '特殊'][initialPos]}
         />
       </div>
-      
     );
   }
 };

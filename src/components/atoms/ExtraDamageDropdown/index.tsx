@@ -54,17 +54,11 @@ const ExtraDamageDropdown: React.FC<props> = ({
     <div className="mr-1 sm:mr-2">
       <h4 style={{ ...styles.title, textAlign: 'left' }}>{title}</h4>
       <div style={styles.effortAndActual}>
-        <div style={{ ...styles.container}} >
-          
+        <div style={{ ...styles.container }}>
           <button onClick={toggleDropDown} style={{ ...styles.button }} className="w-16 sm:w-24">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <p style={{ fontSize: '16px', margin: 0 }}>{selected}</p>
-              <p>
-                {windowSize.width < 640
-                  ? <MiniDropDownIcon/>
-                  : <DropDownIcon/>
-                }
-              </p>
+              <p>{windowSize.width < 640 ? <MiniDropDownIcon /> : <DropDownIcon />}</p>
             </div>
           </button>
           {isOpen && (
@@ -109,7 +103,6 @@ const ExtraDamageDropdown: React.FC<props> = ({
         </div>
       </div>
     </div>
-    
   );
 };
 

@@ -1,8 +1,7 @@
 import DropdownSearchBox from '@/components/atoms/DropdownSearchBox';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, setAbilityChecked, setEffect } from '@/pages/app/store';
-import Dropdown from '@/components/atoms/DropdownButton';
+import { RootState, setAbilityChecked, setEffect } from '@/app/store';
 import SwitchButton from '@/components/atoms/SwitchButton';
 import { attackAbilities } from '@/interfaces';
 import Effect from '@/components/atoms/Effect';
@@ -15,11 +14,11 @@ const AbilityEffect: React.FC<AbilityEffectProps> = ({ onAbilitySelect }) => {
   const dispatch = useDispatch();
   const effect = useSelector((state: RootState) => state.stats.effect);
   const atPoke = useSelector((state: RootState) => state.stats.atPoke);
-  let pokeAbilities = []
-  for(let i = 0; i < atPoke.abilities.length; i++){
-    if(atPoke.abilities[i] !== '') {
-      pokeAbilities.push(atPoke.abilities[i])
-    }else{
+  let pokeAbilities = [];
+  for (let i = 0; i < atPoke.abilities.length; i++) {
+    if (atPoke.abilities[i] !== '') {
+      pokeAbilities.push(atPoke.abilities[i]);
+    } else {
       break;
     }
   }
@@ -41,7 +40,7 @@ const AbilityEffect: React.FC<AbilityEffectProps> = ({ onAbilitySelect }) => {
       const duplicate = seen.has(ability);
       seen.add(ability);
       return !duplicate;
-    })
+    });
   }
 
   const effects = [
@@ -69,7 +68,11 @@ const AbilityEffect: React.FC<AbilityEffectProps> = ({ onAbilitySelect }) => {
             justifyContent: 'start',
           }}
         >
-          <DropdownSearchBox suggestions={removeDuplicates([...pokeAbilities, ...attackAbilities])} value={ability} onClick={onAbilitySelect} />
+          <DropdownSearchBox
+            suggestions={removeDuplicates([...pokeAbilities, ...attackAbilities])}
+            value={ability}
+            onClick={onAbilitySelect}
+          />
           <div className="mx-1.5 sm:mx-2.5">
             <SwitchButton isOn={abilityOn} handleChange={toggleSwitch} />
           </div>

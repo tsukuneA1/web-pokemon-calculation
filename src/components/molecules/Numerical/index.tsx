@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, setAtRank, setEffortValue, setIndividualValue, setNatureMultiplier } from '@/pages/app/store';
+import { RootState, setAtRank, setEffortValue, setIndividualValue, setNatureMultiplier } from '@/app/store';
 import NumericalTop from '../NumericalTop';
 import NatureRank from '../NatureAndRank';
 
@@ -168,4 +168,3 @@ const Numerical: React.FC<NumericalProps> = ({
 };
 
 export default Numerical;
-

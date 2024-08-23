@@ -1,5 +1,5 @@
 import DropdownNumber from '@/components/atoms/DropdownNumberButton';
-import { RootState, setAttackTime } from '@/pages/app/store';
+import { RootState, setAttackTime } from '@/app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 const serialOneToFive = [
@@ -35,7 +35,7 @@ const SerialSkillContainer: React.FC = () => {
   if (serialOneToFive.includes(skill.name)) {
     dispatch(setAttackTime(5));
     return (
-      <div className='flex items-start justify-start my-3'>
+      <div className="flex items-start justify-start my-3">
         <DropdownNumber
           title="攻撃回数"
           width="120px"
@@ -49,7 +49,7 @@ const SerialSkillContainer: React.FC = () => {
   } else if (serialOneToTwo.includes(skill.name)) {
     dispatch(setAttackTime(2));
     return (
-      <div className='flex items-start justify-start my-3'>
+      <div className="flex items-start justify-start my-3">
         <DropdownNumber
           title="攻撃回数"
           width="50%"
@@ -63,7 +63,7 @@ const SerialSkillContainer: React.FC = () => {
   } else if (serialOneToThree.includes(skill.name)) {
     dispatch(setAttackTime(3));
     return (
-      <div className='flex items-start justify-start my-3'>
+      <div className="flex items-start justify-start my-3">
         <DropdownNumber
           title="攻撃回数"
           width="50%"
@@ -77,7 +77,7 @@ const SerialSkillContainer: React.FC = () => {
   } else if (skill.name === 'ネズミざん') {
     dispatch(setAttackTime(10));
     return (
-      <div className='flex items-start justify-start my-3'>
+      <div className="flex items-start justify-start my-3">
         <DropdownNumber
           title="攻撃回数"
           width="50%"

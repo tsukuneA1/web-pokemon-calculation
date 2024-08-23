@@ -1,6 +1,6 @@
 import CheckBox from '@/components/atoms/CheckBox';
-import { setLightScreen, setReflect } from '@/pages/app/envSlice';
-import { RootState } from '@/pages/app/store';
+import { setLightScreen, setReflect } from '@/app/envSlice';
+import { RootState } from '@/app/store';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
