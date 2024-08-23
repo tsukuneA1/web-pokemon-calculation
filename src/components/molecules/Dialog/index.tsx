@@ -1,5 +1,6 @@
 import TypeImage from '@/components/atoms/TypeImage';
 import { Type, typeInterface } from '@/interfaces';
+import Image from 'next/image';
 import React, { useEffect } from 'react';
 
 const overlayStyle: React.CSSProperties = {
@@ -61,7 +62,25 @@ const Dialog: React.FC<DialogProps> = ({ isOpen, onClose, radioSelected }) => {
         <h2>テラスタイプを選択してください</h2>
         <div style={styles.flexStyle}>
           <input type="radio" value="非テラスタル" onClick={() => radioClicked(typeInterface[0])} />
-          <TypeImage src={typeInterface[0].typeTagSrc} />
+          <div
+            className="h-4 w-16 sm:w-20 sm:h-5 md:h-6 md:w-24"
+            style={{
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Image
+              style={{ marginLeft: '10px' }}
+              src={typeInterface[0].typeTagSrc}
+              alt="typeImage"
+              width={80}
+              height={20}
+              layout="responsive"
+              objectFit="contain"
+            />
+          </div>
         </div>
         <div style={styles.flexStyle}>
           <input type="radio" value="ノーマル" onClick={() => radioClicked(typeInterface[1])} />
