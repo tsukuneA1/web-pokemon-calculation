@@ -3,6 +3,7 @@ import { Type, typeInterface } from '@/interfaces';
 import { RootState, setSkill, Skill } from '@/app/store';
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useWindowSize } from '@/function/GetWindowSize';
 
 function toKatakana(input: string): string {
   return input.replace(/[\u3041-\u3096]/g, (char) => String.fromCharCode(char.charCodeAt(0) + 0x60));
@@ -147,6 +148,8 @@ const SkillSearchBox: React.FC = () => {
     };
   }, []);
 
+  const windowSize = useWindowSize();
+
   return (
     <div style={{ position: 'relative', width: '200px' }}>
       <div style={{ position: 'relative' }}>
@@ -192,7 +195,7 @@ const SkillSearchBox: React.FC = () => {
           ref={suggestionBoxRef}
           style={{
             position: 'absolute',
-            width: '400px',
+            width: windowSize.width < 640 ? '240px' : '400px',
             maxHeight: '300px',
             overflowY: 'auto',
             backgroundColor: '#fff',

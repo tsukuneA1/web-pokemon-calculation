@@ -45,7 +45,9 @@ const Effect: React.FC<DropdownProps> = ({ title, initialPos = 0, options, onSel
         </div>
       </button>
       {isOpen && (
-        <ul style={{ ...styles.menu, overflowY: 'scroll', maxHeight: '300px', width: '200px', minHeight: '150px' }}>
+        <ul style={{ ...styles.menu, overflowY: 'scroll', maxHeight: '300px', minHeight: '150px' }}
+          className='w-36 sm:w-52'
+        >
           {options.map((option) => (
             <li
               key={option}
@@ -53,7 +55,7 @@ const Effect: React.FC<DropdownProps> = ({ title, initialPos = 0, options, onSel
               onClick={() => {
                 handleSelect(option);
               }}
-              className="text-sm sm:text-base"
+              className="text-xs sm:text-base text-start"
             >
               {option}
             </li>
