@@ -42,7 +42,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, initialPos = 0, options, onS
         </div>
       </button>
       {isOpen && (
-        <ul style={{ ...styles.menu, overflowY: 'scroll', maxHeight: '300px', width: '200px', minHeight: '150px' }}>
+        <ul style={{ ...styles.menu, overflowY: 'scroll', maxHeight: '300px', width: '200px' }}>
           {options.map((option) => (
             <li
               key={option}
