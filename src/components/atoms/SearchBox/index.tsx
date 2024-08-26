@@ -160,7 +160,6 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
           style={{
             position: 'absolute',
             width: windowSize.width < 640 ? '240px' : '400px',
-
             maxHeight: '500px',
             overflowY: 'auto',
             backgroundColor: '#fff',

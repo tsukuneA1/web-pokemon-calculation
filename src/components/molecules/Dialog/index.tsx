@@ -60,7 +60,7 @@ const Dialog: React.FC<DialogProps> = ({ isOpen, onClose, radioSelected }) => {
     <div style={overlayStyle} onClick={onClose} className="z-50">
       <div style={dialogBoxStyle} onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}>
         <h2>テラスタイプを選択してください</h2>
-        <div style={styles.flexStyle}>
+        <div style={styles.flexStyle} className='mb-0.5 sm:mb-0'>
           <input type="radio" value="非テラスタル" onClick={() => radioClicked(typeInterface[0])} />
           <div
             className="h-4 w-16 sm:w-20 sm:h-5 md:h-6 md:w-24"
@@ -76,9 +76,9 @@ const Dialog: React.FC<DialogProps> = ({ isOpen, onClose, radioSelected }) => {
               src={typeInterface[0].typeTagSrc}
               alt="typeImage"
               width={80}
-              height={20}
+              height={16}
               layout="responsive"
-              objectFit="contain"
+              objectFit='cover'
             />
           </div>
         </div>

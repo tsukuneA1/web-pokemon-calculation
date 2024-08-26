@@ -162,7 +162,7 @@ const statSlice = createSlice({
       const { skill, dfPoke } = action.payload;
       state.selectedSkill = skill;
 
-      if (state.selectedSkill.name == 'テラバースト') {
+      if (skill.name == 'テラバースト') {
         state.selectClassFlag = true;
         let classification = '物理';
         if (!state.referAt) {
@@ -171,19 +171,21 @@ const statSlice = createSlice({
           classification = '物理';
         }
         if (state.atTera !== typeInterface[0]) {
-          state.atTera === typeInterface[19]
-            ? (state.selectedSkill = {
-                name: 'テラバースト',
-                power: 100,
-                type: typeInterface[19],
-                classification: classification,
-              })
-            : (state.selectedSkill = {
-                name: 'テラバースト',
-                power: 80,
-                type: state.atTera,
-                classification: classification,
-              });
+          if(state.atTera === typeInterface[19]){
+            state.selectedSkill = {
+              name: skill.name,
+              power: 100,
+              type: typeInterface[19],
+              classification: classification
+            }
+          }else{
+            state.selectedSkill = {
+              name: 'テラバースト',
+              power: 80,
+              type: state.atTera,
+              classification: classification,
+            }
+          }
         }
       } else {
         state.selectClassFlag = false;
@@ -196,8 +198,6 @@ const statSlice = createSlice({
           type: typeInterface[19],
           classification: '特殊',
         };
-      } else {
-        state.selectedSkill = skill;
       }
 
       if (state.selectedSkill.classification === '物理') {
@@ -307,8 +307,6 @@ const statSlice = createSlice({
               power: state.selectedSkill.power,
               classification: state.selectedSkill.classification,
             });
-      } else {
-        state.selectedSkill = skill;
       }
     },
     setAtTera: (state, action: PayloadAction<Type>) => {

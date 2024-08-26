@@ -1,6 +1,4 @@
 import BigButton from '@/components/atoms/BigButton';
-import CheckBox from '@/components/atoms/CheckBox';
-import TextButton from '@/components/atoms/TextButton';
 import CustomSlider from '@/components/molecules/DamageSlider';
 import {
   damageStrCalc,
@@ -11,9 +9,9 @@ import {
   strCalc,
 } from '@/function/function';
 import { useWindowSize } from '@/function/GetWindowSize';
-import { Poke, typeInterface } from '@/interfaces';
+import { typeInterface } from '@/interfaces';
 import { addStats } from '@/app/damageSlice';
-import { RootState, setAbility, setCritical, Skill } from '@/app/store';
+import { RootState, Skill } from '@/app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Damage: React.FC = () => {
