@@ -13,7 +13,7 @@ const SavedDamageBar: React.FC<DamageBarProps> = ({ pos1, pos2, damageText }) =>
         position1={pos1}
         position2={pos2}
       />
-      <div className="text-sm sm:text-base mt-2 md:text-lg lg:mt-3 text-start">{damageText}</div>
+      <div className="text-sm sm:text-base mt-2 lg:mt-3 text-start">{damageText}</div>
     </div>
   );
 };

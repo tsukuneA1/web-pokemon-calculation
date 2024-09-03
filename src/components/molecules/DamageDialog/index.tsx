@@ -70,7 +70,11 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
 
   return (
     <div style={overlayStyle} onClick={onClose} className="z-50">
-      <div style={dialogBoxStyle} onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}>
+      <div
+        style={dialogBoxStyle}
+        className="w-11/12 sm:w-auto"
+        onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+      >
         <h4 className="text-center">詳細</h4>
         <div className="flex justify-between items-center">
           <ImageComponent
@@ -91,8 +95,8 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
             borderRadius="10px"
           />
         </div>
-        <div className="flex justify-between">
-          <div className="text-start">
+        <div className="flex text-xs sm:text-sm w-full">
+          <div className="text-start w-1/3">
             <div className="my-2">{stat.atPoke.name}</div>
             <div className="my-2">{stat.atActual}</div>
             <div className="my-2">{ranks[stat.atRank]}</div>
@@ -100,21 +104,21 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
             <div className="my-2">{stat.effect}</div>
             <div className="my-2">{stat.atTera.name}</div>
           </div>
-          <div className="text-center items-center">
-            <div className="my-2">ポケモン名</div>
+          <div className="text-center items-center w-1/3">
+            <div className="my-2 text-center">ポケモン名</div>
             <div className="my-2">実数値</div>
             <div className="my-2">ランク補正</div>
             <div className="my-2">特性(適用中)</div>
             <div className="my-2">持ち物</div>
             <div className="my-2">テラスタル</div>
           </div>
-          <div className="text-end">
-            <div className="my-2">{dfPoke.name}</div>
-            <div className="my-2">{dfActual}</div>
-            <div className="my-2">{ranks[stat.dfRank]}</div>
-            <div className="my-2">{stat.dfAbility === 'null' ? 'なし' : stat.dfAbility}</div>
-            <div className="my-2">{stat.dfEffect}</div>
-            <div className="my-2">{stat.dfTera.name}</div>
+          <div className="text-end items-end justify-items-end w-1/3">
+            <div className="my-2 text-end">{dfPoke.name}</div>
+            <div className="my-2 text-end">{dfActual}</div>
+            <div className="my-2 text-end">{ranks[stat.dfRank]}</div>
+            <div className="my-2 text-end">{stat.dfAbility === 'null' ? 'なし' : stat.dfAbility}</div>
+            <div className="my-2 text-end">{stat.dfEffect}</div>
+            <div className="my-2 text-end">{stat.dfTera.name}</div>
           </div>
         </div>
 
@@ -150,11 +154,11 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
         </div> */}
         <div className="border-t-2 py-3 text-sm md:text-base">
           <h4 className="text-center">環境</h4>
-          <div className="flex justify-center">
+          <div className="flex justify-center text-xs sm:text-sm">
             <div>天候: {stat.weather}</div>
             <div className="ml-5">フィールド: {stat.field}</div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center text-xs sm:text-sm">
             <div>リフレクター: {stat.reflect ? 'あり' : 'なし'}</div>
             <div className="ml-5">光の壁: {stat.lightScreen ? 'あり' : 'なし'}</div>
           </div>
