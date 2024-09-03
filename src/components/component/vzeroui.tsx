@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
+import { JSX, SVGProps } from 'react';
 
 export function vzeroui() {
   return (
@@ -115,7 +116,7 @@ export function vzeroui() {
   );
 }
 
-function BellIcon(props) {
+function BellIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -135,7 +136,7 @@ function BellIcon(props) {
   );
 }
 
-function DeleteIcon(props) {
+function DeleteIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -156,7 +157,7 @@ function DeleteIcon(props) {
   );
 }
 
-function MenuIcon(props) {
+function MenuIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -177,7 +178,7 @@ function MenuIcon(props) {
   );
 }
 
-function SaveIcon(props) {
+function SaveIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -198,7 +199,7 @@ function SaveIcon(props) {
   );
 }
 
-function SettingsIcon(props) {
+function SettingsIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -218,7 +219,7 @@ function SettingsIcon(props) {
   );
 }
 
-function SunIcon(props) {
+function SunIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -245,7 +246,7 @@ function SunIcon(props) {
   );
 }
 
-function UserIcon(props) {
+function UserIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
