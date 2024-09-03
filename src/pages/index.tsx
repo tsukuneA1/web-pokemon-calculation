@@ -13,6 +13,7 @@ import { SwitchHorizontal, SwitchVertical } from '@/components/icons/Icons';
 import { deleteAll } from '@/app/damageSlice';
 import { Tooltip, Button } from '@nextui-org/react';
 import { useWindowSize } from '@/function/GetWindowSize';
+import Head from 'next/head';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -77,7 +78,12 @@ export default function Home() {
   const windowSize = useWindowSize();
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>ポケモンダメージ計算sv</title>
+        <meta name="description" content="Welcome to my website!"/>
+      </Head>
+        <div>
       {/* <a href='/SavedPokePage/'>jump</a> */}
       {windowSize.width > 1024 ? (
         <div className="pb-40 bg-gray-100">
@@ -137,5 +143,7 @@ export default function Home() {
         </div>
       )}
     </div>
+    </>
+
   );
 }
