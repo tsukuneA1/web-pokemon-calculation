@@ -44,18 +44,18 @@ interface State {
 }
 
 const initialState: State = {
-  atPoke: pokes[1],
+  atPoke: pokes[0],
   referAt: false,
-  atActual: Math.floor(((pokes[1].specialAttack * 2 + 31) * 1) / 2 + 5),
-  baseStat: 135,
+  atActual: Math.floor(((pokes[0].attack * 2 + 31) * 1) / 2 + 5),
+  baseStat: pokes[0].attack,
   individualValue: 31,
   effortValue: 0,
   natureMultiplier: 1.0,
   atRank: 6,
-  currentAbility: 'ハドロンエンジン',
+  currentAbility: pokes[0].abilities[0],
   abilityChecked: false,
   effect: '持ち物なし',
-  selectedSkill: { name: 'イナズマドライブ', power: 100, type: typeInterface[13], classification: '特殊' },
+  selectedSkill: { name: 'しんそく', power: 80, type: typeInterface[1], classification: '物理' },
   atTera: typeInterface[0],
   atStella: false,
   teraIconSrc: typeInterface[0].typeIconSrc,

@@ -23,10 +23,10 @@ interface DefenderState {
 }
 
 const initialState: DefenderState = {
-  poke: pokes[0],
-  hActual: Math.floor(((pokes[0].hp * 2 + 31) * 50) / 100 + 60),
-  bActual: Math.floor(((pokes[0].defence * 2 + 31) * 1) / 2 + 5),
-  dActual: Math.floor(((pokes[0].specialDefence * 2 + 31) * 1) / 2 + 5),
+  poke: pokes[1],
+  hActual: Math.floor(((pokes[1].hp * 2 + 31) * 50) / 100 + 60),
+  bActual: Math.floor(((pokes[1].defence * 2 + 31) * 1) / 2 + 5),
+  dActual: Math.floor(((pokes[1].specialDefence * 2 + 31) * 1) / 2 + 5),
   hIndividual: 31,
   bIndividual: 31,
   dIndividual: 31,
@@ -37,7 +37,7 @@ const initialState: DefenderState = {
   dRank: 6,
   bNatureMultiplier: 1,
   dNatureMultiplier: 1,
-  currentAbility: pokes[0].abilities[0],
+  currentAbility: pokes[1].abilities[0],
   onAbility: false,
   effect: '持ち物なし',
   dfTera: typeInterface[0],
