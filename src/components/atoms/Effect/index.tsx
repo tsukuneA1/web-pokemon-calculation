@@ -84,7 +84,6 @@ const styles = {
     borderRadius: '4px',
   },
   menu: {
-    width: '150px',
     listStyle: 'none',
     margin: 0,
     padding: '0',

@@ -76,7 +76,7 @@ const Damage: React.FC = () => {
 
   let dfType1 = dfPoke.types[0].name;
   let dfType2 = dfPoke.types[1].name;
-  if (dfTera != typeInterface[0]) {
+  if (dfTera != typeInterface[0] && dfTera != typeInterface[19]) {
     dfType1 = dfTera.name;
     dfType2 = 'null';
   } else {
@@ -153,7 +153,7 @@ const Damage: React.FC = () => {
 
     let plusDfType1 = dfPoke.types[0].name;
     let plusDfType2 = dfPoke.types[1].name;
-    if (item.dfTera != typeInterface[0]) {
+    if (item.dfTera != typeInterface[0] && item.dfTera != typeInterface[19]) {
       plusDfType1 = item.dfTera.name;
       plusDfType2 = 'null';
     } else {

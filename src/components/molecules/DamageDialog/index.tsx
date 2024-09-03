@@ -91,37 +91,64 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
             borderRadius="10px"
           />
         </div>
-        <div style={styles.container}>
+        <div className='flex justify-between'>
+          <div className='text-start'>
+            <div className='my-2'>{stat.atPoke.name}</div>
+            <div className='my-2'>{stat.atActual}</div>
+            <div className='my-2'>{ranks[stat.atRank]}</div>
+            <div className='my-2'>{stat.currentAbility === 'null' ? 'なし' : stat.currentAbility}</div>
+            <div className='my-2'>{stat.effect}</div>
+            <div className='my-2'>{stat.atTera.name}</div>
+          </div>
+          <div className='text-center items-center'>
+            <div className='my-2'>ポケモン名</div>
+            <div className='my-2'>実数値</div>
+            <div className='my-2'>ランク補正</div>
+            <div className='my-2'>特性(適用中)</div>
+            <div className='my-2'>持ち物</div>
+            <div className='my-2'>テラスタル</div>
+          </div>
+          <div className='text-end'>
+            <div className='my-2'>{dfPoke.name}</div>
+            <div className='my-2'>{dfActual}</div>
+            <div className='my-2'>{ranks[stat.dfRank]}</div>
+            <div className='my-2'>{stat.dfAbility === 'null' ? 'なし' : stat.dfAbility}</div>
+            <div className='my-2'>{stat.dfEffect}</div>
+            <div className='my-2'>{stat.dfTera.name}</div>
+          </div>
+        </div>
+
+        {/* <div style={styles.container} className='text-sm md:text-base'>
           <div>{stat.atPoke.name}</div>
           <div>ポケモン名</div>
           <div>{dfPoke.name}</div>
         </div>
-        <div style={styles.container}>
+        <div style={styles.container} className='text-sm md:text-base'>
           <div>{stat.atActual}</div>
           <div>実数値</div>
           <div>{dfActual}</div>
         </div>
-        <div style={styles.container}>
+        <div style={styles.container} className='text-sm md:text-base'>
           <div>{ranks[stat.atRank]}</div>
           <div>ランク補正</div>
           <div>{ranks[stat.dfRank]}</div>
         </div>
-        <div style={styles.container}>
+        <div style={styles.container} className='text-sm md:text-base'>
           <div>{stat.currentAbility === 'null' ? 'なし' : stat.currentAbility}</div>
-          <div>特性(適用中)</div>
+          <div className='text-center'>特性(適用中)</div>
           <div>{stat.dfAbility === 'null' ? 'なし' : stat.dfAbility}</div>
         </div>
-        <div style={styles.container}>
+        <div style={styles.container} className='text-sm md:text-base'>
           <div>{stat.effect}</div>
           <div>持ち物</div>
           <div>{stat.dfEffect}</div>
         </div>
-        <div style={styles.container}>
+        <div style={styles.container} className='text-sm md:text-base'>
           <div>{stat.atTera.name}</div>
           <div>テラスタル</div>
           <div>{stat.dfTera.name}</div>
-        </div>
-        <div className="border-t-2 py-3">
+        </div> */}
+        <div className="border-t-2 py-3 text-sm md:text-base">
           <h4 className="text-center">環境</h4>
           <div className="flex justify-center">
             <div>天候: {stat.weather}</div>
@@ -133,7 +160,7 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
           </div>
         </div>
 
-        <div className="flex items-start border-t-2 pt-3">
+        <div className="flex items-start border-t-2 pt-3 text-sm sm:text-base">
           {stat.selectedSkill.name}
           <div className="ml-2">{stat.selectedSkill.type.name}</div>
           <div className="ml-2">{stat.selectedSkill.power}</div>

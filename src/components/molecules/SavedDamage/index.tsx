@@ -18,6 +18,8 @@ import {
   BookmarkAddSharp,
   DeleteForeverRounded,
   Detail,
+  MiddleDeleteForeverRounded,
+  MiddleDetail,
   MiniBookmarkAddSharp,
   MiniDeleteForeverRounded,
   MiniDetail,
@@ -57,7 +59,7 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
 
   let dfType1 = dfPoke.types[0].name;
   let dfType2 = dfPoke.types[1].name;
-  if (dfTera != typeInterface[0]) {
+  if (dfTera != typeInterface[0] && dfTera != typeInterface[19]) {
     dfType1 = dfTera.name;
     dfType2 = 'null';
   } else {
@@ -150,19 +152,19 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
               <div className="text-sm sm:text-base md:text-lg text-start mt-5 mb-0 pb-0">{skillText}</div>
               <SavedDamageBar pos1={pos1} pos2={pos2} damageText={damageText} />
             </div>
-            <div className="flex items-start justify-items-end">
-              <Tooltip showArrow={true} content="詳細" color="warning" className="capitalize bg-gray-10 p-3 rounded-lg">
-                <Button onClick={openDialog}>{windowSize.width < 640 ? <MiniDetail /> : <Detail />}</Button>
+            <div className="flex justify-items-end">
+              <Tooltip showArrow={true} content="詳細" color="warning" className="capitalize bg-gray-10 rounded-lg">
+                <Button onClick={openDialog} className='pl-1 py-0 pr-0'>{windowSize.width < 640 ? <MiniDetail /> : (windowSize.width < 1280) ? <MiddleDetail/> : <Detail />}</Button>
               </Tooltip>
-              <div className="ml-1 sm:ml-2 md:ml-3">
+              <div className='w-10'>
                 <Tooltip
                   showArrow={true}
                   content="消去"
                   color="warning"
-                  className="capitalize bg-gray-10 p-3 rounded-lg ml-3"
+                  className="capitalize bg-gray-10 rounded-lg"
                 >
-                  <Button onClick={del}>
-                    {windowSize.width < 640 ? <MiniDeleteForeverRounded /> : <DeleteForeverRounded />}
+                  <Button onClick={del} className='pl-1 py-0 pr-0 md:pl-2'>
+                    {windowSize.width < 640 ? <MiniDeleteForeverRounded /> : (windowSize.width < 1280) ? <MiddleDeleteForeverRounded/>:<DeleteForeverRounded />}
                   </Button>
                 </Tooltip>
               </div>

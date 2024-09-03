@@ -377,6 +377,9 @@ export function finalDfActualCalc(
   }
 
   switch (dfEffect) {
+    case 'しんかのきせき':
+      retAct *= 1.5;
+      break;
     case 'とつげきチョッキ':
       if (skill.classification === '特殊') {
         retAct *= 1.5;

@@ -13,6 +13,8 @@ const doubleSkills = [
   'かたきうち',
   'たたりめ',
   'きまぐレーザー',
+  'しっぺがえし',
+  
 ];
 
 const DoublePowerComponent: React.FC = () => {

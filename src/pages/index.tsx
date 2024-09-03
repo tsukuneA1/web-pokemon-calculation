@@ -78,6 +78,7 @@ export default function Home() {
 
   return (
     <div>
+      {/* <a href='/SavedPokePage/'>jump</a> */}
       {windowSize.width > 1024 ? (
         <div className="pb-40 bg-gray-100">
           <div style={{ textAlign: 'center', paddingTop: '50px' }} className="lg:flex justify-items-center">
