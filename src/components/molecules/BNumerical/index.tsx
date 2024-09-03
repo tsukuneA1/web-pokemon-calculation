@@ -1,5 +1,5 @@
 import { setBEffort, setBIndividual, setBNatureMultiplier, setBRank } from '@/app/defenderSlice';
-import { RootState} from '@/app/store';
+import { RootState } from '@/app/store';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import NumericalTop from '../NumericalTop';

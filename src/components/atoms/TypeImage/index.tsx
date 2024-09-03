@@ -6,7 +6,6 @@ interface TypeImageProps {
 }
 
 const TypeImage: React.FC<TypeImageProps> = ({ src }) => {
-
   if (src != '/images/types/not_selected.png') {
     return (
       <div

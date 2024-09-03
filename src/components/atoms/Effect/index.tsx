@@ -45,8 +45,9 @@ const Effect: React.FC<DropdownProps> = ({ title, initialPos = 0, options, onSel
         </div>
       </button>
       {isOpen && (
-        <ul style={{ ...styles.menu, overflowY: 'scroll', maxHeight: '300px', minHeight: '150px' }}
-          className='w-36 sm:w-52'
+        <ul
+          style={{ ...styles.menu, overflowY: 'scroll', maxHeight: '300px', minHeight: '150px' }}
+          className="w-36 sm:w-52"
         >
           {options.map((option) => (
             <li

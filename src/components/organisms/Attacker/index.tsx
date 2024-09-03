@@ -47,65 +47,100 @@ const Attacker: React.FC = () => {
   const hp = useSelector((state: RootState) => state.defender.hActual);
 
   const [skills, setSkills] = useState<customSkill[]>([]);
-  const [initialHp, setInitialHp] = useState(Math.floor(Math.floor(poke.hp*2+31)*1/2)+60);
-  const [currentHp, setCurrentHp] = useState(Math.floor(Math.floor(poke.hp*2+31)*1/2)+60);
+  const [initialHp, setInitialHp] = useState(Math.floor((Math.floor(poke.hp * 2 + 31) * 1) / 2) + 60);
+  const [currentHp, setCurrentHp] = useState(Math.floor((Math.floor(poke.hp * 2 + 31) * 1) / 2) + 60);
   const [dfCurrentHp, setDfCurrentHp] = useState(hp);
 
   useEffect(() => {
-    if(["ふんか", "しおふき", "ドラゴンエナジー"].includes(skill.name)){
-      dispatch(setSkill({
-        skill: {
-          name: skill.name,
-          power: (Math.floor(150*currentHp/initialHp) < 1) ? (1) : (Math.floor(150*currentHp/initialHp) > 150) ? (150) : Math.floor(150*currentHp/initialHp),
-          classification: skill.classification,
-          type: skill.type,
-        },
-        dfPoke: dfPoke
-      }))
-    }else if(["じたばた", "きしかいせい"].includes(skill.name)){
+    if (['ふんか', 'しおふき', 'ドラゴンエナジー'].includes(skill.name)) {
+      dispatch(
+        setSkill({
+          skill: {
+            name: skill.name,
+            power:
+              Math.floor((150 * currentHp) / initialHp) < 1
+                ? 1
+                : Math.floor((150 * currentHp) / initialHp) > 150
+                  ? 150
+                  : Math.floor((150 * currentHp) / initialHp),
+            classification: skill.classification,
+            type: skill.type,
+          },
+          dfPoke: dfPoke,
+        }),
+      );
+    } else if (['じたばた', 'きしかいせい'].includes(skill.name)) {
       let power = 200;
-      const rate = currentHp/initialHp;
-      power = (rate < 2/48) ? (200) : (rate < 5/48) ? (150) : (rate < 10/48) ? (100) : (rate < 17/48) ? (80) : (rate < 33/48) ? (40) : 20;
-      dispatch(setSkill({
-        skill: {
-          name: skill.name,
-          power: power,
-          classification: skill.classification,
-          type: skill.type,
-        },
-        dfPoke: dfPoke
-      }))
-    }else if(skill.name === "ハードプレス"){
-      dispatch(setSkill({
-        skill: {
-          name: skill.name,
-          power: Math.floor(100*dfCurrentHp/hp) < 1 ? 1 : (Math.floor(100*dfCurrentHp/hp) > 100) ? (100) : Math.floor(100*dfCurrentHp/hp),
-          type: skill.type,
-          classification: skill.classification,
-        }, 
-        dfPoke: dfPoke
-      }))
-    }else if(skill.name === "にぎりつぶす") {
-      dispatch(setSkill({
-        skill: {
-          name: skill.name,
-          power: Math.floor(120*dfCurrentHp/hp) < 1 ? 1 : (Math.floor(120*dfCurrentHp/hp) > 120) ? (120) : Math.floor(120*dfCurrentHp/hp),
-          type: skill.type,
-          classification: skill.classification,
-        }, 
-        dfPoke: dfPoke
-      }))
-    }
-    else {
-      dispatch(setSkill({
-        skill: {
-          name: skill.name,
-          power: skill.power,
-          classification: skill.classification,
-          type: skill.type,
-        },
-        dfPoke: dfPoke
-      }))
+      const rate = currentHp / initialHp;
+      power =
+        rate < 2 / 48
+          ? 200
+          : rate < 5 / 48
+            ? 150
+            : rate < 10 / 48
+              ? 100
+              : rate < 17 / 48
+                ? 80
+                : rate < 33 / 48
+                  ? 40
+                  : 20;
+      dispatch(
+        setSkill({
+          skill: {
+            name: skill.name,
+            power: power,
+            classification: skill.classification,
+            type: skill.type,
+          },
+          dfPoke: dfPoke,
+        }),
+      );
+    } else if (skill.name === 'ハードプレス') {
+      dispatch(
+        setSkill({
+          skill: {
+            name: skill.name,
+            power:
+              Math.floor((100 * dfCurrentHp) / hp) < 1
+                ? 1
+                : Math.floor((100 * dfCurrentHp) / hp) > 100
+                  ? 100
+                  : Math.floor((100 * dfCurrentHp) / hp),
+            type: skill.type,
+            classification: skill.classification,
+          },
+          dfPoke: dfPoke,
+        }),
+      );
+    } else if (skill.name === 'にぎりつぶす') {
+      dispatch(
+        setSkill({
+          skill: {
+            name: skill.name,
+            power:
+              Math.floor((120 * dfCurrentHp) / hp) < 1
+                ? 1
+                : Math.floor((120 * dfCurrentHp) / hp) > 120
+                  ? 120
+                  : Math.floor((120 * dfCurrentHp) / hp),
+            type: skill.type,
+            classification: skill.classification,
+          },
+          dfPoke: dfPoke,
+        }),
+      );
+    } else {
+      dispatch(
+        setSkill({
+          skill: {
+            name: skill.name,
+            power: skill.power,
+            classification: skill.classification,
+            type: skill.type,
+          },
+          dfPoke: dfPoke,
+        }),
+      );
     }
   }, [initialHp, currentHp, dfCurrentHp]);
 
@@ -269,59 +304,57 @@ const Attacker: React.FC = () => {
           <Burn />
           <ThreeQuaters />
           <Preeminence />
-          {(["ふんか", "しおふき", "ドラゴンエナジー", "じたばた", "きしかいせい"]).includes(skill.name)
-            ? <div className='w-60 justify-start mt-3'>
-                <div className='flex justify-between items-center'>
-                  <p>最大HP</p>
-                  <Input
-                    className='w-28'
-                    type='number'
-                    value={initialHp}
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setInitialHp(event.target.value as unknown as number)}}
-                  />
-                </div>
-                <div className='flex justify-between items-center mt-3'>
-                  <p>現在のHP</p>
-                  <Input
-                    className='w-28'
-                    value={currentHp}
-                    type='number'
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                      setCurrentHp((event.target.value as unknown as number))
-                    }
-                  }
-                  />
-                </div>
-                <p className='text-start'>技威力 {skill.power}</p>
+          {['ふんか', 'しおふき', 'ドラゴンエナジー', 'じたばた', 'きしかいせい'].includes(skill.name) ? (
+            <div className="w-60 justify-start mt-3">
+              <div className="flex justify-between items-center">
+                <p>最大HP</p>
+                <Input
+                  className="w-28"
+                  type="number"
+                  value={initialHp}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    setInitialHp(event.target.value as unknown as number);
+                  }}
+                />
+              </div>
+              <div className="flex justify-between items-center mt-3">
+                <p>現在のHP</p>
+                <Input
+                  className="w-28"
+                  value={currentHp}
+                  type="number"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    setCurrentHp(event.target.value as unknown as number);
+                  }}
+                />
+              </div>
+              <p className="text-start">技威力 {skill.power}</p>
             </div>
-            : <div></div>
-          }
-          {(["ハードプレス", "にぎりつぶす"].includes(skill.name))
-            ? <div className='w-60 justify-start mt-3'>
-            <div className='flex justify-between items-center'>
-              <p>相手の最大HP</p>
-              <Input
-                className='w-28'
-                type='number'
-                value={hp}
-              />
+          ) : (
+            <div></div>
+          )}
+          {['ハードプレス', 'にぎりつぶす'].includes(skill.name) ? (
+            <div className="w-60 justify-start mt-3">
+              <div className="flex justify-between items-center">
+                <p>相手の最大HP</p>
+                <Input className="w-28" type="number" value={hp} />
+              </div>
+              <div className="flex justify-between items-center mt-3">
+                <p>相手の現在のHP</p>
+                <Input
+                  className="w-28"
+                  value={dfCurrentHp}
+                  type="number"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    setDfCurrentHp(event.target.value as unknown as number);
+                  }}
+                />
+              </div>
+              <p className="text-start">技威力 {skill.power}</p>
             </div>
-            <div className='flex justify-between items-center mt-3'>
-              <p>相手の現在のHP</p>
-              <Input
-                className='w-28'
-                value={dfCurrentHp}
-                type='number'
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setDfCurrentHp((event.target.value as unknown as number))
-                }
-              }
-              />
-            </div>
-            <p className='text-start'>技威力 {skill.power}</p>
-        </div>
-        : <div></div>
-          }
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     );

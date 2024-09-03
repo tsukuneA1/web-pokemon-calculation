@@ -91,30 +91,30 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
             borderRadius="10px"
           />
         </div>
-        <div className='flex justify-between'>
-          <div className='text-start'>
-            <div className='my-2'>{stat.atPoke.name}</div>
-            <div className='my-2'>{stat.atActual}</div>
-            <div className='my-2'>{ranks[stat.atRank]}</div>
-            <div className='my-2'>{stat.currentAbility === 'null' ? 'なし' : stat.currentAbility}</div>
-            <div className='my-2'>{stat.effect}</div>
-            <div className='my-2'>{stat.atTera.name}</div>
+        <div className="flex justify-between">
+          <div className="text-start">
+            <div className="my-2">{stat.atPoke.name}</div>
+            <div className="my-2">{stat.atActual}</div>
+            <div className="my-2">{ranks[stat.atRank]}</div>
+            <div className="my-2">{stat.currentAbility === 'null' ? 'なし' : stat.currentAbility}</div>
+            <div className="my-2">{stat.effect}</div>
+            <div className="my-2">{stat.atTera.name}</div>
           </div>
-          <div className='text-center items-center'>
-            <div className='my-2'>ポケモン名</div>
-            <div className='my-2'>実数値</div>
-            <div className='my-2'>ランク補正</div>
-            <div className='my-2'>特性(適用中)</div>
-            <div className='my-2'>持ち物</div>
-            <div className='my-2'>テラスタル</div>
+          <div className="text-center items-center">
+            <div className="my-2">ポケモン名</div>
+            <div className="my-2">実数値</div>
+            <div className="my-2">ランク補正</div>
+            <div className="my-2">特性(適用中)</div>
+            <div className="my-2">持ち物</div>
+            <div className="my-2">テラスタル</div>
           </div>
-          <div className='text-end'>
-            <div className='my-2'>{dfPoke.name}</div>
-            <div className='my-2'>{dfActual}</div>
-            <div className='my-2'>{ranks[stat.dfRank]}</div>
-            <div className='my-2'>{stat.dfAbility === 'null' ? 'なし' : stat.dfAbility}</div>
-            <div className='my-2'>{stat.dfEffect}</div>
-            <div className='my-2'>{stat.dfTera.name}</div>
+          <div className="text-end">
+            <div className="my-2">{dfPoke.name}</div>
+            <div className="my-2">{dfActual}</div>
+            <div className="my-2">{ranks[stat.dfRank]}</div>
+            <div className="my-2">{stat.dfAbility === 'null' ? 'なし' : stat.dfAbility}</div>
+            <div className="my-2">{stat.dfEffect}</div>
+            <div className="my-2">{stat.dfTera.name}</div>
           </div>
         </div>
 

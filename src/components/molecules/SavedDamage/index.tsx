@@ -154,17 +154,20 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
             </div>
             <div className="flex justify-items-end">
               <Tooltip showArrow={true} content="詳細" color="warning" className="capitalize bg-gray-10 rounded-lg">
-                <Button onClick={openDialog} className='pl-1 py-0 pr-0'>{windowSize.width < 640 ? <MiniDetail /> : (windowSize.width < 1280) ? <MiddleDetail/> : <Detail />}</Button>
+                <Button onClick={openDialog} className="pl-1 py-0 pr-0">
+                  {windowSize.width < 640 ? <MiniDetail /> : windowSize.width < 1280 ? <MiddleDetail /> : <Detail />}
+                </Button>
               </Tooltip>
-              <div className='w-10'>
-                <Tooltip
-                  showArrow={true}
-                  content="消去"
-                  color="warning"
-                  className="capitalize bg-gray-10 rounded-lg"
-                >
-                  <Button onClick={del} className='pl-1 py-0 pr-0 md:pl-2'>
-                    {windowSize.width < 640 ? <MiniDeleteForeverRounded /> : (windowSize.width < 1280) ? <MiddleDeleteForeverRounded/>:<DeleteForeverRounded />}
+              <div className="w-10">
+                <Tooltip showArrow={true} content="消去" color="warning" className="capitalize bg-gray-10 rounded-lg">
+                  <Button onClick={del} className="pl-1 py-0 pr-0 md:pl-2">
+                    {windowSize.width < 640 ? (
+                      <MiniDeleteForeverRounded />
+                    ) : windowSize.width < 1280 ? (
+                      <MiddleDeleteForeverRounded />
+                    ) : (
+                      <DeleteForeverRounded />
+                    )}
                   </Button>
                 </Tooltip>
               </div>

@@ -171,20 +171,20 @@ const statSlice = createSlice({
           classification = '物理';
         }
         if (state.atTera !== typeInterface[0]) {
-          if(state.atTera === typeInterface[19]){
+          if (state.atTera === typeInterface[19]) {
             state.selectedSkill = {
               name: skill.name,
               power: 100,
               type: typeInterface[19],
-              classification: classification
-            }
-          }else{
+              classification: classification,
+            };
+          } else {
             state.selectedSkill = {
               name: 'テラバースト',
               power: 80,
               type: state.atTera,
               classification: classification,
-            }
+            };
           }
         }
       } else {

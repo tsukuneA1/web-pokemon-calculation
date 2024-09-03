@@ -1,9 +1,9 @@
-import Component from "@/components/organisms/SavePoke";
+import Component from '@/components/organisms/SavePoke';
 
 export default function savedPokePage() {
-    return (
-        <div>
-            <Component/>
-        </div>
-    )
+  return (
+    <div>
+      <Component />
+    </div>
+  );
 }

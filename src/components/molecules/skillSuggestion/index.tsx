@@ -13,10 +13,10 @@ const SkillSuggestion: React.FC<skillSuggestionProps> = ({ skill }) => {
   return (
     <div className="flex items-center justify-between w-full border-b-gray-400">
       <div className="flex items-center">
-        {windowSize.width < 640 ? <MiniFireCircle/> : <FireCircle />}
+        {windowSize.width < 640 ? <MiniFireCircle /> : <FireCircle />}
         <div className="text-sm sm:text-base block items-start justify-items-start text-start ml-2">
           {skill.name}
-          <div className='text-xs sm:text-base'>{skillInfo}</div>
+          <div className="text-xs sm:text-base">{skillInfo}</div>
         </div>
       </div>
       {windowSize.width < 640 ? <MiniArrowUpLeftBold /> : <ArrowUpLeftBold />}
