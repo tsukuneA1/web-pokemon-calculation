@@ -22,8 +22,8 @@ const overlayStyle: React.CSSProperties = {
 
 const dialogBoxStyle: React.CSSProperties = {
   backgroundColor: 'white',
-  padding: '20px',
   borderRadius: '8px',
+  minWidth: '360px',
   boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
 };
 
@@ -72,7 +72,7 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
     <div style={overlayStyle} onClick={onClose} className="z-50">
       <div
         style={dialogBoxStyle}
-        className="w-11/12 sm:w-auto"
+        className="sm:w-auto p-3 md:p-5"
         onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
         <h4 className="text-center">詳細</h4>

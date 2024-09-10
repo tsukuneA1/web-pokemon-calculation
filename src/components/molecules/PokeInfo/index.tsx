@@ -49,7 +49,7 @@ const PokeInfo: React.FC<PokeInfoProps> = ({
         backgroundColor="#e2e2e2"
         borderRadius={imageRadius}
       />
-      <div className="w-2/3 md:3/4 mt-0 ml-2 sm:ml-3 md:ml-4 lg:ml-5">
+      <div className="w-auto mt-0 ml-2 sm:ml-3 md:ml-4 lg:ml-5">
         <SearchBox
           width={100}
           height={searchTextHeight}
@@ -62,7 +62,6 @@ const PokeInfo: React.FC<PokeInfoProps> = ({
         </div>
         <div className="mt-0 sm:mt-1 md:mt-2 flex">
           <Types type1={type1} type2={type2} />
-
           <TerastalTag type={terastalType} onClick={() => {}} teraSelected={(type: Type) => onTerastalClicked(type)} />
         </div>
       </div>

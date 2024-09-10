@@ -32,7 +32,8 @@ const NatureRank: React.FC<natureRankProps> = ({
   const charas = ['×1.1', '×1.0', '×0.9'];
   const ranks = ['+6', '+5', '+4', '+3', '+2', '+1', '+-0', '-1', '-2', '-3', '-4', '-5', '-6'];
   return (
-    <div style={styles.effortAndActual}>
+    <div>
+      <div style={styles.effortAndActual}>
       <Dropdown
         title="性格補正"
         options={charas}
@@ -57,7 +58,10 @@ const NatureRank: React.FC<natureRankProps> = ({
           buttonClicked={(plus: boolean, selected: string) => rankButtonClicked(plus, selected)}
         />
       </div>
+      
     </div>
+    </div>
+    
   );
 };
 
