@@ -138,15 +138,17 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
       openDialog={openDialog}
       del={del}
       />
-      {/* <Header
-        title="追加ダメージ"
-        icon={windowSize.width < 640 ? <MiniBookmarkAddSharp /> : <BookmarkAddSharp />}
-        fold={fold}
-        onIconClick={() => setFold(!fold)}
-        width={windowSize.width}
-      /> */}
       {fold ? (
-        <></>
+        <>
+        <DamageDialog
+            isOpen={isDialogOpen}
+            onClose={closeDialog}
+            stat={stat}
+            pos1={pos1}
+            pos2={pos2}
+            damageText={damageText}
+          />
+        </>
       ) : (
         <div>
           <div className="flex bg-gray-10 rounded-b-2xl p-1 sm:p-2 md:p-5 lg:pr-7 w-full justify-between">
