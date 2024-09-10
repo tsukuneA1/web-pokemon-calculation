@@ -15,8 +15,8 @@ const SkillParameter: React.FC = () => {
   function buttonClicked() {
     atTera === typeInterface[0] ? dispatch(setAtTera(skill.type)) : dispatch(setAtTera(typeInterface[0]));
   }
-  
-  const src = (atTera === typeInterface[19]) ? (typeInterface[0].typeIconSrc) : (atTera.typeIconSrc)
+
+  const src = atTera === typeInterface[19] ? typeInterface[0].typeIconSrc : atTera.typeIconSrc;
 
   const windowSize = useWindowSize();
   return (

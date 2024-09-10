@@ -61,13 +61,10 @@ const PokeInfo: React.FC<PokeInfoProps> = ({
           <TribeComponent tribe={tribeText} />
         </div>
         <div className="mt-0 sm:mt-1 md:mt-2 flex">
-          <Types type1={type1} type2={type2}/>
-          
-          <TerastalTag type={terastalType} onClick={() => {}} teraSelected={(type: Type) => onTerastalClicked(type)} />
-        
-        </div>
+          <Types type1={type1} type2={type2} />
 
-        
+          <TerastalTag type={terastalType} onClick={() => {}} teraSelected={(type: Type) => onTerastalClicked(type)} />
+        </div>
       </div>
     </div>
   );

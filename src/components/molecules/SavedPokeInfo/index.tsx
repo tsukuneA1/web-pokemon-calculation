@@ -39,23 +39,18 @@ const SavedPokeInfo: React.FC<savedPokeInfoProps> = ({
         <Image src={pokeSrc} width={100} height={100} alt={'src'} layout="responsive" objectFit="cover" />
       </div>
       <div>
-      <div className="w-full mt-0 ml-2 sm:ml-3 md:ml-5">
-        <div className="border-b-2 text-base sm:text-lg md:text-xl text-start">{searchText}</div>
-      </div>
-      <div className="w-full mt-0 sm:mt-1 ml-2 sm:ml-3 md:ml-5">
-          <TribeComponent tribe={tribeText} />
-        
-        <div className="mt-0 sm:mt-1 flex">
-          <AutoTypeImage type={type1}/>
-          {(typeInterface.includes(type2))
-            ? (<AutoTypeImage type={type2}/>)
-            : (<></>)
-          }
-          <AutoTypeImage
-            type={terastalType}
-          />
+        <div className="w-full mt-0 ml-2 sm:ml-3 md:ml-5">
+          <div className="border-b-2 text-base sm:text-lg md:text-xl text-start">{searchText}</div>
         </div>
-      </div>
+        <div className="w-full mt-0 sm:mt-1 ml-2 sm:ml-3 md:ml-5">
+          <TribeComponent tribe={tribeText} />
+
+          <div className="mt-0 sm:mt-1 flex">
+            <AutoTypeImage type={type1} />
+            {typeInterface.includes(type2) ? <AutoTypeImage type={type2} /> : <></>}
+            <AutoTypeImage type={terastalType} />
+          </div>
+        </div>
       </div>
     </div>
   );

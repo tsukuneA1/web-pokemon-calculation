@@ -8,16 +8,13 @@ interface TypeProps {
   type2: Type;
 }
 
-const Types: React.FC<TypeProps> = ({ type1, type2}) => {
+const Types: React.FC<TypeProps> = ({ type1, type2 }) => {
   return (
     <div>
       <div style={{ ...styles.type }} className="text-base sm:text-lg md:text-xl relative">
-      <AutoTypeImage type={type1} />
-      {typeInterface.includes(type2)
-        ? (<AutoTypeImage type={type2}/>)
-        : (<></>)
-      }
-    </div>
+        <AutoTypeImage type={type1} />
+        {typeInterface.includes(type2) ? <AutoTypeImage type={type2} /> : <></>}
+      </div>
     </div>
   );
 };

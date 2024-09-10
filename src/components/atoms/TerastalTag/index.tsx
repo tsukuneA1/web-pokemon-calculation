@@ -28,9 +28,7 @@ const TerastalTag: React.FC<TerastalProps> = ({ type, onClick, teraSelected }) =
           justifyContent: 'center',
         }}
       >
-        <AutoTypeImage
-          type={type}
-        />
+        <AutoTypeImage type={type} />
       </div>
       <Dialog isOpen={isDialogOpen} onClose={closeDialog} radioSelected={(type: Type) => teraSelected(type)} />
     </div>

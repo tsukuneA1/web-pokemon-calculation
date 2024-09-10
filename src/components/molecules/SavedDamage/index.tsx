@@ -29,6 +29,7 @@ import SavedDamageBar from '../SavedDamageBar';
 import { Tooltip } from '@nextui-org/tooltip';
 import { Button } from '@nextui-org/react';
 import { useWindowSize } from '@/function/GetWindowSize';
+import ExtraHeader from '../ExtraHeader';
 
 interface savedDamageProps {
   stat: SavedDamage;
@@ -128,19 +129,28 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
   const windowSize = useWindowSize();
   return (
     <div className="w-full mt-10">
-      <Header
+      <ExtraHeader
+      title="追加ダメージ"
+      icon={windowSize.width < 640 ? <MiniBookmarkAddSharp /> : <BookmarkAddSharp />}
+      fold={fold}
+      onIconClick={() => setFold(!fold)}
+      width={windowSize.width}
+      openDialog={openDialog}
+      del={del}
+      />
+      {/* <Header
         title="追加ダメージ"
         icon={windowSize.width < 640 ? <MiniBookmarkAddSharp /> : <BookmarkAddSharp />}
         fold={fold}
         onIconClick={() => setFold(!fold)}
         width={windowSize.width}
-      />
+      /> */}
       {fold ? (
         <></>
       ) : (
         <div>
-          <div className="flex bg-gray-10 rounded-b-2xl p-1 sm:p-2 md:p-5 w-full justify-between">
-            <div className="w-5/6 pointer-events-none">
+          <div className="flex bg-gray-10 rounded-b-2xl p-1 sm:p-2 md:p-5 lg:pr-7 w-full justify-between">
+            <div className="w-full pointer-events-none">
               <SavedPokeInfo
                 pokeSrc={stat.atPoke.src}
                 searchText={stat.atPoke.name}
@@ -152,7 +162,7 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
               <div className="text-sm sm:text-base md:text-lg text-start mt-5 mb-0 pb-0">{skillText}</div>
               <SavedDamageBar pos1={pos1} pos2={pos2} damageText={damageText} />
             </div>
-            <div className="flex justify-items-end">
+            {/* <div className="flex justify-items-end">
               <Tooltip showArrow={true} content="詳細" color="warning" className="capitalize bg-gray-10 rounded-lg">
                 <Button onClick={openDialog} className="pl-1 py-0 pr-0">
                   {windowSize.width < 640 ? <MiniDetail /> : windowSize.width < 1280 ? <MiddleDetail /> : <Detail />}
@@ -171,7 +181,7 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
                   </Button>
                 </Tooltip>
               </div>
-            </div>
+            </div> */}
           </div>
           <DamageDialog
             isOpen={isDialogOpen}
