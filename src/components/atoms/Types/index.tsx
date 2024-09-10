@@ -1,21 +1,23 @@
 import React from 'react';
-import Image from 'next/image';
 import TypeImage from '../TypeImage';
+import { Type, typeInterface } from '@/interfaces';
+import AutoTypeImage from '../AutoTypeImage';
 
 interface TypeProps {
-  src1: string;
-  src2: string;
-  fontSize: string;
+  type1: Type;
+  type2: Type;
 }
 
-const Types: React.FC<TypeProps> = ({ src1, src2, fontSize = '20' }) => {
+const Types: React.FC<TypeProps> = ({ type1, type2}) => {
   return (
-    <div style={{ ...styles.type }} className="text-base sm:text-lg md:text-xl relative">
-      <p style={{ margin: '0px' }} className="text-sm sm:text-base md:text-lg">
-        タイプ:
-      </p>
-      <TypeImage src={src1} />
-      <TypeImage src={src2} />
+    <div>
+      <div style={{ ...styles.type }} className="text-base sm:text-lg md:text-xl relative">
+      <AutoTypeImage type={type1} />
+      {typeInterface.includes(type2)
+        ? (<AutoTypeImage type={type2}/>)
+        : (<></>)
+      }
+    </div>
     </div>
   );
 };

@@ -145,9 +145,9 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
                 pokeSrc={stat.atPoke.src}
                 searchText={stat.atPoke.name}
                 tribeText={tribes}
-                typeSrc1={stat.atPoke.types[0].typeTagSrc}
-                typeSrc2={stat.atPoke.types[1].typeTagSrc}
-                terastalSrc={stat.atTera.typeTagSrc}
+                type1={stat.atPoke.types[0]}
+                type2={stat.atPoke.types[1]}
+                terastalType={stat.atTera}
               />
               <div className="text-sm sm:text-base md:text-lg text-start mt-5 mb-0 pb-0">{skillText}</div>
               <SavedDamageBar pos1={pos1} pos2={pos2} damageText={damageText} />

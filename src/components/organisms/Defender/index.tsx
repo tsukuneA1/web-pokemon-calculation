@@ -95,9 +95,9 @@ const Defender: React.FC<DefenderProps> = () => {
             tribeText={tribes}
             height={25}
             fontSize="20px"
-            typeSrc1={poke.types[0].typeTagSrc}
-            typeSrc2={poke.types[1].typeTagSrc}
-            terastalSrc={dfTera.typeTagSrc}
+            type1={poke.types[0]}
+            type2={poke.types[1]}
+            terastalType={dfTera}
             onSearchClicked={(poke: Pokemon) => searchClicked(poke)}
             onTerastalClicked={(type: Type) => {
               dispatch(setDfTera(type));

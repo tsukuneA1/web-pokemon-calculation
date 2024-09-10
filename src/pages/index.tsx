@@ -83,7 +83,7 @@ export default function Home() {
         <title>ポケモンダメージ計算sv</title>
         <meta name="description" content="Welcome to my website!"/>
       </Head>
-        <div>
+      <div>
       {/* <a href='/SavedPokePage/'>jump</a> */}
       {windowSize.width > 1024 ? (
         <div className="pb-40 bg-gray-100">

@@ -122,7 +122,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
           value={query}
           onChange={handleInputChange}
           onFocus={handleFocus}
-          className="w-full text-base sm:text-xl md:text-2xl py-1 pl-1 md:py-2 md:pl-2"
+          className="w-full text-base sm:text-lg md:text-xl py-1 pl-1 md:py-2 md:pl-2"
           style={{
             boxSizing: 'border-box',
             borderTopLeftRadius: '10px',

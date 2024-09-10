@@ -219,9 +219,9 @@ const Attacker: React.FC = () => {
             tribeText={tribes}
             height={25}
             fontSize="20px"
-            typeSrc1={poke.types[0].typeTagSrc}
-            typeSrc2={poke.types[1].typeTagSrc}
-            terastalSrc={atTera.typeTagSrc}
+            type1={poke.types[0]}
+            type2={poke.types[1]}
+            terastalType={atTera}
             onSearchClicked={(poke: Pokemon) => {
               const types: Type[] = [poke.type1, poke.type2]
                 .filter((typeName) => typeName !== null)

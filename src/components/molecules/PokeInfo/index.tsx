@@ -17,29 +17,25 @@ interface PokeInfoProps {
   tribeText: string;
   height: number;
   fontSize: string;
-  typeSrc1: string;
-  typeSrc2: string;
+  type1: Type;
+  type2: Type;
   typeHeight: number;
-  terastalSrc: string;
+  terastalType: Type;
   onSearchClicked: (poke: Pokemon) => void;
   onTerastalClicked: (type: Type) => void;
 }
 
 const PokeInfo: React.FC<PokeInfoProps> = ({
   pokeSrc,
-  imageWidth,
   imageHeight,
   imageRadius,
   searchText,
   searchTextHeight,
   searchTextFontSize,
   tribeText,
-  height,
-  fontSize,
-  typeSrc1,
-  typeSrc2,
-  typeHeight,
-  terastalSrc,
+  type1,
+  type2,
+  terastalType,
   onSearchClicked,
   onTerastalClicked,
 }) => {
@@ -64,13 +60,14 @@ const PokeInfo: React.FC<PokeInfoProps> = ({
         <div className="mt-0 sm:mt-1 md:mt-2">
           <TribeComponent tribe={tribeText} />
         </div>
-        <div className="mt-0 sm:mt-1 md:mt-2">
-          <Types src1={typeSrc1} src2={typeSrc2} fontSize={fontSize} />
+        <div className="mt-0 sm:mt-1 md:mt-2 flex">
+          <Types type1={type1} type2={type2}/>
+          
+          <TerastalTag type={terastalType} onClick={() => {}} teraSelected={(type: Type) => onTerastalClicked(type)} />
+        
         </div>
 
-        <div className="mt-0 sm:mt-1 md:mt-2">
-          <TerastalTag src={terastalSrc} onClick={() => {}} teraSelected={(type: Type) => onTerastalClicked(type)} />
-        </div>
+        
       </div>
     </div>
   );
