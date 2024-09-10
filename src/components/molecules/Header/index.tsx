@@ -15,10 +15,10 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title, icon, onIconClick, fold, width }) => {
   if (fold) {
     return (
-      <header style={{ ...styles.foldHeader }} className="w-full p-2 md:p-4">
+      <header style={{ ...styles.foldHeader }} className="w-full p-2 md:p-3">
         <div style={styles.leftContainer}>
           {icon}
-          <h1 className="text-base font-bold ml-4 sm:text-2xl">{title}</h1>
+          <h1 className="text-base font-bold ml-4 sm:text-xl">{title}</h1>
         </div>
         <div style={styles.iconButton}>
           <IconButton
@@ -31,10 +31,10 @@ const Header: React.FC<HeaderProps> = ({ title, icon, onIconClick, fold, width }
     );
   }
   return (
-    <header style={{ ...styles.header }} className="w-full p-2 md:p-4">
+    <header style={{ ...styles.header }} className="w-full p-2 md:p-3">
       <div style={styles.leftContainer}>
         {icon}
-        <h1 className="text-base font-bold ml-4 sm:text-2xl">{title}</h1>
+        <h1 className="text-base font-bold ml-4 sm:text-xl">{title}</h1>
       </div>
       <div style={styles.iconButton}>
         {width <= 640 ? (

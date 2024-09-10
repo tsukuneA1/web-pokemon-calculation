@@ -86,7 +86,7 @@ export default function Home() {
       <div>
       {/* <a href='/SavedPokePage/'>jump</a> */}
       {windowSize.width > 1024 ? (
-        <div className="pb-40 bg-gray-100">
+        <div className="pb-40 bg-zinc-200">
           <div style={{ textAlign: 'center', paddingTop: '50px' }} className="lg:flex justify-items-center">
             <div className="flex items-center lg:w-1/2 flex-col">
               <Attacker />
@@ -114,7 +114,7 @@ export default function Home() {
           <Damage />
         </div>
       ) : (
-        <div className="pt-10 pb-32  bg-gray-100">
+        <div className="pt-10 pb-32  bg-zinc-200">
           <div style={{ textAlign: 'center' }} className="lg:flex justify-items-center">
             <div className="flex items-center lg:w-1/2 flex-col">
               <Attacker />

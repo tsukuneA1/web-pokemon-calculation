@@ -42,7 +42,7 @@ const SavedPokeInfo: React.FC<savedPokeInfoProps> = ({
       <div className="w-full mt-0 ml-2 sm:ml-3 md:ml-5">
         <div className="border-b-2 text-base sm:text-lg md:text-xl text-start">{searchText}</div>
       </div>
-      <div className="mt-0 sm:mt-1 ml-2 sm:ml-3 md:ml-5">
+      <div className="w-full mt-0 sm:mt-1 ml-2 sm:ml-3 md:ml-5">
           <TribeComponent tribe={tribeText} />
         
         <div className="mt-0 sm:mt-1 flex">

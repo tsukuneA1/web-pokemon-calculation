@@ -268,7 +268,7 @@ const Damage: React.FC = () => {
   const windowSize = useWindowSize();
 
   return (
-    <div className="flex w-full fixed bottom-0 left-0 bg-primary-50 mr-0 justify-between">
+    <div className="flex w-full fixed bottom-0 left-0 bg-white mr-0 justify-between border-t-1">
       <div className="pt-5 pl-5 my-2 w-5/6 ">
         <CustomSlider
           min={0}

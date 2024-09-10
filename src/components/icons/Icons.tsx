@@ -2,7 +2,7 @@ import { SVGProps } from 'react';
 
 export function FluentWeatherRainShowersDay20Filled(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 20 20" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 20 20" {...props}>
       <path
         fill="currentColor"
         d="M11 6c2.464 0 3.863 1.573 4.066 3.474h.062c1.586 0 2.872 1.237 2.872 2.763S16.714 15 15.128 15h-.694l-.017.041l-1.487 2.704a.5.5 0 0 1-.914-.396l.036-.082L13.3 15h-1.854l-.018.041l-1.487 2.704a.5.5 0 0 1-.914-.396l.036-.082L10.312 15H8.44l-1.496 2.745a.5.5 0 0 1-.914-.396l.036-.082L7.302 15h-.43C5.286 15 4 13.763 4 12.237s1.286-2.763 2.872-2.763h.062C7.138 7.56 8.535 6 11 6M3.803 8.7a.5.5 0 0 1-.228.6l-.082.036l-.801.276a.5.5 0 0 1-.408-.909l.082-.036l.802-.276a.5.5 0 0 1 .635.31M8.92 4.5c.332.162.625.373.873.62c-1.762.364-3.03 1.533-3.543 3.156l-.065.224l-.046.187l-.166.03a3.8 3.8 0 0 0-1.25.504A3.28 3.28 0 0 1 8.919 4.5m-6.003.17L3 4.702l.762.371a.5.5 0 0 1-.354.931l-.085-.032l-.761-.371a.5.5 0 0 1 .354-.931m7.073-2.375a.5.5 0 0 1 .262.585l-.032.084l-.371.762a.5.5 0 0 1-.931-.354l.032-.085l.371-.762a.5.5 0 0 1 .67-.23M6.2 2.263l.037.082l.276.802a.5.5 0 0 1-.909.407l-.037-.082l-.275-.801a.5.5 0 0 1 .908-.408"
@@ -24,7 +24,7 @@ export function MiniFluentWeatherRainShowersDay20Filled(props: SVGProps<SVGSVGEl
 
 export function DoubleSword(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24" {...props}>
       <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
         <path d="M2 19.2L3.8 21m.9-7.2l.9 3.6m0 0l3.6.9m-3.6-.9l-2.7 2.7M16.4 3.9l-9 9l.45 2.25l2.25.45l9-9L20 3z"></path>
         <path d="M22 19.2L20.2 21m-.9-7.2l-.9 3.6m0 0l2.7 2.7m-2.7-2.7l-1.8.45l-1.8.45M9.3 11L4.9 6.6L4 3l3.6.9L12 8.3m.1 5.5l1.8 1.8l2.25-.45l.45-2.25l-1.8-1.8"></path>
@@ -46,7 +46,7 @@ export function MiniDoubleSword(props: SVGProps<SVGSVGElement>) {
 
 export function ShieldPlus(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
         d="M19 20v2.97h-2V20h-3v-2h3v-3h2v3h3v2zM12 1l9 4v6c0 .9-.1 1.78-.29 2.65A5.8 5.8 0 0 0 18 13a6 6 0 0 0-6 6c0 1.36.45 2.62 1.22 3.62L12 23c-5.16-1.26-9-6.45-9-12V5z"
@@ -68,7 +68,7 @@ export function MiniShieldPlus(props: SVGProps<SVGSVGElement>) {
 
 export function BookmarkAddSharp(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
         d="M17 9V7h-2V6h2V4h1v2h2v1h-2v2zM6 19.5V4h7.77q-.386.596-.578 1.197T13 6.5q0 1.742 1.157 3.012T17 10.958q.288.036.5.036t.5-.036V19.5l-6-2.583z"
@@ -115,7 +115,7 @@ export function ChevronOpen(props: SVGProps<SVGSVGElement>) {
 
 export function ChevronExpand(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 16 16" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 16 16" {...props}>
       <path
         fill="currentColor"
         fillRule="evenodd"
@@ -139,7 +139,7 @@ export function MiniChevronExpand(props: SVGProps<SVGSVGElement>) {
 
 export function ChevronCollapse(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 16 16" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 16 16" {...props}>
       <path
         fill="currentColor"
         fillRule="evenodd"
