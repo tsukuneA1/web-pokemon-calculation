@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import DamageBar from '../DamageBar';
 import SavedDamageBar from '../SavedDamageBar';
+import { useWindowSize } from '@/function/GetWindowSize';
 
 const overlayStyle: React.CSSProperties = {
   position: 'fixed',
@@ -72,7 +73,7 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
     <div style={overlayStyle} onClick={onClose} className="z-50">
       <div
         style={dialogBoxStyle}
-        className="sm:w-auto p-3 md:p-5"
+        className="w-auto p-3 md:p-5"
         onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
         <h4 className="text-center">詳細</h4>
@@ -121,37 +122,6 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
             <div className="my-2 text-end">{stat.dfTera.name}</div>
           </div>
         </div>
-
-        {/* <div style={styles.container} className='text-sm md:text-base'>
-          <div>{stat.atPoke.name}</div>
-          <div>ポケモン名</div>
-          <div>{dfPoke.name}</div>
-        </div>
-        <div style={styles.container} className='text-sm md:text-base'>
-          <div>{stat.atActual}</div>
-          <div>実数値</div>
-          <div>{dfActual}</div>
-        </div>
-        <div style={styles.container} className='text-sm md:text-base'>
-          <div>{ranks[stat.atRank]}</div>
-          <div>ランク補正</div>
-          <div>{ranks[stat.dfRank]}</div>
-        </div>
-        <div style={styles.container} className='text-sm md:text-base'>
-          <div>{stat.currentAbility === 'null' ? 'なし' : stat.currentAbility}</div>
-          <div className='text-center'>特性(適用中)</div>
-          <div>{stat.dfAbility === 'null' ? 'なし' : stat.dfAbility}</div>
-        </div>
-        <div style={styles.container} className='text-sm md:text-base'>
-          <div>{stat.effect}</div>
-          <div>持ち物</div>
-          <div>{stat.dfEffect}</div>
-        </div>
-        <div style={styles.container} className='text-sm md:text-base'>
-          <div>{stat.atTera.name}</div>
-          <div>テラスタル</div>
-          <div>{stat.dfTera.name}</div>
-        </div> */}
         <div className="border-t-2 py-3 text-sm md:text-base">
           <h4 className="text-center">環境</h4>
           <div className="flex justify-center text-xs sm:text-sm">
@@ -175,16 +145,6 @@ const DamageDialog: React.FC<DamageDialogProps> = ({ isOpen, onClose, stat, pos1
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: '10px',
-    marginBottom: '10px',
-  },
 };
 
 export default DamageDialog;

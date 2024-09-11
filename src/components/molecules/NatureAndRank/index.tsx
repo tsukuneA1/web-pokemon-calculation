@@ -34,34 +34,32 @@ const NatureRank: React.FC<natureRankProps> = ({
   return (
     <div>
       <div style={styles.effortAndActual}>
-      <Dropdown
-        title="性格補正"
-        options={charas}
-        initialPos={charas.indexOf(natureSelect)}
-        selected={natureSelect}
-        onSelect={(option, index) => natureHandle(index)}
-      />
-      <div className="ml-4">
-        <DropdownButtons
-          title="ランク補正"
-          width="120px"
-          options={ranks}
-          selected={rankSelect}
-          initialPos={6}
-          buttonWidth={buttonWidth}
-          buttonHeight={buttonHeight}
-          buttonColor={buttonColor}
-          buttonBackground={buttonBackground}
-          buttonRadius={buttonRadius}
-          buttonFontSize={buttonFontSize}
-          onSelect={(selected: string) => rankHandle(selected)}
-          buttonClicked={(plus: boolean, selected: string) => rankButtonClicked(plus, selected)}
+        <Dropdown
+          title="性格補正"
+          options={charas}
+          initialPos={charas.indexOf(natureSelect)}
+          selected={natureSelect}
+          onSelect={(option, index) => natureHandle(index)}
         />
+        <div className="ml-4">
+          <DropdownButtons
+            title="ランク補正"
+            width="120px"
+            options={ranks}
+            selected={rankSelect}
+            initialPos={6}
+            buttonWidth={buttonWidth}
+            buttonHeight={buttonHeight}
+            buttonColor={buttonColor}
+            buttonBackground={buttonBackground}
+            buttonRadius={buttonRadius}
+            buttonFontSize={buttonFontSize}
+            onSelect={(selected: string) => rankHandle(selected)}
+            buttonClicked={(plus: boolean, selected: string) => rankButtonClicked(plus, selected)}
+          />
+        </div>
       </div>
-      
     </div>
-    </div>
-    
   );
 };
 

@@ -609,8 +609,10 @@ export function finalDamageMagnification(
   switch (atEffect) {
     case '命の珠':
       retDamage *= 5324 / 4096;
+      break;
     case 'たつじんのおび':
       retDamage *= 4915 / 4096;
+      break;
   }
 
   switch (dfAbility) {

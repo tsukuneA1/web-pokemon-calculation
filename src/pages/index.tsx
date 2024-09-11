@@ -14,6 +14,7 @@ import { deleteAll } from '@/app/damageSlice';
 import { Tooltip, Button } from '@nextui-org/react';
 import { useWindowSize } from '@/function/GetWindowSize';
 import Head from 'next/head';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -83,66 +84,69 @@ export default function Home() {
         <title>ポケモンダメージ計算sv</title>
         <meta name="description" content="Welcome to my website!" />
       </Head>
-      <div>
-        {/* <a href='/SavedPokePage/'>jump</a> */}
-        {windowSize.width > 1024 ? (
-          <div className="pb-40 bg-zinc-200">
-            <div style={{ textAlign: 'center', paddingTop: '50px' }} className="lg:flex justify-items-center">
-              <div className="flex items-center lg:w-1/2 flex-col">
-                <Attacker />
-                <ExtraDamageComponent />
-              </div>
-              <div className="mt-7">
-                <Tooltip
-                  showArrow={true}
-                  content="攻守反転"
-                  color="warning"
-                  className="capitalize bg-gray-10 p-3 rounded-lg"
-                >
-                  <Button onClick={reversal}>
-                    <SwitchHorizontal />
-                  </Button>
-                </Tooltip>
-              </div>
-              <div className="flex items-center lg:w-1/2 flex-col">
-                <Defender />
-                <div className="mt-10 w-full items-center justify-center">
-                  <Env />
+      <body>
+        <div>
+          {/* <a href='/SavedPokePage/'>jump</a> */}
+          {windowSize.width > 1024 ? (
+            <div className="pb-40 bg-zinc-200">
+              <div style={{ textAlign: 'center', paddingTop: '50px' }} className="lg:flex justify-items-center">
+                <div className="flex items-center lg:w-1/2 flex-col">
+                  <Attacker />
+                  <ExtraDamageComponent />
+                </div>
+                <div className="mt-7">
+                  <Tooltip
+                    showArrow={true}
+                    content="攻守反転"
+                    color="warning"
+                    className="capitalize bg-gray-10 p-3 rounded-lg"
+                  >
+                    <Button onClick={reversal}>
+                      <SwitchHorizontal />
+                    </Button>
+                  </Tooltip>
+                </div>
+                <div className="flex items-center lg:w-1/2 flex-col">
+                  <Defender />
+                  <div className="mt-10 w-full items-center justify-center">
+                    <Env />
+                  </div>
                 </div>
               </div>
+              <Damage />
             </div>
-            <Damage />
-          </div>
-        ) : (
-          <div className="pt-10 pb-32  bg-zinc-200">
-            <div style={{ textAlign: 'center' }} className="lg:flex justify-items-center">
-              <div className="flex items-center lg:w-1/2 flex-col">
-                <Attacker />
-              </div>
-              <div className="my-5">
-                <Tooltip
-                  showArrow={true}
-                  content="攻守反転"
-                  color="warning"
-                  className="capitalize bg-gray-10 p-3 rounded-lg"
-                >
-                  <Button onClick={reversal}>
-                    <SwitchVertical />
-                  </Button>
-                </Tooltip>
-              </div>
-              <div className="flex items-center lg:w-1/2 flex-col">
-                <Defender />
-                <div className="mt-10 w-full items-center justify-center">
-                  <Env />
+          ) : (
+            <div className="pt-10 pb-32  bg-zinc-200">
+              <div style={{ textAlign: 'center' }} className="lg:flex justify-items-center">
+                <div className="flex items-center lg:w-1/2 flex-col">
+                  <Attacker />
                 </div>
-                <ExtraDamageComponent />
+                <div className="my-5">
+                  <Tooltip
+                    showArrow={true}
+                    content="攻守反転"
+                    color="warning"
+                    className="capitalize bg-gray-10 p-3 rounded-lg"
+                  >
+                    <Button onClick={reversal}>
+                      <SwitchVertical />
+                    </Button>
+                  </Tooltip>
+                </div>
+                <div className="flex items-center lg:w-1/2 flex-col">
+                  <Defender />
+                  <div className="mt-10 w-full items-center justify-center">
+                    <Env />
+                  </div>
+                  <ExtraDamageComponent />
+                </div>
               </div>
+              <Damage />
             </div>
-            <Damage />
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+        <Analytics />
+      </body>
     </>
   );
 }

@@ -5,6 +5,7 @@ import TribeComponent from '@/components/atoms/Tribe';
 import Types from '@/components/atoms/Types';
 import TerastalTag from '@/components/atoms/TerastalTag';
 import { Type } from '@/interfaces';
+import { useRouter } from 'next/router';
 
 interface PokeInfoProps {
   pokeSrc: string;
@@ -39,16 +40,32 @@ const PokeInfo: React.FC<PokeInfoProps> = ({
   onSearchClicked,
   onTerastalClicked,
 }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push({
+      pathname: '../../../../SavedPokePage/',
+      query: { attack: 'attack' },
+    });
+  };
   return (
     <div style={styles.pokeInfo} className="w-full">
-      <ImageComponent
-        src={pokeSrc}
-        width={200}
-        height={imageHeight}
-        alt="poke Image"
-        backgroundColor="#e2e2e2"
-        borderRadius={imageRadius}
-      />
+      <div
+        onClick={() => {
+          handleClick();
+        }}
+        className="cursor-pointer"
+      >
+        <ImageComponent
+          src={pokeSrc}
+          width={200}
+          height={imageHeight}
+          alt="poke Image"
+          backgroundColor="#e2e2e2"
+          borderRadius={imageRadius}
+        />
+      </div>
+
       <div className="w-auto mt-0 ml-2 sm:ml-3 md:ml-4 lg:ml-5">
         <SearchBox
           width={100}

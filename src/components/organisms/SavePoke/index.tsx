@@ -4,15 +4,28 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { JSX, SVGProps } from 'react';
+import Types from '@/components/atoms/Types';
+import { Poke } from '@/interfaces';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
+import { useRouter } from 'next/router';
 
-export default function Component() {
+export default function Component(query: any) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push({
+      pathname: '/',
+      query: { attack: 'attack' },
+    });
+  };
+  const atPoke = useSelector((state: RootState) => state.stats.atPoke);
   return (
-    <div className="w-full max-w-md mx-auto p-4">
+    <div className="w-full max-w-md mx-auto p-4 bg-white">
       <header className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <MenuIcon className="w-6 h-6" />
@@ -26,40 +39,38 @@ export default function Component() {
         </div>
       </header>
       <div className="flex items-center justify-between mb-4">
-        <Button variant="default" className="flex items-center space-x-2">
+        <Button variant="default" className="flex items-center space-x-2 bg-zinc-400">
           <SaveIcon className="w-4 h-4" />
           <span>保存</span>
         </Button>
-        <Button variant="destructive" className="flex items-center space-x-2">
+        <Button
+          variant="destructive"
+          className="flex items-center space-x-2"
+          onClick={() => {
+            handleClick();
+          }}
+        >
           <DeleteIcon className="w-4 h-4" />
           <span>キャンセル</span>
         </Button>
       </div>
       <div className="flex items-center space-x-4 mb-4">
         <img
-          src="/placeholder.svg"
+          src={atPoke.src}
           alt="Pokemon"
-          className="w-16 h-16"
+          className="w-16 h-16 bg-zinc-200 rounded-md"
           width="64"
           height="64"
           style={{ aspectRatio: '64/64', objectFit: 'cover' }}
         />
         <div className="flex space-x-2">
-          <Badge variant="default" className="bg-purple-500 text-white">
-            ゴースト
-          </Badge>
-          <Badge variant="default" className="bg-pink-500 text-white">
-            フェアリー
-          </Badge>
-          <Badge variant="default" className="bg-blue-500 text-white">
-            ステラ
-          </Badge>
+          <Types type1={atPoke.types[0]} type2={atPoke.types[1]} />
         </div>
       </div>
       <form className="space-y-4">
         <div className="flex items-center space-x-2">
           <Label htmlFor="pokemon-name">ポケモン</Label>
-          <Input id="pokemon-name" placeholder="ハバタクカミ" className="flex-1" />
+          <Input id="pokemon-name" placeholder={atPoke.name} className="flex-1" />
           <Label htmlFor="level">レベル</Label>
           <Input id="level" placeholder="50" className="w-16" />
         </div>

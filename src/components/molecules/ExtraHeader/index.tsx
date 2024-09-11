@@ -33,31 +33,31 @@ interface HeaderProps {
 const ExtraHeader: React.FC<HeaderProps> = ({ title, icon, onIconClick, fold, width, openDialog, del }) => {
   return (
     <header style={fold ? { ...styles.foldHeader } : { ...styles.header }} className="w-full p-2 md:p-3">
-      <div style={styles.leftContainer} className='w-1/2'>
+      <div style={styles.leftContainer} className="w-1/2">
         {icon}
         <h1 className="text-base font-bold ml-4 sm:text-xl">{title}</h1>
       </div>
-      <div style={styles.iconButton} className='w-1/2 flex justify-end'>
+      <div style={styles.iconButton} className="w-1/2 flex justify-end">
         <div className="flex justify-end pt-1">
-  <Tooltip showArrow={true} content="詳細" color="warning" className="capitalize bg-gray-10 rounded-lg">
-    <Button onClick={openDialog} className="pl-1 py-0 pr-0">
-      {width < 640 ? <MiniDetail /> : width < 1280 ? <MiddleDetail /> : <Detail />}
-    </Button>
-  </Tooltip>
-  <div className="w-10">
-    <Tooltip showArrow={true} content="消去" color="warning" className="capitalize bg-gray-10 rounded-lg">
-      <Button onClick={del} className="pl-1 py-0 pr-0 md:pl-2">
-        {width < 640 ? (
-          <MiniDeleteForeverRounded />
-        ) : width < 1280 ? (
-          <MiddleDeleteForeverRounded />
-        ) : (
-          <DeleteForeverRounded />
-        )}
-      </Button>
-    </Tooltip>
-  </div>
-</div>
+          <Tooltip showArrow={true} content="詳細" color="warning" className="capitalize bg-gray-10 rounded-lg">
+            <Button onClick={openDialog} className="pl-1 py-0 pr-0">
+              {width < 640 ? <MiniDetail /> : width < 1280 ? <MiddleDetail /> : <Detail />}
+            </Button>
+          </Tooltip>
+          <div className="w-10">
+            <Tooltip showArrow={true} content="消去" color="warning" className="capitalize bg-gray-10 rounded-lg">
+              <Button onClick={del} className="pl-1 py-0 pr-0 md:pl-2">
+                {width < 640 ? (
+                  <MiniDeleteForeverRounded />
+                ) : width < 1280 ? (
+                  <MiddleDeleteForeverRounded />
+                ) : (
+                  <DeleteForeverRounded />
+                )}
+              </Button>
+            </Tooltip>
+          </div>
+        </div>
 
         {fold ? (
           <IconButton

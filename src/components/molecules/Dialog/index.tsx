@@ -1,6 +1,6 @@
 import TypeImage from '@/components/atoms/TypeImage';
+import { useWindowSize } from '@/function/GetWindowSize';
 import { Type, typeInterface } from '@/interfaces';
-import Image from 'next/image';
 import React, { useEffect } from 'react';
 
 const overlayStyle: React.CSSProperties = {
@@ -237,7 +237,7 @@ const styles = {
     justifyItems: 'center',
     alignItems: 'center',
     paddingLeft: '20%',
-    marginBottom: '5px',
+    marginBottom: '3px',
   },
   margin: {
     marginRight: '10px',

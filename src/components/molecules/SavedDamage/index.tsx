@@ -14,20 +14,9 @@ import { RootState } from '@/app/store';
 import { typeInterface } from '@/interfaces';
 import DamageDialog from '../DamageDialog';
 import Header from '../Header';
-import {
-  BookmarkAddSharp,
-  DeleteForeverRounded,
-  Detail,
-  MiddleDeleteForeverRounded,
-  MiddleDetail,
-  MiniBookmarkAddSharp,
-  MiniDeleteForeverRounded,
-  MiniDetail,
-} from '@/components/icons/Icons';
+import { BookmarkAddSharp, MiniBookmarkAddSharp } from '@/components/icons/Icons';
 import SavedPokeInfo from '../SavedPokeInfo';
 import SavedDamageBar from '../SavedDamageBar';
-import { Tooltip } from '@nextui-org/tooltip';
-import { Button } from '@nextui-org/react';
 import { useWindowSize } from '@/function/GetWindowSize';
 import ExtraHeader from '../ExtraHeader';
 
@@ -130,17 +119,17 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
   return (
     <div className="w-full mt-10">
       <ExtraHeader
-      title="追加ダメージ"
-      icon={windowSize.width < 640 ? <MiniBookmarkAddSharp /> : <BookmarkAddSharp />}
-      fold={fold}
-      onIconClick={() => setFold(!fold)}
-      width={windowSize.width}
-      openDialog={openDialog}
-      del={del}
+        title="追加ダメージ"
+        icon={windowSize.width < 640 ? <MiniBookmarkAddSharp /> : <BookmarkAddSharp />}
+        fold={fold}
+        onIconClick={() => setFold(!fold)}
+        width={windowSize.width}
+        openDialog={openDialog}
+        del={del}
       />
       {fold ? (
         <>
-        <DamageDialog
+          <DamageDialog
             isOpen={isDialogOpen}
             onClose={closeDialog}
             stat={stat}
@@ -162,31 +151,10 @@ const SavedDamageComponent: React.FC<savedDamageProps> = ({ stat, del }) => {
                 terastalType={stat.atTera}
               />
               <div className="text-sm sm:text-base md:text-lg text-start mt-5 mb-0 pb-0 ">{skillText}</div>
-              <div className='pr-5'>
-              <SavedDamageBar pos1={pos1} pos2={pos2} damageText={damageText} />
+              <div className="pr-5">
+                <SavedDamageBar pos1={pos1} pos2={pos2} damageText={damageText} />
               </div>
-              
             </div>
-            {/* <div className="flex justify-items-end">
-              <Tooltip showArrow={true} content="詳細" color="warning" className="capitalize bg-gray-10 rounded-lg">
-                <Button onClick={openDialog} className="pl-1 py-0 pr-0">
-                  {windowSize.width < 640 ? <MiniDetail /> : windowSize.width < 1280 ? <MiddleDetail /> : <Detail />}
-                </Button>
-              </Tooltip>
-              <div className="w-10">
-                <Tooltip showArrow={true} content="消去" color="warning" className="capitalize bg-gray-10 rounded-lg">
-                  <Button onClick={del} className="pl-1 py-0 pr-0 md:pl-2">
-                    {windowSize.width < 640 ? (
-                      <MiniDeleteForeverRounded />
-                    ) : windowSize.width < 1280 ? (
-                      <MiddleDeleteForeverRounded />
-                    ) : (
-                      <DeleteForeverRounded />
-                    )}
-                  </Button>
-                </Tooltip>
-              </div>
-            </div> */}
           </div>
           <DamageDialog
             isOpen={isDialogOpen}
