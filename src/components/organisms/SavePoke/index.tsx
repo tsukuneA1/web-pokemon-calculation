@@ -23,13 +23,18 @@ export default function Component(query: any) {
   const [poke, setPoke] = useState(useSelector((state: RootState) => state.savePoke.poke));
   const attacker = useSelector((state: RootState) => state.savePoke.attacker);
   const defender = useSelector((state: RootState) => state.savePoke.defender);
-  const [tera, setTera] = useState(attacker ? useSelector((state: RootState) => state.stats.atTera) : defender ? useSelector((state: RootState) => state.defender.dfTera) : typeInterface[0]);
-  const [skill1, setSkill1] = useState<Skill | undefined>(useSelector((state: RootState) => state.savePoke.attacker) ? useSelector((state: RootState) => state.stats.selectedSkill) : undefined);
+  const atTera = useSelector((state: RootState) => state.stats.atTera);
+  const dfTera = useSelector((state: RootState) => state.defender.dfTera);
+  const atSkill = useSelector((state: RootState) => state.stats.selectedSkill);
+  const atEffect = useSelector((state: RootState) => state.stats.effect);
+  const dfEffect = useSelector((state: RootState) => state.defender.effect);
+  const [tera, setTera] = useState(attacker ? atTera : defender ? dfTera : typeInterface[0]);
+  const [skill1, setSkill1] = useState<Skill | undefined>(attacker ? atSkill : undefined);
   const [skills, setSkills] = useState<customSkill[]>([]);
   const [skill2, setSkill2] = useState<Skill>();
   const [skill3, setSkill3] = useState<Skill>();
   const [skill4, setSkill4] = useState<Skill>();
-  const [effect, setEffect] = useState<string>(attacker ? useSelector((state: RootState) => state.stats.effect) : defender ? useSelector((state: RootState) => state.defender.effect) : '持ち物なし');
+  const [effect, setEffect] = useState<string>(attacker ? atEffect : defender ? dfEffect : '持ち物なし');
   const [ability, setAbility] = useState<string>(poke.abilities[0]);
 
   const topSkills: customSkill[] = [
