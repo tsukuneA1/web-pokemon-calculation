@@ -4,6 +4,7 @@ import defenderReducer from './defenderSlice';
 import envReducer from './envSlice';
 import savedReducer from './damageSlice';
 import foldReducer from './foldSlice';
+import savePokeReducer from './saveSlice';
 
 interface SetSkillPayload {
   skill: Skill;
@@ -444,6 +445,7 @@ const store = configureStore({
     env: envReducer,
     saved: savedReducer,
     fold: foldReducer,
+    savePoke: savePokeReducer,
   },
 });
 

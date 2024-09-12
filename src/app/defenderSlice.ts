@@ -59,6 +59,7 @@ const defenderSlice = createSlice({
       state.dNatureMultiplier = 1;
       state.bRank = 6;
       state.dRank = 6;
+      state.effect = '持ち物なし';
       state.dfTera = typeInterface[0];
       state.hActual = Math.floor(((state.poke.hp * 2 + state.hIndividual + state.hEffort / 4) * 50) / 100 + 50 + 10);
       state.bActual = Math.floor(

@@ -28,11 +28,8 @@ export interface Pokemon {
 }
 
 interface SearchBoxProps {
-  width: number;
-  height: number;
   text: string;
   onClick: (poke: Pokemon) => void;
-  fontSize: string;
 }
 
 const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
@@ -122,16 +119,11 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
           value={query}
           onChange={handleInputChange}
           onFocus={handleFocus}
-          className="w-full text-base sm:text-lg md:text-xl py-1 pl-1 md:py-2 md:pl-2"
+          className="w-full text-base sm:text-lg py-1 pl-1 md:pl-2 border-2"
           style={{
             boxSizing: 'border-box',
-            borderTopLeftRadius: '10px',
-            borderTopRightRadius: '10px',
+            borderRadius: '20px',
             ...styles.search,
-            borderTop: 'none',
-            borderRight: 'none',
-            borderLeft: 'none',
-            outline: 'none',
           }}
         />
         {query && (
@@ -143,14 +135,19 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
               top: '50%',
               transform: 'translateY(-50%)',
               background: 'none',
-              border: 'none',
+              border: '2px solid',
+              borderRadius: '50%',
               cursor: 'pointer',
               fontSize: '24px',
               color: '#888',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             aria-label="Clear text"
+            className="w-6 h-6 md:w-7 md:h-7"
           >
-            &times;
+            ×
           </button>
         )}
       </div>
@@ -159,7 +156,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
           ref={suggestionBoxRef}
           style={{
             position: 'absolute',
-            width: windowSize.width < 640 ? '240px' : '400px',
+            width: 'auto',
             maxHeight: '500px',
             overflowY: 'auto',
             backgroundColor: '#fff',
@@ -197,7 +194,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottom: '3px solid #f5f5f5',
     cursor: 'pointer',
   },
 };

@@ -5,11 +5,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useWindowSize } from '@/function/GetWindowSize';
 
-function toKatakana(input: string): string {
+export function toKatakana(input: string): string {
   return input.replace(/[\u3041-\u3096]/g, (char) => String.fromCharCode(char.charCodeAt(0) + 0x60));
 }
 
-function toHiragana(input: string): string {
+export function toHiragana(input: string): string {
   return input.replace(/[\u30a1-\u30f6]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0x60));
 }
 
@@ -151,7 +151,7 @@ const SkillSearchBox: React.FC = () => {
   const windowSize = useWindowSize();
 
   return (
-    <div style={{ position: 'relative', width: '200px' }}>
+    <div style={{ position: 'relative', width: '250px' }}>
       <div style={{ position: 'relative' }}>
         <input
           ref={inputRef}
@@ -162,32 +162,33 @@ const SkillSearchBox: React.FC = () => {
           style={{
             width: '100%',
             boxSizing: 'border-box',
-            borderBottom: '1px solid #000',
-            borderTop: 'none',
-            borderRight: 'none',
-            borderLeft: 'none',
             outline: 'none',
           }}
-          className="h-10 text-sm sm:h-12 sm:text-base p-1 sm:p-2"
+          className="text-sm sm:text-base p-1 sm:p-2 border-2 flex rounded-2xl md:rounded-3xl"
         />
         {query && (
           <button
-            onClick={clearText}
-            style={{
-              position: 'absolute',
-              right: '8px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              fontSize: '18px',
-              color: '#888',
-            }}
-            aria-label="Clear text"
-          >
-            &times;
-          </button>
+          onClick={clearText}
+          style={{
+            position: 'absolute',
+            right: '8px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'none',
+            border: '2px solid',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            fontSize: '24px',
+            color: '#888',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          aria-label="Clear text"
+          className="w-6 h-6 md:w-7 md:h-7"
+        >
+          ×
+        </button>
         )}
       </div>
       {showSuggestions && filteredSuggestions.length > 0 && (

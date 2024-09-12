@@ -7,15 +7,78 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
-import { JSX, SVGProps } from 'react';
+import { JSX, SVGProps, useEffect, useState } from 'react';
 import Types from '@/components/atoms/Types';
-import { Poke } from '@/interfaces';
+import { Poke, Type, typeInterface } from '@/interfaces';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/app/store';
+import { RootState, Skill } from '@/app/store';
 import { useRouter } from 'next/router';
+import PokeInfo from '@/components/molecules/PokeInfo';
+import { Pokemon } from '@/components/atoms/SearchBox';
+import SavedSkillSearch from '@/components/atoms/Search';
+import { customSkill } from '@/components/atoms/SkillSearch';
 
 export default function Component(query: any) {
   const router = useRouter();
+  const [poke, setPoke] = useState(useSelector((state: RootState) => state.stats.atPoke));
+  const [tera, setTera] = useState(useSelector((state: RootState) => state.stats.atTera));
+  const [skill1, setSkill1] = useState<Skill>(useSelector((state: RootState) => state.stats.selectedSkill));
+  const [skills, setSkills] = useState<customSkill[]>([]);
+  const [skill2, setSkill2] = useState<Skill>();
+  const [skill3, setSkill3] = useState<Skill>();
+  const [skill4, setSkill4] = useState<Skill>();
+
+  const topSkills: customSkill[] = [
+    customSKillSearch(poke.skill1),
+    customSKillSearch(poke.skill2),
+    customSKillSearch(poke.skill3),
+    customSKillSearch(poke.skill4),
+    customSKillSearch(poke.skill5),
+  ];
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch('/api/model');
+        const data = await response.json();
+        if (Array.isArray(data.skill)) {
+          setSkills(data.skill);
+        } else {
+          console.error('Expected an array but got:', data.skill);
+        }
+      } catch (error) {
+        console.error('Failed to fetch skills:', error);
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
+  function customSKillSearch(name: string): customSkill {
+    const ret = skills.find((skill) => skill.name === name);
+    if (!ret) {
+      return skills[0];
+    }
+    return ret;
+  }
+
+  function removeDuplicates(array: customSkill[]): customSkill[] {
+    const seen = new Set<string>();
+    return array.filter((skill) => {
+      if (!skill || !skill.name) {
+        return false;
+      }
+      const duplicate = seen.has(skill.name);
+      seen.add(skill.name);
+      return !duplicate;
+    });
+  }
+
+  const customed = removeDuplicates([...topSkills, ...skills]);
+
+  function deleteElement(str1?: string, str2?: string, str3?: string): customSkill[] {
+    return customed.filter(item => ![str1, str2, str3].includes(item.name));
+  }
 
   const handleClick = () => {
     router.push({
@@ -23,13 +86,54 @@ export default function Component(query: any) {
       query: { attack: 'attack' },
     });
   };
-  const atPoke = useSelector((state: RootState) => state.stats.atPoke);
+
+  const searchClicked = (selectPoke: Pokemon) => {
+    const types: Type[] = [selectPoke.type1, selectPoke.type2]
+      .filter((typeName) => typeName !== null)
+      .map((typeName) => {
+        return (
+          typeInterface.find((type) => type.name === typeName) || {
+            name: '非選択',
+            typeTagSrc: '/images/types/not_selected.png',
+            typeIconSrc: '/images/types/bef_teras.png',
+            num: 0,
+            teraTagSrc: '/images/types/bef_tera_img.png',
+            bgColor: '#a1abb3',
+          }
+        );
+      });
+
+    const newPoke = {
+      id: selectPoke.id,
+      name: selectPoke.name,
+      src: selectPoke.src,
+      types: types,
+      abilities: [selectPoke.ability1, selectPoke.ability2, selectPoke.ability3].filter((ability) => ability !== null),
+      hp: selectPoke.hp,
+      attack: selectPoke.attack,
+      defence: selectPoke.defence,
+      specialAttack: selectPoke.spAttack,
+      specialDefence: selectPoke.spDefence,
+      speed: selectPoke.speed,
+      weight: selectPoke.weight,
+      anotherName: selectPoke.anotherName,
+      rank: selectPoke.rank,
+      skill1: selectPoke.skill1,
+      skill2: selectPoke.skill2,
+      skill3: selectPoke.skill3,
+      skill4: selectPoke.skill4,
+      skill5: selectPoke.skill5,
+    };
+
+    setPoke(newPoke);
+  };
+  
   return (
-    <div className="w-full max-w-md mx-auto p-4 bg-white">
+    <div className="w-full mx-auto p-4 bg-white">
       <header className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <MenuIcon className="w-6 h-6" />
-          <h1 className="text-lg font-bold">ポケソル</h1>
+          <h1 className="text-lg font-bold"></h1>
         </div>
         <div className="flex items-center space-x-2">
           <SunIcon className="w-6 h-6" />
@@ -55,40 +159,57 @@ export default function Component(query: any) {
         </Button>
       </div>
       <div className="flex items-center space-x-4 mb-4">
-        <img
-          src={atPoke.src}
-          alt="Pokemon"
-          className="w-16 h-16 bg-zinc-200 rounded-md"
-          width="64"
-          height="64"
-          style={{ aspectRatio: '64/64', objectFit: 'cover' }}
+        <PokeInfo
+          imageWidth={200}
+          imageHeight={200}
+          imageRadius="20px"
+          typeHeight={22}
+          pokeSrc={poke.src}
+          searchText={poke.name}
+          tribeText={`${poke.hp}-${poke.attack}-${poke.defence}-${poke.specialAttack}-${poke.specialDefence}-${poke.speed}`}
+          type1={poke.types[0]}
+          type2={poke.types[1]}
+          terastalType={tera}
+          onSearchClicked={(poke: Pokemon) => {searchClicked(poke)}}
+          onTerastalClicked={(type: Type) => {
+            {
+              setTera(type);
+            }
+          }}
         />
-        <div className="flex space-x-2">
-          <Types type1={atPoke.types[0]} type2={atPoke.types[1]} />
-        </div>
       </div>
       <form className="space-y-4">
-        <div className="flex items-center space-x-2">
-          <Label htmlFor="pokemon-name">ポケモン</Label>
-          <Input id="pokemon-name" placeholder={atPoke.name} className="flex-1" />
-          <Label htmlFor="level">レベル</Label>
-          <Input id="level" placeholder="50" className="w-16" />
-        </div>
         <div className="space-y-2">
           <Label htmlFor="move1">技1</Label>
-          <Input id="move1" placeholder="ムーンフォース" />
+          <SavedSkillSearch
+            initialSkill={skill1}
+            skills={deleteElement(skill2?.name, skill3?.name, skill4?.name)}
+            setSkill={(skill: Skill) => setSkill1(skill)}
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="move2">技2</Label>
-          <Input id="move2" placeholder="シャドーボール" />
+          <SavedSkillSearch
+            initialSkill={skill2}
+            skills={deleteElement(skill1?.name, skill3?.name, skill4?.name)}
+            setSkill={(skill: Skill) => setSkill2(skill)}
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="move3">技3</Label>
-          <Input id="move3" placeholder="あまえる" />
+          <SavedSkillSearch
+            initialSkill={skill3}
+            skills={deleteElement(skill2?.name, skill1?.name, skill4?.name)}
+            setSkill={(skill: Skill) => setSkill3(skill)}
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="move4">技4</Label>
-          <Input id="move4" placeholder="いたみわけ" />
+          <SavedSkillSearch
+            initialSkill={skill4}
+            skills={deleteElement(skill2?.name, skill3?.name, skill1?.name)}
+            setSkill={(skill: Skill) => setSkill4(skill)}
+          />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">

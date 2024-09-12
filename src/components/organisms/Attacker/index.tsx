@@ -214,11 +214,7 @@ const Attacker: React.FC = () => {
             typeHeight={22}
             pokeSrc={poke.src}
             searchText={poke.name}
-            searchTextHeight={30}
-            searchTextFontSize="24px"
             tribeText={tribes}
-            height={25}
-            fontSize="20px"
             type1={poke.types[0]}
             type2={poke.types[1]}
             terastalType={atTera}
@@ -232,6 +228,8 @@ const Attacker: React.FC = () => {
                       typeTagSrc: '/images/types/not_selected.png',
                       typeIconSrc: '/images/types/bef_teras.png',
                       num: 0,
+                      teraTagSrc: '/images/types/bef_tera_img.png',
+                      bgColor: '#a1abb3',
                     }
                   );
                 });

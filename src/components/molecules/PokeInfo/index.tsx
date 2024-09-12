@@ -13,11 +13,7 @@ interface PokeInfoProps {
   imageHeight: number;
   imageRadius: string;
   searchText: string;
-  searchTextHeight: number;
-  searchTextFontSize: string;
   tribeText: string;
-  height: number;
-  fontSize: string;
   type1: Type;
   type2: Type;
   typeHeight: number;
@@ -31,8 +27,6 @@ const PokeInfo: React.FC<PokeInfoProps> = ({
   imageHeight,
   imageRadius,
   searchText,
-  searchTextHeight,
-  searchTextFontSize,
   tribeText,
   type1,
   type2,
@@ -67,13 +61,7 @@ const PokeInfo: React.FC<PokeInfoProps> = ({
       </div>
 
       <div className="w-auto mt-0 ml-2 sm:ml-3 md:ml-4 lg:ml-5">
-        <SearchBox
-          width={100}
-          height={searchTextHeight}
-          text={searchText}
-          fontSize={searchTextFontSize}
-          onClick={onSearchClicked}
-        />
+        <SearchBox text={searchText} onClick={onSearchClicked} />
         <div className="mt-0 sm:mt-1 md:mt-2">
           <TribeComponent tribe={tribeText} />
         </div>

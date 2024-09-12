@@ -12,12 +12,13 @@ const AutoTypeImage: React.FC<TypeImageProps> = ({ type }) => {
   const iconSize = windowSize.width < 640 ? 15 : windowSize.width < 1080 ? 20 : 25;
   return (
     <div
-      className="w-auto mb-0.5 sm:mb-0 mr-1 md:mr-2 bg-zinc-400 p-1 md:px-2 rounded-2xl"
+      className="w-auto mb-0.5 sm:mb-0 mr-1 md:mr-2 p-1 py-[2px] rounded-2xl"
       style={{
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'start',
+        backgroundColor: type.bgColor,
       }}
     >
       <Image src={type.typeIconSrc} alt="typeImage" width={iconSize} height={iconSize} />
