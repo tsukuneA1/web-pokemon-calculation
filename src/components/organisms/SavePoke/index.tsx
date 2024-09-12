@@ -20,13 +20,15 @@ import { customSkill } from '@/components/atoms/SkillSearch';
 
 export default function Component(query: any) {
   const router = useRouter();
-  const [poke, setPoke] = useState(useSelector((state: RootState) => state.stats.atPoke));
-  const [tera, setTera] = useState(useSelector((state: RootState) => state.stats.atTera));
+  const [poke, setPoke] = useState(useSelector((state: RootState) => state.savePoke.poke));
+  const [tera, setTera] = useState(useSelector((state: RootState) => state.savePoke.attacker) ? useSelector((state: RootState) => state.stats.atTera) : useSelector((state: RootState) => state.savePoke.defender) ? useSelector((state: RootState) => state.defender.dfTera) : typeInterface[0]);
   const [skill1, setSkill1] = useState<Skill>(useSelector((state: RootState) => state.stats.selectedSkill));
   const [skills, setSkills] = useState<customSkill[]>([]);
   const [skill2, setSkill2] = useState<Skill>();
   const [skill3, setSkill3] = useState<Skill>();
   const [skill4, setSkill4] = useState<Skill>();
+  const [effect, setEffect] = useState<string>(useSelector((state: RootState) => state.savePoke.attacker) ? useSelector((state: RootState) => state.stats.effect) : useSelector((state: RootState) => state.savePoke.defender) ? useSelector((state: RootState) => state.defender.effect) : '持ち物なし');
+  const [ability, setAbility] = useState<string>(poke.abilities[0]);
 
   const topSkills: customSkill[] = [
     customSKillSearch(poke.skill1),

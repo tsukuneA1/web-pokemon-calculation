@@ -168,27 +168,27 @@ const SkillSearchBox: React.FC = () => {
         />
         {query && (
           <button
-          onClick={clearText}
-          style={{
-            position: 'absolute',
-            right: '8px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            background: 'none',
-            border: '2px solid',
-            borderRadius: '50%',
-            cursor: 'pointer',
-            fontSize: '24px',
-            color: '#888',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          aria-label="Clear text"
-          className="w-6 h-6 md:w-7 md:h-7"
-        >
-          ×
-        </button>
+            onClick={clearText}
+            style={{
+              position: 'absolute',
+              right: '8px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'none',
+              border: '2px solid',
+              borderRadius: '50%',
+              cursor: 'pointer',
+              fontSize: '24px',
+              color: '#888',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            aria-label="Clear text"
+            className="w-6 h-6 md:w-7 md:h-7"
+          >
+            ×
+          </button>
         )}
       </div>
       {showSuggestions && filteredSuggestions.length > 0 && (
