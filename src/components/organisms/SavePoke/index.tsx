@@ -29,7 +29,7 @@ export default function Component(query: any) {
   const [skill2, setSkill2] = useState<Skill>();
   const [skill3, setSkill3] = useState<Skill>();
   const [skill4, setSkill4] = useState<Skill>();
-  const [effect, setEffect] = useState<string>(useSelector((state: RootState) => state.savePoke.attacker) ? useSelector((state: RootState) => state.stats.effect) : useSelector((state: RootState) => state.savePoke.defender) ? useSelector((state: RootState) => state.defender.effect) : '持ち物なし');
+  const [effect, setEffect] = useState<string>(attacker ? useSelector((state: RootState) => state.stats.effect) : defender ? useSelector((state: RootState) => state.defender.effect) : '持ち物なし');
   const [ability, setAbility] = useState<string>(poke.abilities[0]);
 
   const topSkills: customSkill[] = [
