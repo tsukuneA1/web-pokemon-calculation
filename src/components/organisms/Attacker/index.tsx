@@ -34,6 +34,7 @@ import Preeminence from '@/components/molecules/Preeminence';
 import { useWindowSize } from '@/function/GetWindowSize';
 import CheckBox from '@/components/atoms/CheckBox';
 import { Input } from '@/components/ui/input';
+import { setAttacker, setPoke } from '@/app/saveSlice';
 
 const Attacker: React.FC = () => {
   const dispatch = useDispatch();
@@ -195,6 +196,11 @@ const Attacker: React.FC = () => {
     dispatch(setAtTera(type));
   }
 
+  function onPush() {
+    dispatch(setPoke(poke));
+    dispatch(setAttacker(true));
+    }
+
   const windowSize = useWindowSize();
   if (!atFold) {
     return (
@@ -272,6 +278,7 @@ const Attacker: React.FC = () => {
             onTerastalClicked={(type: Type) => {
               teraClicked(type);
             }}
+            onRouterPush={onPush}
           />
           <Numerical
             AtOrSpe={atOrSpe}

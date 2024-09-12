@@ -20,6 +20,7 @@ interface PokeInfoProps {
   terastalType: Type;
   onSearchClicked: (poke: Pokemon) => void;
   onTerastalClicked: (type: Type) => void;
+  onRouterPush: () => void;
 }
 
 const PokeInfo: React.FC<PokeInfoProps> = ({
@@ -33,10 +34,12 @@ const PokeInfo: React.FC<PokeInfoProps> = ({
   terastalType,
   onSearchClicked,
   onTerastalClicked,
+  onRouterPush,
 }) => {
   const router = useRouter();
 
   const handleClick = () => {
+    onRouterPush();
     router.push({
       pathname: '../../../../SavedPokePage/',
       query: { attack: 'attack' },

@@ -53,7 +53,7 @@ const saveSlice = createSlice({
     },
     setDefender(state, action: PayloadAction<boolean>) {
       state.defender = action.payload;
-      action.payload ? (state.defender = false) : () => {};
+      action.payload ? (state.attacker = false) : () => {};
     },
     setHEffort(state, action: PayloadAction<number>) {
       state.hEffort = action.payload;

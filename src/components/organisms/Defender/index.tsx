@@ -4,7 +4,7 @@ import { MiniShieldPlus, ShieldPlus } from '@/components/icons/Icons';
 import PokeInfo from '@/components/molecules/PokeInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, setSkill } from '@/app/store';
-import { setDfPoke, setDfTera } from '@/app/defenderSlice';
+import { setDfPoke, setDfTera, setHEffort } from '@/app/defenderSlice';
 import { Pokemon } from '@/components/atoms/SearchBox';
 import { Type, typeInterface } from '@/interfaces';
 import DfNumerical from '@/components/molecules/DfNumerical';
@@ -12,6 +12,7 @@ import DfAbilityEffect from '@/components/molecules/DfAbilityEffect';
 import { setCurrentAbility } from '@/app/defenderSlice';
 import { deleteAll } from '@/app/damageSlice';
 import { useWindowSize } from '@/function/GetWindowSize';
+import { setBEffort, setDefender, setDEffort, setPoke } from '@/app/saveSlice';
 
 interface DefenderProps {}
 
@@ -24,6 +25,9 @@ const Defender: React.FC<DefenderProps> = () => {
   const handlerIconClick = () => {
     setFold(!fold);
   };
+  const hEffort = useSelector((state: RootState) => state.defender.hEffort);
+  const bEffort = useSelector((state: RootState) => state.defender.bEffort);
+  const dEffort = useSelector((state: RootState) => state.defender.dEffort)
 
   const searchClicked = (selectPoke: Pokemon) => {
     const types: Type[] = [selectPoke.type1, selectPoke.type2]
@@ -71,6 +75,15 @@ const Defender: React.FC<DefenderProps> = () => {
 
   var tribes = `${poke.hp}-${poke.attack}-${poke.defence}-${poke.specialAttack}-${poke.specialDefence}-${poke.speed}`;
 
+  function onPush() {
+    dispatch(setPoke(poke));
+    dispatch(setDefender(true));
+    dispatch(setHEffort(hEffort));
+    dispatch(setBEffort(bEffort));
+    dispatch(setDEffort(dEffort));
+
+  }
+
   const windowSize = useWindowSize();
   return (
     <div style={{ width: '95%' }}>
@@ -100,6 +113,7 @@ const Defender: React.FC<DefenderProps> = () => {
             onTerastalClicked={(type: Type) => {
               dispatch(setDfTera(type));
             }}
+            onRouterPush={onPush}
           />
           <div className="my-3">
             <DfNumerical poke={poke} />

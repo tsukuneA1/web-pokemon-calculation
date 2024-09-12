@@ -21,8 +21,10 @@ import { customSkill } from '@/components/atoms/SkillSearch';
 export default function Component(query: any) {
   const router = useRouter();
   const [poke, setPoke] = useState(useSelector((state: RootState) => state.savePoke.poke));
-  const [tera, setTera] = useState(useSelector((state: RootState) => state.savePoke.attacker) ? useSelector((state: RootState) => state.stats.atTera) : useSelector((state: RootState) => state.savePoke.defender) ? useSelector((state: RootState) => state.defender.dfTera) : typeInterface[0]);
-  const [skill1, setSkill1] = useState<Skill>(useSelector((state: RootState) => state.stats.selectedSkill));
+  const attacker = useSelector((state: RootState) => state.savePoke.attacker);
+  const defender = useSelector((state: RootState) => state.savePoke.defender);
+  const [tera, setTera] = useState(attacker ? useSelector((state: RootState) => state.stats.atTera) : defender ? useSelector((state: RootState) => state.defender.dfTera) : typeInterface[0]);
+  const [skill1, setSkill1] = useState<Skill | undefined>(useSelector((state: RootState) => state.savePoke.attacker) ? useSelector((state: RootState) => state.stats.selectedSkill) : undefined);
   const [skills, setSkills] = useState<customSkill[]>([]);
   const [skill2, setSkill2] = useState<Skill>();
   const [skill3, setSkill3] = useState<Skill>();
@@ -178,6 +180,7 @@ export default function Component(query: any) {
               setTera(type);
             }
           }}
+          onRouterPush={() => {}}
         />
       </div>
       <form className="space-y-4">
