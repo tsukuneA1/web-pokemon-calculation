@@ -34,7 +34,7 @@ import Preeminence from '@/components/molecules/Preeminence';
 import { useWindowSize } from '@/function/GetWindowSize';
 import CheckBox from '@/components/atoms/CheckBox';
 import { Input } from '@/components/ui/input';
-import { setAttacker, setPoke } from '@/app/saveSlice';
+import { setAttacker, setHEffort, setPoke, setBEffort, setDEffort } from '@/app/saveSlice';
 
 const Attacker: React.FC = () => {
   const dispatch = useDispatch();
@@ -199,6 +199,9 @@ const Attacker: React.FC = () => {
   function onPush() {
     dispatch(setPoke(poke));
     dispatch(setAttacker(true));
+    dispatch(setHEffort(0));
+    dispatch(setBEffort(0));
+    dispatch(setDEffort(0));
     }
 
   const windowSize = useWindowSize();
@@ -282,17 +285,7 @@ const Attacker: React.FC = () => {
           />
           <Numerical
             AtOrSpe={atOrSpe}
-            tagFontSize={20}
-            valFontSize={15}
             effortVal={0}
-            buttonWidth="60px"
-            buttonHeight="35px"
-            buttonColor="#6652b5"
-            buttonBackground="#ece9fb"
-            buttonRadius="20px"
-            buttonFontSize={16}
-            seekbarWidth="300px"
-            tribeVal={135}
           />
           <AbilityEffect onAbilitySelect={(select: string) => dispatch(setAbility(select))} />
           <SkillParameter />

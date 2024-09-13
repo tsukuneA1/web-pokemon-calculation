@@ -6,30 +6,11 @@ import NatureRank from '../NatureAndRank';
 
 interface NumericalProps {
   AtOrSpe: string;
-  tribeVal: number;
-  tagFontSize: number;
-  valFontSize: number;
   effortVal: number;
-  buttonWidth: string;
-  buttonHeight: string;
-  buttonColor: string;
-  buttonBackground: string;
-  buttonRadius: string;
-  buttonFontSize: number;
-  seekbarWidth: string;
 }
 
 const Numerical: React.FC<NumericalProps> = ({
   AtOrSpe,
-  tagFontSize,
-  valFontSize,
-  buttonWidth,
-  buttonHeight,
-  buttonColor,
-  buttonBackground,
-  buttonRadius,
-  buttonFontSize,
-  seekbarWidth,
 }) => {
   const dispatch = useDispatch();
 
@@ -45,6 +26,8 @@ const Numerical: React.FC<NumericalProps> = ({
 
   const [seekBarValue, setSeekBarValue] = useState(0);
   const [charaValue, setCharaValue] = useState(charas[1]);
+
+
 
   useEffect(() => {
     if (effortValue === 0) {
@@ -131,15 +114,6 @@ const Numerical: React.FC<NumericalProps> = ({
         effortVal={effortValue}
         actualVal={actualValue}
         seekBarPos={seekBarValue}
-        tagFontSize={tagFontSize}
-        valFontSize={valFontSize}
-        buttonWidth={buttonWidth}
-        buttonHeight={buttonHeight}
-        buttonColor={buttonColor}
-        buttonBackground={buttonBackground}
-        buttonRadius={buttonRadius}
-        buttonFontSize={buttonFontSize}
-        seekBarWidth={seekbarWidth}
         individualVal={individualValue}
         effortMax={() => effortMinMax(true)}
         effortZero={() => effortMinMax(false)}
@@ -151,12 +125,6 @@ const Numerical: React.FC<NumericalProps> = ({
         }}
       />
       <NatureRank
-        buttonWidth={buttonWidth}
-        buttonHeight={buttonHeight}
-        buttonColor={buttonColor}
-        buttonBackground={buttonBackground}
-        buttonRadius={buttonRadius}
-        buttonFontSize={buttonFontSize}
         natureSelect={charaValue}
         rankSelect={ranks[atRank]}
         natureHandle={(index) => handleCharaSelect(index)}

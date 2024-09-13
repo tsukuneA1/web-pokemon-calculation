@@ -4,7 +4,7 @@ import { MiniShieldPlus, ShieldPlus } from '@/components/icons/Icons';
 import PokeInfo from '@/components/molecules/PokeInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, setSkill } from '@/app/store';
-import { setDfPoke, setDfTera, setHEffort } from '@/app/defenderSlice';
+import { setDfPoke, setDfTera} from '@/app/defenderSlice';
 import { Pokemon } from '@/components/atoms/SearchBox';
 import { Type, typeInterface } from '@/interfaces';
 import DfNumerical from '@/components/molecules/DfNumerical';
@@ -12,7 +12,7 @@ import DfAbilityEffect from '@/components/molecules/DfAbilityEffect';
 import { setCurrentAbility } from '@/app/defenderSlice';
 import { deleteAll } from '@/app/damageSlice';
 import { useWindowSize } from '@/function/GetWindowSize';
-import { setBEffort, setDefender, setDEffort, setPoke } from '@/app/saveSlice';
+import { setBEffort, setDefender, setDEffort, setPoke, setHEffort, setAEffort, setCEffort, setSEffort } from '@/app/saveSlice';
 
 interface DefenderProps {}
 
@@ -81,7 +81,9 @@ const Defender: React.FC<DefenderProps> = () => {
     dispatch(setHEffort(hEffort));
     dispatch(setBEffort(bEffort));
     dispatch(setDEffort(dEffort));
-
+    dispatch(setAEffort(0));
+    dispatch(setCEffort(0));
+    dispatch(setSEffort(0));
   }
 
   const windowSize = useWindowSize();

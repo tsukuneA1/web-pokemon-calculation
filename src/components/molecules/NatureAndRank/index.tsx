@@ -3,12 +3,6 @@ import Dropdown from '@/components/atoms/DropdownButton';
 import React from 'react';
 
 interface natureRankProps {
-  buttonWidth: string;
-  buttonHeight: string;
-  buttonColor: string;
-  buttonBackground: string;
-  buttonRadius: string;
-  buttonFontSize: number;
   natureSelect: string;
   rankSelect: string;
   natureHandle: (index: number) => void;
@@ -17,12 +11,6 @@ interface natureRankProps {
 }
 
 const NatureRank: React.FC<natureRankProps> = ({
-  buttonWidth,
-  buttonHeight,
-  buttonColor,
-  buttonBackground,
-  buttonRadius,
-  buttonFontSize,
   natureSelect,
   rankSelect,
   natureHandle,
@@ -31,6 +19,13 @@ const NatureRank: React.FC<natureRankProps> = ({
 }) => {
   const charas = ['×1.1', '×1.0', '×0.9'];
   const ranks = ['+6', '+5', '+4', '+3', '+2', '+1', '+-0', '-1', '-2', '-3', '-4', '-5', '-6'];
+  
+  const buttonWidth="60px"
+  const buttonHeight="35px"
+  const buttonColor="#6652b5"
+  const buttonBackground="#ece9fb"
+  const buttonRadius="20px"
+  const buttonFontSize=16;
   return (
     <div>
       <div style={styles.effortAndActual}>

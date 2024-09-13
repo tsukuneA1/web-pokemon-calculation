@@ -138,7 +138,7 @@ const SavedSkillSearch: React.FC<props> = ({ initialSkill, skills, setSkill }) =
             overflowY: 'auto',
             backgroundColor: '#fff',
             border: '1px solid #ccc',
-            borderRadius: '4px',
+            borderRadius: '8px',
             listStyle: 'none',
             padding: 0,
             margin: 0,

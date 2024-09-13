@@ -95,15 +95,6 @@ const BNumerical: React.FC<BNumericalProps> = ({ tribeVal }) => {
         effortVal={bEffort}
         actualVal={actualValue}
         seekBarPos={seekBarValue}
-        tagFontSize={20}
-        valFontSize={15}
-        buttonWidth="60px"
-        buttonHeight="35px"
-        buttonColor="#6652b5"
-        buttonBackground="#ece9fb"
-        buttonRadius="20px"
-        buttonFontSize={16}
-        seekBarWidth="300px"
         individualVal={bIndividual}
         effortMax={() => effortMinMax(true)}
         effortZero={() => effortMinMax(false)}
@@ -115,12 +106,6 @@ const BNumerical: React.FC<BNumericalProps> = ({ tribeVal }) => {
         }}
       />
       <NatureRank
-        buttonWidth="60px"
-        buttonHeight="35px"
-        buttonColor="#6652b5"
-        buttonBackground="#ece9fb"
-        buttonRadius="20px"
-        buttonFontSize={16}
         natureSelect={charaValue}
         rankSelect={ranks[bRank]}
         natureHandle={(index) => handleCharaSelect(index)}

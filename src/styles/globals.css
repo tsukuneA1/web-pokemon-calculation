@@ -788,3 +788,21 @@ th {
 [role~='tooltip'][data-microtip-position='right']:hover::after {
   transform: translate3d(0, -50%, 0);
 }
+
+ul {
+  border-radius: 8px;
+}
+
+ul::-webkit-scrollbar {
+  width: 12px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+}
+
+ul::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+}

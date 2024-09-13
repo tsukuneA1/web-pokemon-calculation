@@ -1,5 +1,4 @@
-import { Poke, pokes, Type } from '@/interfaces';
-import { Skill } from './store';
+import { Poke, pokes } from '@/interfaces';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface SaveState {
@@ -41,7 +40,7 @@ const initialState: SaveState = {
 };
 
 const saveSlice = createSlice({
-  name: 'save',
+  name: 'savePoke',
   initialState,
   reducers: {
     setPoke(state, action: PayloadAction<Poke>) {

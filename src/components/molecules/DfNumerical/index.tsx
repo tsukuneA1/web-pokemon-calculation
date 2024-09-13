@@ -70,15 +70,6 @@ const DfNumerical: React.FC<DfNumericalProps> = ({ poke }) => {
         effortVal={hEffort}
         actualVal={hVal}
         seekBarPos={hSeekBarPos}
-        tagFontSize={20}
-        valFontSize={15}
-        buttonWidth="60px"
-        buttonHeight="35px"
-        buttonColor="#6652b5"
-        buttonBackground="#ece9fb"
-        buttonRadius="20px"
-        buttonFontSize={16}
-        seekBarWidth="300px"
         individualVal={hIndividual}
         effortMax={() => hEffortMinMax(true)}
         effortZero={() => hEffortMinMax(false)}

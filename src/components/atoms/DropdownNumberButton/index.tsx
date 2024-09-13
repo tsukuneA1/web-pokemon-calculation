@@ -13,7 +13,6 @@ interface DropdownNumberProps {
 
 const DropdownNumber: React.FC<DropdownNumberProps> = ({
   title,
-  width = '180px',
   initialPos = 0,
   options,
   onSelect,
@@ -39,7 +38,7 @@ const DropdownNumber: React.FC<DropdownNumberProps> = ({
   return (
     <div style={{ ...styles.container, maxWidth: '250px' }} className="w-16 sm:w-24 items-start justify-start">
       <h4 style={{ ...styles.title, textAlign: 'left' }}>{title}</h4>
-      <button onClick={toggleDropDown} style={{ ...styles.button }} className="w-16 sm:w-24">
+      <button type='button' onClick={toggleDropDown} style={{ ...styles.button }} className="w-16 sm:w-24">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <p className="m-0 text-sm sm:text-base">{selectedOption}</p>
           <p className="text-center">{windowSize.width < 640 ? <MiniDropDownIcon /> : <DropDownIcon />}</p>

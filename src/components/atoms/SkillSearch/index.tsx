@@ -201,7 +201,6 @@ const SkillSearchBox: React.FC = () => {
             overflowY: 'auto',
             backgroundColor: '#fff',
             border: '1px solid #ccc',
-            borderRadius: '4px',
             listStyle: 'none',
             padding: 0,
             margin: 0,

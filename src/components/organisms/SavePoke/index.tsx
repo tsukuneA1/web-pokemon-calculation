@@ -8,18 +8,21 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { JSX, SVGProps, useEffect, useState } from 'react';
-import Types from '@/components/atoms/Types';
 import { Poke, Type, typeInterface } from '@/interfaces';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState, Skill } from '@/app/store';
 import { useRouter } from 'next/router';
 import PokeInfo from '@/components/molecules/PokeInfo';
 import { Pokemon } from '@/components/atoms/SearchBox';
 import SavedSkillSearch from '@/components/atoms/Search';
 import { customSkill } from '@/components/atoms/SkillSearch';
+import NumericalTop from '@/components/molecules/NumericalTop';
+import { setAEffort, setAIndividual, setBEffort, setBIndividual, setCEffort, setCIndividual, setDEffort, setDIndividual, setHEffort, setSEffort, setSIndividual } from '@/app/saveSlice';
+import { setHIndividual } from '@/app/saveSlice';
 
 export default function Component(query: any) {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [poke, setPoke] = useState(useSelector((state: RootState) => state.savePoke.poke));
   const attacker = useSelector((state: RootState) => state.savePoke.attacker);
   const defender = useSelector((state: RootState) => state.savePoke.defender);
@@ -29,6 +32,18 @@ export default function Component(query: any) {
   const atEffect = useSelector((state: RootState) => state.stats.effect);
   const dfEffect = useSelector((state: RootState) => state.defender.effect);
   const [tera, setTera] = useState(attacker ? atTera : defender ? dfTera : typeInterface[0]);
+  const hEffort = useSelector((state: RootState) => state.savePoke.hEffort);
+  const aEffort = useSelector((state: RootState) => state.savePoke.aEffort);
+  const bEffort = useSelector((state: RootState) => state.savePoke.bEffort);
+  const cEffort = useSelector((state: RootState) => state.savePoke.cEffort);
+  const dEffort = useSelector((state: RootState) => state.savePoke.dEffort);
+  const sEffort = useSelector((state: RootState) => state.savePoke.sEffort);
+  const hIndividual = useSelector((state: RootState) => state.savePoke.hIndividual);
+  const aIndividual = useSelector((state: RootState) => state.savePoke.aIndividual);
+  const bIndividual = useSelector((state: RootState) => state.savePoke.bIndividual);
+  const cIndividual = useSelector((state: RootState) => state.savePoke.cIndividual);
+  const dIndividual = useSelector((state: RootState) => state.savePoke.dIndividual);
+  const sIndividual = useSelector((state: RootState) => state.savePoke.sIndividual);
   const [skill1, setSkill1] = useState<Skill | undefined>(attacker ? atSkill : undefined);
   const [skills, setSkills] = useState<customSkill[]>([]);
   const [skill2, setSkill2] = useState<Skill>();
@@ -36,6 +51,12 @@ export default function Component(query: any) {
   const [skill4, setSkill4] = useState<Skill>();
   const [effect, setEffect] = useState<string>(attacker ? atEffect : defender ? dfEffect : '持ち物なし');
   const [ability, setAbility] = useState<string>(poke.abilities[0]);
+  const hActual = Math.floor(((poke.hp * 2 + hIndividual + hEffort / 4) * 50) / 100 + 50 + 10);
+  const aActual = Math.floor((Math.floor(((poke.attack * 2 + aIndividual + Math.floor(aEffort / 4)) * 1) / 2) + 5));
+  const bActual = Math.floor((Math.floor(((poke.defence * 2 + bIndividual + Math.floor(bEffort / 4)) * 1) / 2) + 5));
+  const cActual = Math.floor((Math.floor(((poke.specialAttack * 2 + cIndividual + Math.floor(cEffort / 4)) * 1) / 2) + 5));
+  const dActual = Math.floor((Math.floor(((poke.specialDefence * 2 + dIndividual + Math.floor(dEffort / 4)) * 1) / 2) + 5));
+  const sActual = Math.floor((Math.floor(((poke.speed * 2 + sIndividual + Math.floor(sEffort / 4)) * 1) / 2) + 5));
 
   const topSkills: customSkill[] = [
     customSKillSearch(poke.skill1),
@@ -44,6 +65,10 @@ export default function Component(query: any) {
     customSKillSearch(poke.skill4),
     customSKillSearch(poke.skill5),
   ];
+
+  useEffect(() => {
+
+  })
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -189,6 +214,97 @@ export default function Component(query: any) {
         />
       </div>
       <form className="space-y-4">
+        <NumericalTop
+          tag="HP"
+          effortVal={hEffort}
+          individualVal={hIndividual}
+          actualVal={hActual}
+          seekBarPos={hEffort === 0 ? 0 : (hEffort+4)/8}
+          effortMax={() => {dispatch(setHEffort(252))}}
+          effortZero={() => {dispatch(setHEffort(0))}}
+          effortPlus={() => {dispatch(setHEffort(hEffort === 0 ? 4 : hEffort !== 252 ? hEffort + 8 : hEffort))}}
+          effortMinus={() => {dispatch(setHEffort(hEffort === 4 ? 0 : hEffort !== 0 ? hEffort -8 : hEffort))}}
+          setIndividual={(val: number) => {dispatch(setHIndividual(val))}}
+          seekBarChange={(value: number) => {
+            dispatch(setHEffort(value === 0 ? 0 : value*8-4));
+          }}
+        />
+        <NumericalTop
+          tag='攻撃'
+          effortVal={aEffort}
+          individualVal={aIndividual}
+          actualVal={aActual}
+          seekBarPos={aEffort === 0 ? 0 : (aEffort+4)/8}
+          effortMax={() => {dispatch(setAEffort(252))}}
+          effortZero={() => {dispatch(setAEffort(0))}}
+          effortPlus={() => {dispatch(setAEffort(aEffort === 0 ? 4 : aEffort !== 252 ? aEffort + 8 : aEffort))}}
+          effortMinus={() => {dispatch(setAEffort(aEffort === 4 ? 0 : aEffort !== 0 ? aEffort -8 : aEffort))}}
+          setIndividual={(val: number) => {dispatch(setAIndividual(val))}}
+          seekBarChange={(value: number) => {
+            dispatch(setAEffort(value === 0 ? 0 : value*8-4));
+          }}
+        />
+        <NumericalTop
+          tag='防御'
+          effortVal={bEffort}
+          individualVal={bIndividual}
+          actualVal={bActual}
+          seekBarPos={bEffort === 0 ? 0 : (bEffort+4)/8}
+          effortMax={() => {dispatch(setBEffort(252))}}
+          effortZero={() => {dispatch(setBEffort(0))}}
+          effortPlus={() => {dispatch(setBEffort(bEffort === 0 ? 4 : bEffort !== 252 ? bEffort + 8 : bEffort))}}
+          effortMinus={() => {dispatch(setBEffort(bEffort === 4 ? 0 : bEffort !== 0 ? bEffort -8 : bEffort))}}
+          setIndividual={(val: number) => {dispatch(setBIndividual(val))}}
+          seekBarChange={(value: number) => {
+            dispatch(setBEffort(value === 0 ? 0 : value*8-4));
+          }}
+        />
+        <NumericalTop
+          tag='特攻'
+          effortVal={cEffort}
+          individualVal={cIndividual}
+          actualVal={cActual}
+          seekBarPos={cEffort === 0 ? 0 : (cEffort+4)/8}
+          effortMax={() => {dispatch(setCEffort(252))}}
+          effortZero={() => {dispatch(setCEffort(0))}}
+          effortPlus={() => {dispatch(setCEffort(cEffort === 0 ? 4 : cEffort !== 252 ? cEffort + 8 : cEffort))}}
+          effortMinus={() => {dispatch(setCEffort(cEffort === 4 ? 0 : cEffort !== 0 ? cEffort -8 : cEffort))}}
+          setIndividual={(val: number) => {dispatch(setCIndividual(val))}}
+          seekBarChange={(value: number) => {
+            dispatch(setCEffort(value === 0 ? 0 : value*8-4));
+          }}
+        />
+        <NumericalTop
+          tag='特防'
+          effortVal={dEffort}
+          individualVal={dIndividual}
+          actualVal={dActual}
+          seekBarPos={dEffort === 0 ? 0 : (dEffort+4)/8}
+          effortMax={() => {dispatch(setDEffort(252))}}
+          effortZero={() => {dispatch(setDEffort(0))}}
+          effortPlus={() => {dispatch(setDEffort(dEffort === 0 ? 4 : dEffort !== 252 ? dEffort + 8 : dEffort))}}
+          effortMinus={() => {dispatch(setDEffort(dEffort === 4 ? 0 : dEffort !== 0 ? dEffort -8 : dEffort))}}
+          setIndividual={(val: number) => {dispatch(setDIndividual(val))}}
+          seekBarChange={(value: number) => {
+            dispatch(setDEffort(value === 0 ? 0 : value*8-4));
+          }}
+        />
+        <NumericalTop
+          tag='素早さ'
+          effortVal={sEffort}
+          individualVal={sIndividual}
+          actualVal={sActual}
+          seekBarPos={sEffort === 0 ? 0 : (sEffort+4)/8}
+          effortMax={() => {dispatch(setSEffort(252))}}
+          effortZero={() => {dispatch(setSEffort(0))}}
+          effortPlus={() => {dispatch(setSEffort(sEffort === 0 ? 4 : sEffort !== 252 ? sEffort + 8 : sEffort))}}
+          effortMinus={() => {dispatch(setSEffort(sEffort === 4 ? 0 : sEffort !== 0 ? sEffort -8 : sEffort))}}
+          setIndividual={(val: number) => {dispatch(setSIndividual(val))}}
+          seekBarChange={(value: number) => {
+            dispatch(setSEffort(value === 0 ? 0 : value*8-4));
+          }}
+        />
+
         <div className="space-y-2">
           <Label htmlFor="move1">技1</Label>
           <SavedSkillSearch
