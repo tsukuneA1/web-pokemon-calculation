@@ -6,7 +6,7 @@ import { Type, typeInterface } from '@/interfaces';
 import SkillSuggestion from '@/components/molecules/skillSuggestion';
 
 interface props {
-  initialSkill: Skill | undefined;
+  initialSkill: Skill | undefined | null;
   skills: customSkill[];
   setSkill: (skill: Skill) => void;
 }
@@ -88,7 +88,7 @@ const SavedSkillSearch: React.FC<props> = ({ initialSkill, skills, setSkill }) =
   const windowSize = useWindowSize();
 
   return (
-    <div style={{ position: 'relative', width: '250px' }}>
+    <div style={{ position: 'relative' }} className="w-3/4">
       <div style={{ position: 'relative' }}>
         <input
           ref={inputRef}

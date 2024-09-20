@@ -9,9 +9,7 @@ interface NumericalProps {
   effortVal: number;
 }
 
-const Numerical: React.FC<NumericalProps> = ({
-  AtOrSpe,
-}) => {
+const Numerical: React.FC<NumericalProps> = ({ AtOrSpe }) => {
   const dispatch = useDispatch();
 
   const charas = useMemo(() => ['×1.1', '×1.0', '×0.9'], []);
@@ -26,8 +24,6 @@ const Numerical: React.FC<NumericalProps> = ({
 
   const [seekBarValue, setSeekBarValue] = useState(0);
   const [charaValue, setCharaValue] = useState(charas[1]);
-
-
 
   useEffect(() => {
     if (effortValue === 0) {

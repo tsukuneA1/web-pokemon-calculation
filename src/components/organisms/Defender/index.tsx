@@ -4,7 +4,7 @@ import { MiniShieldPlus, ShieldPlus } from '@/components/icons/Icons';
 import PokeInfo from '@/components/molecules/PokeInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, setSkill } from '@/app/store';
-import { setDfPoke, setDfTera} from '@/app/defenderSlice';
+import { setDfPoke, setDfTera } from '@/app/defenderSlice';
 import { Pokemon } from '@/components/atoms/SearchBox';
 import { Type, typeInterface } from '@/interfaces';
 import DfNumerical from '@/components/molecules/DfNumerical';
@@ -12,7 +12,16 @@ import DfAbilityEffect from '@/components/molecules/DfAbilityEffect';
 import { setCurrentAbility } from '@/app/defenderSlice';
 import { deleteAll } from '@/app/damageSlice';
 import { useWindowSize } from '@/function/GetWindowSize';
-import { setBEffort, setDefender, setDEffort, setPoke, setHEffort, setAEffort, setCEffort, setSEffort } from '@/app/saveSlice';
+import {
+  setBEffort,
+  setDefender,
+  setDEffort,
+  setPoke,
+  setHEffort,
+  setAEffort,
+  setCEffort,
+  setSEffort,
+} from '@/app/saveSlice';
 
 interface DefenderProps {}
 
@@ -27,7 +36,7 @@ const Defender: React.FC<DefenderProps> = () => {
   };
   const hEffort = useSelector((state: RootState) => state.defender.hEffort);
   const bEffort = useSelector((state: RootState) => state.defender.bEffort);
-  const dEffort = useSelector((state: RootState) => state.defender.dEffort)
+  const dEffort = useSelector((state: RootState) => state.defender.dEffort);
 
   const searchClicked = (selectPoke: Pokemon) => {
     const types: Type[] = [selectPoke.type1, selectPoke.type2]

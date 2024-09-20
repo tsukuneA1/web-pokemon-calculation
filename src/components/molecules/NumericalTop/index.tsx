@@ -31,13 +31,13 @@ const NumericalTop: React.FC<HNumericalProps> = ({
   setIndividual,
   seekBarChange,
 }) => {
-  const buttonWidth="60px"
-  const buttonHeight="35px"
-  const buttonColor="#6652b5"
-  const buttonBackground="#ece9fb"
-  const buttonRadius="20px"
-  const buttonFontSize=16;
-  const seekbarWidth="300px"
+  const buttonWidth = '60px';
+  const buttonHeight = '35px';
+  const buttonColor = '#6652b5';
+  const buttonBackground = '#ece9fb';
+  const buttonRadius = '20px';
+  const buttonFontSize = 16;
+  const seekbarWidth = '300px';
   return (
     <div>
       <h3 style={styles.headline} className="text-base sm:text-lg md:text-xl p-1 w-12 sm:w-16 md:w-20">

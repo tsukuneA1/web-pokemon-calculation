@@ -9,3 +9,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.switch-button {
+  border-radius: 50%;
+  width: 4.5em;
+  height: 4.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.switch-button:hover {
+  background-color: gray;
+}

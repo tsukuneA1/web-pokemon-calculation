@@ -202,7 +202,7 @@ const Attacker: React.FC = () => {
     dispatch(setHEffort(0));
     dispatch(setBEffort(0));
     dispatch(setDEffort(0));
-    }
+  }
 
   const windowSize = useWindowSize();
   if (!atFold) {
@@ -283,12 +283,12 @@ const Attacker: React.FC = () => {
             }}
             onRouterPush={onPush}
           />
-          <Numerical
-            AtOrSpe={atOrSpe}
-            effortVal={0}
-          />
+          <Numerical AtOrSpe={atOrSpe} effortVal={0} />
           <AbilityEffect onAbilitySelect={(select: string) => dispatch(setAbility(select))} />
+          <div className='mb-5'>
           <SkillParameter />
+          </div>
+          
           <CheckBox
             content="急所"
             checked={critical}

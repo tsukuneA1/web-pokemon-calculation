@@ -108,22 +108,33 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
     };
   }, []);
 
-  const windowSize = useWindowSize();
-
   return (
     <div style={{ width: '100%' }}>
-      <div className="relative flex justify-items-center items-center">
+      <fieldset
+        className="relative rounded-2xl md:rounded-3xl pl-2"
+        style={{ border: showSuggestions ? '2px solid tomato' : '2px solid rgb(202, 196, 208)' }}
+      >
+        <legend style={{ padding: '0 10px',  marginRight: 'auto' }}>ポケモン名</legend>
+        <div
+        className="relative flex justify-items-center items-center px-2 pb-3 pl-2 rounded-2xl md:rounded-3xl"
+        style={{
+          boxSizing: 'border-box',
+          ...styles.search,
+          outline: 'none',
+          borderRadius: '20px',
+        }}
+      >
         <input
           ref={inputRef}
           type="text"
           value={query}
           onChange={handleInputChange}
           onFocus={handleFocus}
-          className="w-full text-base sm:text-lg py-1 pl-1 md:pl-2 border-2"
+          className="text-base sm:text-lg pl-2"
           style={{
-            boxSizing: 'border-box',
+            border: 'none',
             borderRadius: '20px',
-            ...styles.search,
+            outline: 'none',
           }}
         />
         {query && (
@@ -132,7 +143,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
             style={{
               position: 'absolute',
               right: '8px',
-              top: '50%',
+              top: '35%',
               transform: 'translateY(-50%)',
               background: 'none',
               border: '2px solid',
@@ -147,10 +158,14 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
             aria-label="Clear text"
             className="w-6 h-6 md:w-7 md:h-7"
           >
-            ×
+            <div className="absolute top-[-55%] md:top-[-37%]">
+              ×
+            </div>
           </button>
         )}
       </div>
+      </fieldset>
+      
       {showSuggestions && filteredSuggestions.length > 0 && (
         <ul
           ref={suggestionBoxRef}

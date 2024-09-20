@@ -148,55 +148,78 @@ const SkillSearchBox: React.FC = () => {
     };
   }, []);
 
-  const windowSize = useWindowSize();
-
   return (
-    <div style={{ position: 'relative', width: '250px' }}>
-      <div style={{ position: 'relative' }}>
-        <input
-          ref={inputRef}
-          type="text"
-          value={query}
-          onChange={handleInputChange}
-          onFocus={handleFocus}
+    <div style={{ width: '250px' }}>
+      <fieldset
+        className="relative rounded-2xl md:rounded-3xl pl-2"
+        style={{ border: showSuggestions ? '2px solid tomato' : '2px solid rgb(202, 196, 208)' }}
+      >
+        <legend style={{ padding: '0 10px',  marginRight: 'auto' }}>攻撃技</legend>
+        <div
           style={{
             width: '100%',
             boxSizing: 'border-box',
             outline: 'none',
           }}
-          className="text-sm sm:text-base p-1 sm:p-2 border-2 flex rounded-2xl md:rounded-3xl"
-        />
-        {query && (
-          <button
-            onClick={clearText}
+        >
+          <input
+            ref={inputRef}
+            type="text"
+            name="name"
+            value={query}
+            onChange={handleInputChange}
+            onFocus={handleFocus}
             style={{
-              position: 'absolute',
-              right: '8px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'none',
-              border: '2px solid',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              fontSize: '24px',
-              color: '#888',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              outline: 'none',
+              border: 'none',
             }}
-            aria-label="Clear text"
-            className="w-6 h-6 md:w-7 md:h-7"
-          >
-            ×
-          </button>
-        )}
-      </div>
+            className="text-sm sm:text-base px-2 pb-3 pl-2 flex rounded-2xl md:rounded-3xl"
+          />
+          {(
+            <div
+              style={{
+                position: 'absolute',
+                left: '20px',
+              }}
+            >
+              {query}
+            </div>
+          ) && (
+            <button
+              onClick={clearText}
+              style={{
+                position: 'absolute',
+                right: '8px',
+                top: '35%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: '2px solid',
+                borderRadius: '50%',
+                cursor: 'pointer',
+                fontSize: '24px',
+                color: '#888',
+                display: query === '' ? 'none' : 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              aria-label="Clear text"
+              className="w-6 h-6 md:w-7 md:h-7 text-center my-auto"
+            >
+              <div className="absolute top-[-55%] md:top-[-37%]">
+                ×
+              </div>
+            </button>
+          )}
+        </div>
+      </fieldset>
+
       {showSuggestions && filteredSuggestions.length > 0 && (
         <ul
           ref={suggestionBoxRef}
           style={{
             position: 'absolute',
-            width: windowSize.width < 640 ? '240px' : '400px',
+            // width: windowSize.width < 640 ? '240px' : '400px',
+            width: '250px',
             maxHeight: '300px',
             overflowY: 'auto',
             backgroundColor: '#fff',
@@ -209,6 +232,7 @@ const SkillSearchBox: React.FC = () => {
         >
           {filteredSuggestions.map((suggestion, index) => (
             <li
+              className="container"
               key={index}
               onMouseDown={() =>
                 handleSkillClick({
@@ -219,7 +243,6 @@ const SkillSearchBox: React.FC = () => {
                 })
               }
               style={{
-                padding: '8px',
                 cursor: 'pointer',
                 backgroundColor: index % 2 ? '#f9f9f9' : '#fff',
               }}

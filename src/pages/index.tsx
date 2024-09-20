@@ -15,6 +15,7 @@ import { Tooltip, Button } from '@nextui-org/react';
 import { useWindowSize } from '@/function/GetWindowSize';
 import Head from 'next/head';
 import { Analytics } from '@vercel/analytics/react';
+import './index.css';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -97,7 +98,7 @@ export default function Home() {
                     <Attacker />
                     <ExtraDamageComponent />
                   </div>
-                  <div className="mt-7">
+                  <div className="mt-7 switch-button">
                     <Tooltip
                       showArrow={true}
                       content="攻守反転"
@@ -124,7 +125,7 @@ export default function Home() {
                   <div className="flex items-center lg:w-1/2 flex-col">
                     <Attacker />
                   </div>
-                  <div className="my-5">
+                  <div className="my-5 switch-button mx-auto flex items-center justify-center justify-items-center">
                     <Tooltip
                       showArrow={true}
                       content="攻守反転"
@@ -144,7 +145,9 @@ export default function Home() {
                     <ExtraDamageComponent />
                   </div>
                 </div>
-                <Damage />
+                <div style={{ zIndex: 999 }}>
+                  <Damage />
+                </div>
               </div>
             )}
           </div>

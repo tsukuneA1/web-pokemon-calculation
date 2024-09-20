@@ -21,10 +21,9 @@ const SkillParameter: React.FC = () => {
   const windowSize = useWindowSize();
   return (
     <div style={{ marginTop: '10px' }}>
-      <h4 style={{ textAlign: 'left' }}>技</h4>
-      <div style={{ display: 'flex' }}>
+      <div className='flex items-center md:items-end'>
         <SkillSearchBox />
-        <div className="mx-2">
+        <div className="mx-2 flex items-center md:items-end">
           <ImageButton
             width={windowSize.width < 640 ? 40 : 50}
             onClick={buttonClicked}
