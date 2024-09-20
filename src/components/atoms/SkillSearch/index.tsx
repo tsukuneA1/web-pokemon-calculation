@@ -148,13 +148,15 @@ const SkillSearchBox: React.FC = () => {
     };
   }, []);
 
+  const windowSize = useWindowSize();
+
   return (
     <div style={{ width: '250px' }}>
       <fieldset
         className="relative rounded-2xl md:rounded-3xl pl-2"
-        style={{ border: showSuggestions ? '2px solid tomato' : '2px solid rgb(202, 196, 208)' }}
+        style={{ border: showSuggestions ? windowSize.width > 768 ? '2px solid tomato' : '1px solid tomato' :windowSize.width > 768 ? '2px solid rgb(202, 196, 208)' : '1px solid rgb(202, 196, 208)' }}
       >
-        <legend style={{ padding: '0 10px',  marginRight: 'auto' }}>攻撃技</legend>
+        <legend style={{ padding: '0 10px',  marginRight: 'auto' }} className='text-sm md:text-base'>攻撃技</legend>
         <div
           style={{
             width: '100%',
@@ -173,7 +175,7 @@ const SkillSearchBox: React.FC = () => {
               outline: 'none',
               border: 'none',
             }}
-            className="text-sm sm:text-base px-2 pb-3 pl-2 flex rounded-2xl md:rounded-3xl"
+            className="text-sm sm:text-base px-2 pb-2 md:pb-3 pl-2 flex rounded-2xl md:rounded-3xl"
           />
           {(
             <div
@@ -193,7 +195,7 @@ const SkillSearchBox: React.FC = () => {
                 top: '35%',
                 transform: 'translateY(-50%)',
                 background: 'none',
-                border: '2px solid',
+                border: windowSize.width > 768 ? '2px solid' : '1.5px solid',
                 borderRadius: '50%',
                 cursor: 'pointer',
                 fontSize: '24px',
@@ -205,7 +207,7 @@ const SkillSearchBox: React.FC = () => {
               aria-label="Clear text"
               className="w-6 h-6 md:w-7 md:h-7 text-center my-auto"
             >
-              <div className="absolute top-[-55%] md:top-[-37%]">
+              <div className="absolute top-[-11px] md:top-[-10px]">
                 ×
               </div>
             </button>
