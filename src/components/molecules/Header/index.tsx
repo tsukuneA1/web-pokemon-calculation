@@ -62,7 +62,6 @@ const styles = {
     justifyContent: 'space-between',
     backgroundColor: headerBackground,
     border: `2px solid ${headerBorder}`,
-    // borderBottom: '2px solid #c7c7ff',
     borderRadius: '15px 15px 15px 15px',
   },
   leftContainer: {

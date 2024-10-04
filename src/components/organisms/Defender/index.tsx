@@ -108,7 +108,7 @@ const Defender: React.FC<DefenderProps> = () => {
       {fold ? (
         <></>
       ) : (
-        <div className="w-full p-1 sm:p-2 md:p-3 bg-gray-10 pb-10 rounded-b-2xl" style={{border: '2px solid #c7c7ff'}}>
+        <div className="w-full p-1 sm:p-2 md:p-3 bg-gray-10 pb-10 rounded-b-2xl" style={{border: '2px solid #c7c7ff', borderTop: 'none'}}>
           <PokeInfo
             imageWidth={200}
             imageHeight={200}
