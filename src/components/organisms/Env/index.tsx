@@ -37,7 +37,7 @@ const Env: React.FC = () => {
         {envFold ? (
           <></>
         ) : (
-          <div className="w-full p-3 bg-gray-10 pb-10 rounded-b-2xl">
+          <div className="w-full p-3 bg-gray-10 pb-10 rounded-b-2xl" style={{border: '2px solid #c7c7ff'}}>
             <div className="xl:flex ">
               <WeatherField />
               <Screen />

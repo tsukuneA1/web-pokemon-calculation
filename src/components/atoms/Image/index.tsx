@@ -23,7 +23,8 @@ const ImageComponent: React.FC<ImageComponentProps> = ({
       style={{
         ...styles.border,
         borderRadius,
-        backgroundColor,
+        border: '1px solid rgba(0, 0, 0, 0.26)',
+        backgroundColor: 'rgba(0, 0, 0, 0.12)',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',

@@ -215,7 +215,7 @@ const Attacker: React.FC = () => {
           width={windowSize.width}
           fold={atFold}
         />
-        <div className="w-full p-1 sm:p-2 md:p-3 bg-gray-10 pb-10 rounded-b-2xl">
+        <div className="w-full p-1 sm:p-2 md:p-3 bg-gray-10 pb-10 rounded-b-2xl" style={{border: '2px solid #c7c7ff'}}>
           <PokeInfo
             imageWidth={200}
             imageHeight={200}
@@ -285,10 +285,10 @@ const Attacker: React.FC = () => {
           />
           <Numerical AtOrSpe={atOrSpe} effortVal={0} />
           <AbilityEffect onAbilitySelect={(select: string) => dispatch(setAbility(select))} />
-          <div className='mb-5'>
-          <SkillParameter />
+          <div className="mb-5">
+            <SkillParameter />
           </div>
-          
+
           <CheckBox
             content="急所"
             checked={critical}

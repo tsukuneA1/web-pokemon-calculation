@@ -269,14 +269,14 @@ const Damage: React.FC = () => {
 
   return (
     <div
-      className="flex w-full fixed bottom-0 left-0 bg-white mr-0 justify-between border-t-1"
+      className="flex w-full fixed bottom-0 left-0 bg-[#EDE7F6] mr-0 justify-between border-t-1"
       style={{ zIndex: 9999 }}
     >
       <div className="pt-5 pl-5 my-2 w-5/6 ">
         <CustomSlider
           min={0}
           max={100}
-          color1="#4caf50"
+          color1="#9c27b0"
           color2="#ff5722"
           backgroundColor="#e0e0e0"
           position1={pos1}

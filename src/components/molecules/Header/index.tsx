@@ -1,8 +1,8 @@
 import IconButton from '@/components/atoms/IconButton';
 import { ChevronCollapse, ChevronExpand, MiniChevronCollapse, MiniChevronExpand } from '@/components/icons/Icons';
 
-const headerBackground = '#f5f5f5';
-const headerBorder = '#ddd';
+const headerBackground = '#e6e6fa';
+const headerBorder = '#c7c7ff';
 
 interface HeaderProps {
   title: string;
@@ -15,7 +15,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title, icon, onIconClick, fold, width }) => {
   if (fold) {
     return (
-      <header style={{ ...styles.foldHeader }} className="w-full p-2 md:p-3">
+      <header style={styles.foldHeader} className="w-full p-2 md:p-3">
         <div style={styles.leftContainer}>
           {icon}
           <h1 className="text-base font-bold ml-4 sm:text-xl">{title}</h1>
@@ -31,13 +31,13 @@ const Header: React.FC<HeaderProps> = ({ title, icon, onIconClick, fold, width }
     );
   }
   return (
-    <header style={{ ...styles.header }} className="w-full p-2 md:p-3">
+    <header style={styles.header} className="w-full p-2 md:p-3">
       <div style={styles.leftContainer}>
         {icon}
         <h1 className="text-base font-bold ml-4 sm:text-xl">{title}</h1>
       </div>
       <div style={styles.iconButton}>
-        {width <= 640 ? (
+        {width < 640 ? (
           <IconButton icon={<MiniChevronCollapse />} onClick={onIconClick} ariaLabel="icon button" />
         ) : (
           <IconButton icon={<ChevronCollapse />} onClick={onIconClick} ariaLabel="icon button" />
@@ -53,7 +53,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: headerBackground,
-    borderBottom: `4px solid ${headerBorder}`,
+    border: `2px solid ${headerBorder}`,
     borderRadius: '15px 15px 0 0',
   },
   foldHeader: {
@@ -61,7 +61,8 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: headerBackground,
-    borderBottom: `4px solid ${headerBorder}`,
+    border: `2px solid ${headerBorder}`,
+    // borderBottom: '2px solid #c7c7ff',
     borderRadius: '15px 15px 15px 15px',
   },
   leftContainer: {

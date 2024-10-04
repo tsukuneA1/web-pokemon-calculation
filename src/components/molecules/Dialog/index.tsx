@@ -1,5 +1,4 @@
 import TypeImage from '@/components/atoms/TypeImage';
-import { useWindowSize } from '@/function/GetWindowSize';
 import { Type, typeInterface } from '@/interfaces';
 import React, { useEffect } from 'react';
 

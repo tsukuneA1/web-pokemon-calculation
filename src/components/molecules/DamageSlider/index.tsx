@@ -51,11 +51,12 @@ const CustomSlider: React.FC<CustomSliderProps> = ({
         }}
       />
       <div
-        className="bg-primary-400"
+        
         style={{
           position: 'absolute',
           width: `${position1}%`,
           height: '100%',
+          backgroundColor: '#E040FB',
           borderTopLeftRadius: firstLeftRadius,
           borderBottomLeftRadius: firstLeftRadius,
           borderTopRightRadius: firstRightRadius,
@@ -63,12 +64,12 @@ const CustomSlider: React.FC<CustomSliderProps> = ({
         }}
       />
       <div
-        className="bg-primary-600"
         style={{
           position: 'absolute',
           left: `${position1}%`,
           width: `${position2 - position1}%`,
           height: '100%',
+          backgroundColor: '#9C27B0',
           borderTopLeftRadius: secondLeftRadius,
           borderBottomLeftRadius: secondLeftRadius,
           borderTopRightRadius: secondRightRadius,

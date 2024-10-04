@@ -114,60 +114,66 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
     <div style={{ width: '100%' }}>
       <fieldset
         className="relative rounded-2xl md:rounded-3xl pl-2"
-        style={{ border: showSuggestions ? windowSize.width > 768 ? '2px solid tomato' : '1px solid tomato' :windowSize.width > 768 ? '2px solid rgb(202, 196, 208)' : '1px solid rgb(202, 196, 208)' }}
-      >
-        <legend style={{ padding: '0 10px',  marginRight: 'auto' }}>ポケモン名</legend>
-        <div
-        className="relative flex justify-items-center items-center px-2 pb-2 md:pb-3 md:pl-2 rounded-2xl md:rounded-3xl"
         style={{
-          boxSizing: 'border-box',
-          ...styles.search,
-          outline: 'none',
-          borderRadius: '20px',
+          border: showSuggestions
+            ? windowSize.width > 768
+              ? '2px solid tomato'
+              : '1px solid tomato'
+            : windowSize.width > 768
+              ? '2px solid rgb(202, 196, 208)'
+              : '1px solid rgb(202, 196, 208)',
         }}
       >
-        <input
-          ref={inputRef}
-          type="text"
-          value={query}
-          onChange={handleInputChange}
-          onFocus={handleFocus}
-          className="text-base sm:text-lg pl-2"
+        <legend style={{ padding: '0 10px', marginRight: 'auto' }}>ポケモン名</legend>
+        <div
+          className="relative flex justify-items-center items-center px-2 pb-2 md:pb-3 md:pl-2 rounded-2xl md:rounded-3xl"
           style={{
-            border: 'none',
-            borderRadius: '20px',
+            boxSizing: 'border-box',
+            ...styles.search,
             outline: 'none',
+            borderRadius: '20px',
           }}
-        />
-        {query && (
-          <button
-            onClick={clearText}
+        >
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={handleInputChange}
+            onFocus={handleFocus}
+            className="text-base sm:text-lg pl-2"
             style={{
-              position: 'absolute',
-              right: '8px',
-              top: '35%',
-              transform: 'translateY(-50%)',
-              background: 'none',
-              border: '2px solid',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              fontSize: '24px',
-              color: '#888',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              border: 'none',
+              borderRadius: '20px',
+              outline: 'none',
             }}
-            aria-label="Clear text"
-            className="w-6 h-6 md:w-7 md:h-7"
-          >
-             <div className="absolute top-[-11px] md:top-[-10px]">
-              ×
-            </div>
-          </button>
-        )}
-      </div>
+          />
+          {query && (
+            <button
+              onClick={clearText}
+              style={{
+                position: 'absolute',
+                right: '8px',
+                top: '35%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: '2px solid',
+                borderRadius: '50%',
+                cursor: 'pointer',
+                fontSize: '24px',
+                color: '#888',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              aria-label="Clear text"
+              className="w-6 h-6 md:w-7 md:h-7"
+            >
+              <div className="absolute top-[-11px] md:top-[-10px]">×</div>
+            </button>
+          )}
+        </div>
       </fieldset>
-      
+
       {showSuggestions && filteredSuggestions.length > 0 && (
         <ul
           ref={suggestionBoxRef}

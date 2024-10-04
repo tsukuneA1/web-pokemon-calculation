@@ -21,7 +21,7 @@ const SkillParameter: React.FC = () => {
   const windowSize = useWindowSize();
   return (
     <div style={{ marginTop: '10px' }}>
-      <div className='flex items-center md:items-end'>
+      <div className="flex items-center md:items-end">
         <SkillSearchBox />
         <div className="mx-2 flex items-center md:items-end">
           <ImageButton
