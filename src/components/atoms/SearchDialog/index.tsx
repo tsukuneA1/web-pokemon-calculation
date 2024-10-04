@@ -3,7 +3,7 @@ import { useState } from "react";
 export interface searchProps {
     suggestions: any[];
     suggestion: string;
-    dataSet: () => void;
+    setData: () => void;
     opeDialog: (ope: boolean) => void;
 }
 
@@ -28,10 +28,13 @@ const overlayStyle: React.CSSProperties = {
 
 const SearchDialog: React.FC<searchProps> = ({
     suggestions, 
-    dataSet, 
+    setData, 
     suggestion
 }) => {
 
     const [query, setQuery] = useState<string>(suggestion);
-    
+
+    return (
+      <div></div>
+    );
 }
