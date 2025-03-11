@@ -153,11 +153,9 @@ const SearchBox: React.FC<SearchBoxProps> = ({ text, onClick }) => {
               style={{
                 position: 'absolute',
                 right: '8px',
-                top: '35%',
+                top: '40%',
                 transform: 'translateY(-50%)',
                 background: 'none',
-                border: '2px solid',
-                borderRadius: '50%',
                 cursor: 'pointer',
                 fontSize: '24px',
                 color: '#888',
