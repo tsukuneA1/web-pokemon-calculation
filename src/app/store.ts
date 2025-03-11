@@ -56,7 +56,7 @@ const initialState: State = {
   currentAbility: pokes[0].abilities[0],
   abilityChecked: false,
   effect: '持ち物なし',
-  selectedSkill: { name: 'しんそく', power: 80, type: typeInterface[1], classification: '物理' },
+  selectedSkill: { name: 'ムーンフォース', power: 95, type: typeInterface[18], classification: '特殊' },
   atTera: typeInterface[0],
   atStella: false,
   teraIconSrc: typeInterface[0].typeIconSrc,
