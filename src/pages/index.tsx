@@ -1,4 +1,5 @@
 import Attacker from '@/components/organisms/Attacker';
+import Attacker from '@/components/organisms/Attacker';
 import Defender from '@/components/organisms/Defender';
 import Env from '@/components/organisms/Env';
 import Damage from '@/components/organisms/Damage';
@@ -84,15 +85,15 @@ export default function Home() {
       <Head>
         <title>ポケモンダメージ計算sv</title>
         <meta name="description" content="Welcome to my website!" />
+        <link rel="icon" href="/app_icon.jpg" />
       </Head>
       <body>
         <div className="flex w-full">
-          <div className="w-0 bg-white"></div>
-
+          <div className="w-0" ></div>
           <div className="w-full">
             {/* <a href='/SavedPokePage/'>jump</a> */}
             {windowSize.width > 1024 ? (
-              <div className="pb-40 bg-zinc-200">
+              <div className="pb-40" style={{backgroundColor: '#faf5ff'}}>
                 <div style={{ textAlign: 'center', paddingTop: '50px' }} className="lg:flex justify-items-center">
                   <div className="flex items-center lg:w-1/2 flex-col">
                     <Attacker />
@@ -120,7 +121,7 @@ export default function Home() {
                 <Damage />
               </div>
             ) : (
-              <div className="pt-10 pb-32  bg-zinc-200">
+              <div className="pt-10 pb-32" style={{backgroundColor: '#faf5ff'}}>
                 <div style={{ textAlign: 'center' }} className="lg:flex justify-items-center">
                   <div className="flex items-center lg:w-1/2 flex-col">
                     <Attacker />
@@ -158,3 +159,4 @@ export default function Home() {
     </>
   );
 }
+
