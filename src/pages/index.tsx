@@ -1,5 +1,4 @@
 import Attacker from '@/components/organisms/Attacker';
-import Attacker from '@/components/organisms/Attacker';
 import Defender from '@/components/organisms/Defender';
 import Env from '@/components/organisms/Env';
 import Damage from '@/components/organisms/Damage';
