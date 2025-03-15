@@ -47,8 +47,8 @@ interface State {
 const initialState: State = {
   atPoke: pokes[0],
   referAt: false,
-  atActual: Math.floor(((pokes[0].attack * 2 + 31) * 1) / 2 + 5),
-  baseStat: pokes[0].attack,
+  atActual: Math.floor(((pokes[0].specialAttack * 2 + 31) * 1) / 2 + 5),
+  baseStat: pokes[0].specialAttack,
   individualValue: 31,
   effortValue: 0,
   natureMultiplier: 1.0,

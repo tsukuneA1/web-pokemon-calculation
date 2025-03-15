@@ -81,10 +81,10 @@ export default function Home() {
 
   return (
     <>
-      <Head>
+      <Head> 
         <title>ポケモンダメージ計算sv</title>
         <meta name="description" content="Welcome to my website!" />
-        <link rel="icon" href="/app_icon.jpg" />
+        <link rel="icon" href="app_icon.jpg" />
       </Head>
       <body>
         <div className="flex w-full">
