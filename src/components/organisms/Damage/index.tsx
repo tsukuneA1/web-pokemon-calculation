@@ -453,7 +453,7 @@ export function typeMagnification(skill: Skill, type1: string, atSpCh: string): 
         type1 === 'フェアリー'
       ) {
         magnification *= 0.5;
-      } else if (type1 === 'くさ' || type1 === 'エスパー' || type1 === 'むし') {
+      } else if (type1 === 'くさ' || type1 === 'エスパー' || type1 === 'あく') {
         magnification *= 2.0;
       }
       break;
