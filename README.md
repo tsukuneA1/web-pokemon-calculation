@@ -1,4 +1,4 @@
-## Getting Started
+## ポケモンSV ダメージ計算機
 
 First, run the development server:
 
