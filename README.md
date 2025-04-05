@@ -1,6 +1,8 @@
 ## ポケモンSV ダメージ計算機
 
-First, run the development server:
+ポケモンsvで使えるダメージ計算機を作ってみました。
+フロントはNext.js, MUIを使ってます。
+バックはsupabase, prismaを使ってます。
 
 ```bash
 npm run dev
